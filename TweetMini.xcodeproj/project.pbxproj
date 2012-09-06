@@ -1,0 +1,282 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		52C58F8015F87A3B003E84AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C58F7F15F87A3B003E84AE /* UIKit.framework */; };
+		52C58F8215F87A3B003E84AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C58F8115F87A3B003E84AE /* Foundation.framework */; };
+		52C58F8415F87A3B003E84AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C58F8315F87A3B003E84AE /* CoreGraphics.framework */; };
+		52C58F8A15F87A3B003E84AE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52C58F8815F87A3B003E84AE /* InfoPlist.strings */; };
+		52C58F8C15F87A3B003E84AE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C58F8B15F87A3B003E84AE /* main.m */; };
+		52C58F9015F87A3B003E84AE /* tweetMiniAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C58F8F15F87A3B003E84AE /* tweetMiniAppDelegate.m */; };
+		52C58F9315F87A3B003E84AE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52C58F9115F87A3B003E84AE /* MainStoryboard.storyboard */; };
+		52C58F9615F87A3B003E84AE /* tweetMiniViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C58F9515F87A3B003E84AE /* tweetMiniViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		52C58F7B15F87A3B003E84AE /* TweetMini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetMini.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		52C58F7F15F87A3B003E84AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		52C58F8115F87A3B003E84AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		52C58F8315F87A3B003E84AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		52C58F8715F87A3B003E84AE /* TweetMini-Info.plist */ = {isa = PBXFileReference; path = "TweetMini-Info.plist"; sourceTree = "<group>"; };
+		52C58F8915F87A3B003E84AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		52C58F8B15F87A3B003E84AE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		52C58F8D15F87A3B003E84AE /* TweetMini-Prefix.pch */ = {isa = PBXFileReference; path = "TweetMini-Prefix.pch"; sourceTree = "<group>"; };
+		52C58F8E15F87A3B003E84AE /* tweetMiniAppDelegate.h */ = {isa = PBXFileReference; path = tweetMiniAppDelegate.h; sourceTree = "<group>"; };
+		52C58F8F15F87A3B003E84AE /* tweetMiniAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tweetMiniAppDelegate.m; sourceTree = "<group>"; };
+		52C58F9215F87A3B003E84AE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		52C58F9415F87A3B003E84AE /* tweetMiniViewController.h */ = {isa = PBXFileReference; path = tweetMiniViewController.h; sourceTree = "<group>"; };
+		52C58F9515F87A3B003E84AE /* tweetMiniViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tweetMiniViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		52C58F7815F87A3B003E84AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52C58F8015F87A3B003E84AE /* UIKit.framework in Frameworks */,
+				52C58F8215F87A3B003E84AE /* Foundation.framework in Frameworks */,
+				52C58F8415F87A3B003E84AE /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		52C58F7015F87A3B003E84AE = {
+			isa = PBXGroup;
+			children = (
+				52C58F8515F87A3B003E84AE /* TweetMini */,
+				52C58F7E15F87A3B003E84AE /* Frameworks */,
+				52C58F7C15F87A3B003E84AE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		52C58F7C15F87A3B003E84AE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				52C58F7B15F87A3B003E84AE /* TweetMini.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		52C58F7E15F87A3B003E84AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				52C58F7F15F87A3B003E84AE /* UIKit.framework */,
+				52C58F8115F87A3B003E84AE /* Foundation.framework */,
+				52C58F8315F87A3B003E84AE /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		52C58F8515F87A3B003E84AE /* TweetMini */ = {
+			isa = PBXGroup;
+			children = (
+				52C58F8E15F87A3B003E84AE /* tweetMiniAppDelegate.h */,
+				52C58F8F15F87A3B003E84AE /* tweetMiniAppDelegate.m */,
+				52C58F9115F87A3B003E84AE /* MainStoryboard.storyboard */,
+				52C58F9415F87A3B003E84AE /* tweetMiniViewController.h */,
+				52C58F9515F87A3B003E84AE /* tweetMiniViewController.m */,
+				52C58F8615F87A3B003E84AE /* Supporting Files */,
+			);
+			path = TweetMini;
+			sourceTree = "<group>";
+		};
+		52C58F8615F87A3B003E84AE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				52C58F8715F87A3B003E84AE /* TweetMini-Info.plist */,
+				52C58F8815F87A3B003E84AE /* InfoPlist.strings */,
+				52C58F8B15F87A3B003E84AE /* main.m */,
+				52C58F8D15F87A3B003E84AE /* TweetMini-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		52C58F7A15F87A3B003E84AE /* TweetMini */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52C58F9915F87A3B003E84AE /* Build configuration list for PBXNativeTarget "TweetMini" */;
+			buildPhases = (
+				52C58F7715F87A3B003E84AE /* Sources */,
+				52C58F7815F87A3B003E84AE /* Frameworks */,
+				52C58F7915F87A3B003E84AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TweetMini;
+			productName = TweetMini;
+			productReference = 52C58F7B15F87A3B003E84AE /* TweetMini.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		52C58F7215F87A3B003E84AE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = tweetMini;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 52C58F7515F87A3B003E84AE /* Build configuration list for PBXProject "TweetMini" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 52C58F7015F87A3B003E84AE;
+			productRefGroup = 52C58F7C15F87A3B003E84AE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				52C58F7A15F87A3B003E84AE /* TweetMini */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		52C58F7915F87A3B003E84AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52C58F8A15F87A3B003E84AE /* InfoPlist.strings in Resources */,
+				52C58F9315F87A3B003E84AE /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		52C58F7715F87A3B003E84AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52C58F8C15F87A3B003E84AE /* main.m in Sources */,
+				52C58F9015F87A3B003E84AE /* tweetMiniAppDelegate.m in Sources */,
+				52C58F9615F87A3B003E84AE /* tweetMiniViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		52C58F8815F87A3B003E84AE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				52C58F8915F87A3B003E84AE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		52C58F9115F87A3B003E84AE /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				52C58F9215F87A3B003E84AE /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		52C58F9715F87A3B003E84AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		52C58F9815F87A3B003E84AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		52C58F9A15F87A3B003E84AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TweetMini/TweetMini-Prefix.pch";
+				INFOPLIST_FILE = "TweetMini/TweetMini-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		52C58F9B15F87A3B003E84AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TweetMini/TweetMini-Prefix.pch";
+				INFOPLIST_FILE = "TweetMini/TweetMini-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		52C58F7515F87A3B003E84AE /* Build configuration list for PBXProject "TweetMini" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52C58F9715F87A3B003E84AE /* Debug */,
+				52C58F9815F87A3B003E84AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52C58F9915F87A3B003E84AE /* Build configuration list for PBXNativeTarget "TweetMini" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52C58F9A15F87A3B003E84AE /* Debug */,
+				52C58F9B15F87A3B003E84AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 52C58F7215F87A3B003E84AE /* Project object */;
+}
