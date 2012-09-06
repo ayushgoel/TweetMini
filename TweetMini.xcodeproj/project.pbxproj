@@ -22,14 +22,14 @@
 		52C58F7F15F87A3B003E84AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		52C58F8115F87A3B003E84AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		52C58F8315F87A3B003E84AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		52C58F8715F87A3B003E84AE /* TweetMini-Info.plist */ = {isa = PBXFileReference; path = "TweetMini-Info.plist"; sourceTree = "<group>"; };
+		52C58F8715F87A3B003E84AE /* TweetMini-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TweetMini-Info.plist"; sourceTree = "<group>"; };
 		52C58F8915F87A3B003E84AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		52C58F8B15F87A3B003E84AE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		52C58F8D15F87A3B003E84AE /* TweetMini-Prefix.pch */ = {isa = PBXFileReference; path = "TweetMini-Prefix.pch"; sourceTree = "<group>"; };
-		52C58F8E15F87A3B003E84AE /* tweetMiniAppDelegate.h */ = {isa = PBXFileReference; path = tweetMiniAppDelegate.h; sourceTree = "<group>"; };
+		52C58F8D15F87A3B003E84AE /* TweetMini-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TweetMini-Prefix.pch"; sourceTree = "<group>"; };
+		52C58F8E15F87A3B003E84AE /* tweetMiniAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tweetMiniAppDelegate.h; sourceTree = "<group>"; };
 		52C58F8F15F87A3B003E84AE /* tweetMiniAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tweetMiniAppDelegate.m; sourceTree = "<group>"; };
 		52C58F9215F87A3B003E84AE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		52C58F9415F87A3B003E84AE /* tweetMiniViewController.h */ = {isa = PBXFileReference; path = tweetMiniViewController.h; sourceTree = "<group>"; };
+		52C58F9415F87A3B003E84AE /* tweetMiniViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tweetMiniViewController.h; sourceTree = "<group>"; };
 		52C58F9515F87A3B003E84AE /* tweetMiniViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tweetMiniViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
