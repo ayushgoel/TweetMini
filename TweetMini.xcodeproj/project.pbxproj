@@ -28,6 +28,7 @@
 		52C58F9615F87A3B003E84AE /* tweetMiniViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C58F9515F87A3B003E84AE /* tweetMiniViewController.m */; };
 		52DCF3E215FE01EA00EF93EB /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DCF3E115FE01EA00EF93EB /* Twitter.framework */; };
 		52DCF3E515FE06A100EF93EB /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DCF3E415FE06A100EF93EB /* Accounts.framework */; };
+		52F9215B15FF11DE00060202 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F9215A15FF11DE00060202 /* HomeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,8 @@
 		52C58F9515F87A3B003E84AE /* tweetMiniViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tweetMiniViewController.m; sourceTree = "<group>"; };
 		52DCF3E115FE01EA00EF93EB /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		52DCF3E415FE06A100EF93EB /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		52F9215915FF11DE00060202 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		52F9215A15FF11DE00060202 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +158,8 @@
 				52C58F9515F87A3B003E84AE /* tweetMiniViewController.m */,
 				520F2C6415FDB6DA00C06850 /* newTweetViewController.h */,
 				520F2C6515FDB6DA00C06850 /* newTweetViewController.m */,
+				52F9215915FF11DE00060202 /* HomeViewController.h */,
+				52F9215A15FF11DE00060202 /* HomeViewController.m */,
 				52C58F8615F87A3B003E84AE /* Supporting Files */,
 			);
 			path = TweetMini;
@@ -248,6 +253,7 @@
 				5225806315FA020300399FB4 /* AFXMLRequestOperation.m in Sources */,
 				5225806415FA020300399FB4 /* UIImageView+AFNetworking.m in Sources */,
 				520F2C6615FDB6DA00C06850 /* newTweetViewController.m in Sources */,
+				52F9215B15FF11DE00060202 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

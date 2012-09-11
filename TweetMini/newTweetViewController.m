@@ -12,33 +12,43 @@
 @end
 
 @implementation newTweetViewController
+@synthesize tweetCharsLeft;
+@synthesize tweetText;
+
+-(void) textViewDidChange:(UITextView *)textView{
+    int charsLeft = 140-tweetText.text.length;
+    if(charsLeft <0){
+        [tweetCharsLeft setTextColor:[UIColor colorWithRed:0.5 green:0.2 blue:0.3 alpha:0.9]];
+    }
+    else {
+        [tweetCharsLeft setTextColor:[UIColor lightTextColor]];
+    }
+    tweetCharsLeft.text = [NSString stringWithFormat:@"%d left", charsLeft];
+}
+
 -(void) destroySelf
 {
     [self dismissModalViewControllerAnimated:YES];    
 }
 
-
 - (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender {
     [self destroySelf];
-    }
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [tweetText becomeFirstResponder];
+//    tweetViewDelegate *viewDelegate = [[tweetViewDelegate alloc] init];
+    tweetText.delegate = self;
+    
+    // Do any additional setup after loading the view.
 }
 
 - (void)viewDidUnload
 {
+    [self setTweetText:nil];
+    [self setTweetCharsLeft:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
