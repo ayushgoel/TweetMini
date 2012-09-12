@@ -16,6 +16,7 @@
 @end
 
 @implementation tweetMiniViewController
+@synthesize statusLabel;
 @synthesize account;
 
 -(UIAlertView *) getAlertViewWithMessage: (NSString *) msg{
@@ -23,8 +24,10 @@
 }
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    statusLabel.text = @"Getting your timeline";
     HomeViewController *destination = [segue destinationViewController] ;
     destination.tAccount= self.account;
+    statusLabel.text = @"Redirecting..";    
 }
 
 - (void)viewDidLoad
@@ -43,15 +46,17 @@
 //    }];
 //    [operation start];
     
+    statusLabel.text = @"Trying to get your twitter credentials";
+    
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
         //NSLog(@"Can Send: %i", [TWTweetComposeViewController canSendTweet]);
     if([TWTweetComposeViewController canSendTweet]){
+        statusLabel.text = @"Twitter Account verified";
         [accountStore requestAccessToAccountsWithType:accountType withCompletionHandler: ^(BOOL granted, NSError *error){
             if(granted){
                 self.account = [[accountStore accountsWithAccountType:accountType] lastObject];
-                    //      NSLog(@"User: %@", account);
-                
+//                         NSLog(@"User: %@", account);
                 [self performSegueWithIdentifier:@"userLoggedIn" sender:self];
             }
             else {
@@ -70,13 +75,13 @@
 -(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
         //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=General&path=Network"]];
-//    NSLog(@"called");
         //Need something better to exit application
     exit(1);
 }
 
 - (void)viewDidUnload
 {
+    [self setStatusLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

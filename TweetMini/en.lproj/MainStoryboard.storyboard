@@ -23,7 +23,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <items>
-                                        <barButtonItem title="username" id="upZ-5b-reN"/>
                                         <barButtonItem style="plain" systemItem="flexibleSpace" id="dBp-7I-nqZ"/>
                                         <barButtonItem systemItem="compose" id="A7P-ox-bGO">
                                             <connections>
@@ -41,6 +40,7 @@
                                     <tabBarItem title="Home" id="PnE-Gb-gb0"/>
                                     <tabBarItem title="Connect" id="6fV-Q0-GZE"/>
                                     <tabBarItem title="Search" id="VuK-WA-qk6"/>
+                                    <tabBarItem title="Me" id="Pkt-dQ-Frp"/>
                                 </items>
                                 <color key="tintColor" red="0.17624404806171226" green="0.26513074767868311" blue="0.34787547831632648" alpha="1" colorSpace="calibratedRGB"/>
                             </tabBar>
@@ -50,9 +50,6 @@
                     <navigationItem key="navigationItem" title="Home" id="zRh-8g-Nmx">
                         <barButtonItem key="rightBarButtonItem" title="New" id="Ksv-9u-7AV"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="usernameButton" destination="upZ-5b-reN" id="NjR-Ms-C65"/>
-                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="275" y="-237"/>
@@ -77,7 +74,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="FW1-15-Z06"/>
-                                    <barButtonItem title="Tweet" id="EV9-V8-FLV"/>
+                                    <barButtonItem title="Tweet" id="EV9-V8-FLV">
+                                        <connections>
+                                            <action selector="tweetButtonPressed:" destination="wv6-TX-T24" id="Cnu-nF-mTj"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="Rax-f0-OgB">
@@ -141,6 +142,13 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="color" cocoaTouchSystemColor="darkTextColor"/>
                                     </activityIndicatorView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" id="97D-ff-ncM">
+                                        <rect key="frame" x="20" y="268" width="280" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -149,6 +157,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Logging in.." id="lbg-TY-i6y"/>
                     <connections>
+                        <outlet property="statusLabel" destination="97D-ff-ncM" id="qBU-Uc-LHO"/>
                         <segue destination="W5C-vX-wBR" kind="modal" identifier="userLoggedIn" id="FgK-DL-Cth"/>
                     </connections>
                 </viewController>
@@ -163,10 +172,7 @@
                 <relationship kind="outlet" name="usernameButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
-        <class className="TWTweetComposeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TWTweetComposeViewController.h"/>
-        </class>
-        <class className="newTweetViewController" superclassName="TWTweetComposeViewController">
+        <class className="newTweetViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/newTweetViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="tweetCharsLeft" candidateClass="UILabel"/>
@@ -175,6 +181,9 @@
         </class>
         <class className="tweetMiniViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/tweetMiniViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

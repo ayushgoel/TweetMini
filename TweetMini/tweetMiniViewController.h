@@ -10,5 +10,6 @@
 
 @interface tweetMiniViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UILabel *statusLabel;
 
 @end

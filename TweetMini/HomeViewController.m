@@ -17,31 +17,58 @@
 @synthesize usernameButton;
 @synthesize tAccount;
 
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    NSLog(@"segue");
+    HomeViewController *destination = [segue destinationViewController] ;
+    destination.tAccount= self.tAccount;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     usernameButton.title = [tAccount accountDescription];
     
-    NSDictionary * param = [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"Twitter Api", @"mixed", nil] forKeys:[[NSArray alloc] initWithObjects:@"q", @"result_type", nil]];
+//    NSDictionary * param = [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"Twitter Api", @"mixed", nil] forKeys:[[NSArray alloc] initWithObjects:@"q", @"result_type", nil]];
+//
+//    TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"http://search.twitter.com/search.json"] parameters:param requestMethod:TWRequestMethodGET];
+//    [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+//        if(responseData){
+//            NSError *jsonError;
+//            NSArray *timeline = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&jsonError];
+//            if(timeline){
+////                NSLog(@"id: %@", [[timeline valueForKey:@"results"] valueForKey:@"id"]);
+////                NSLog(@"%@", timeline);
+//            }
+//            else {
+//                NSLog(@"%@", error);
+//            }
+//        }
+//        else {
+//            NSLog(@"No response");
+//        }
+//    }];
+//    
+//    param = [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"1", nil] forKeys:[[NSArray alloc] initWithObjects:@"include_entities", nil]];
+//    
+//    request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"http://api.twitter.com/1/statuses/home_timeline.json"] parameters:param requestMethod:TWRequestMethodGET];
+//    [request setAccount:self.tAccount];
+//    [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+//        if(responseData){
+//            NSError *jsonError;
+//            NSArray *timeline = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&jsonError];
+//            if(timeline){
+////                NSLog(@"Starts here ---- %@", timeline);
+//            }
+//            else {
+//                NSLog(@"%@", error);
+//            }
+//        }
+//        else {
+//            NSLog(@"No response");
+//        }
+//    }];
 
-    TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"http://search.twitter.com/search.json"] parameters:param requestMethod:TWRequestMethodGET];
-    [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-        if(responseData){
-            NSError *jsonError;
-            NSArray *timeline = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&jsonError];
-            if(timeline){
-                NSLog(@"id: %@", [[timeline valueForKey:@"results"] valueForKey:@"id"]);
-//                NSLog(@"%@", timeline);
-            }
-            else {
-                NSLog(@"%@", error);
-            }
-        }
-        else {
-            NSLog(@"No response");
-        }
-    }];
 }
 
 - (void)viewDidUnload
