@@ -10,7 +10,7 @@
 #import "Twitter/Twitter.h"
 
 @interface newTweetViewController : UIViewController <UITextViewDelegate>
-@property (weak) ACAccount *tAccount;
+@property (strong) ACAccount *tAccount;
 
 @property (strong, nonatomic) IBOutlet UILabel *tweetCharsLeft;
 @property (strong, nonatomic) IBOutlet UITextView *tweetText;

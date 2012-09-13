@@ -10,6 +10,6 @@
 #import "Accounts/Accounts.h"
 
 @interface HomeViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *usernameButton;
+@property (strong, nonatomic) IBOutlet UITabBar *tabBar;
 @property (nonatomic, strong) ACAccount *tAccount;
 @end

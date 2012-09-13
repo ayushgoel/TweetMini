@@ -14,20 +14,14 @@
 @end
 
 @implementation HomeViewController
-@synthesize usernameButton;
+@synthesize tabBar;
 @synthesize tAccount;
-
--(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    NSLog(@"segue");
-    HomeViewController *destination = [segue destinationViewController] ;
-    destination.tAccount= self.tAccount;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"%@", [tabBar items]);    
 	// Do any additional setup after loading the view.
-    usernameButton.title = [tAccount accountDescription];
     
 //    NSDictionary * param = [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"Twitter Api", @"mixed", nil] forKeys:[[NSArray alloc] initWithObjects:@"q", @"result_type", nil]];
 //
@@ -73,6 +67,7 @@
 
 - (void)viewDidUnload
 {
+    [self setTabBar:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

@@ -24,10 +24,7 @@
 }
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    statusLabel.text = @"Getting your timeline";
-    HomeViewController *destination = [segue destinationViewController] ;
-    destination.tAccount= self.account;
-    statusLabel.text = @"Redirecting..";    
+    statusLabel.text = @"Getting your timeline..";
 }
 
 - (void)viewDidLoad
