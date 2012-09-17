@@ -18,6 +18,9 @@
 		5225806215FA020300399FB4 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5225805615FA020300399FB4 /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5225806315FA020300399FB4 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5225805815FA020300399FB4 /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5225806415FA020300399FB4 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 5225805A15FA020300399FB4 /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		526855511602FE1400003716 /* home.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 526855501602FE1400003716 /* home.jpg */; };
+		52ABA4231606F1F000F3C86C /* tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ABA4221606F1F000F3C86C /* tweet.m */; };
+		52ABA4271606F5E000F3C86C /* SearchTwitterViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ABA4261606F5E000F3C86C /* SearchTwitterViewControllerViewController.m */; };
 		52C58F8015F87A3B003E84AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C58F7F15F87A3B003E84AE /* UIKit.framework */; };
 		52C58F8215F87A3B003E84AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C58F8115F87A3B003E84AE /* Foundation.framework */; };
 		52C58F8415F87A3B003E84AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C58F8315F87A3B003E84AE /* CoreGraphics.framework */; };
@@ -55,6 +58,11 @@
 		5225805815FA020300399FB4 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		5225805915FA020300399FB4 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		5225805A15FA020300399FB4 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		526855501602FE1400003716 /* home.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = home.jpg; sourceTree = "<group>"; };
+		52ABA4211606F1F000F3C86C /* tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tweet.h; sourceTree = "<group>"; };
+		52ABA4221606F1F000F3C86C /* tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tweet.m; sourceTree = "<group>"; };
+		52ABA4251606F5E000F3C86C /* SearchTwitterViewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTwitterViewControllerViewController.h; sourceTree = "<group>"; };
+		52ABA4261606F5E000F3C86C /* SearchTwitterViewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTwitterViewControllerViewController.m; sourceTree = "<group>"; };
 		52C58F7B15F87A3B003E84AE /* TweetMini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetMini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C58F7F15F87A3B003E84AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		52C58F8115F87A3B003E84AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -161,6 +169,10 @@
 				52F9215915FF11DE00060202 /* HomeViewController.h */,
 				52F9215A15FF11DE00060202 /* HomeViewController.m */,
 				52C58F8615F87A3B003E84AE /* Supporting Files */,
+				52ABA4211606F1F000F3C86C /* tweet.h */,
+				52ABA4221606F1F000F3C86C /* tweet.m */,
+				52ABA4251606F5E000F3C86C /* SearchTwitterViewControllerViewController.h */,
+				52ABA4261606F5E000F3C86C /* SearchTwitterViewControllerViewController.m */,
 			);
 			path = TweetMini;
 			sourceTree = "<group>";
@@ -168,6 +180,7 @@
 		52C58F8615F87A3B003E84AE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				526855501602FE1400003716 /* home.jpg */,
 				52C58F8715F87A3B003E84AE /* TweetMini-Info.plist */,
 				52C58F8815F87A3B003E84AE /* InfoPlist.strings */,
 				52C58F8B15F87A3B003E84AE /* main.m */,
@@ -229,6 +242,7 @@
 			files = (
 				52C58F8A15F87A3B003E84AE /* InfoPlist.strings in Resources */,
 				52C58F9315F87A3B003E84AE /* MainStoryboard.storyboard in Resources */,
+				526855511602FE1400003716 /* home.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +268,8 @@
 				5225806415FA020300399FB4 /* UIImageView+AFNetworking.m in Sources */,
 				520F2C6615FDB6DA00C06850 /* newTweetViewController.m in Sources */,
 				52F9215B15FF11DE00060202 /* HomeViewController.m in Sources */,
+				52ABA4231606F1F000F3C86C /* tweet.m in Sources */,
+				52ABA4271606F5E000F3C86C /* SearchTwitterViewControllerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
