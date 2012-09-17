@@ -49,9 +49,9 @@
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
         //NSLog(@"Can Send: %i", [TWTweetComposeViewController canSendTweet]);
     if([TWTweetComposeViewController canSendTweet]){
-        statusLabel.text = @"Twitter Account verified";
         [accountStore requestAccessToAccountsWithType:accountType withCompletionHandler: ^(BOOL granted, NSError *error){
             if(granted){
+                statusLabel.text = @"Twitter Account verified";
                 self.account = [[accountStore accountsWithAccountType:accountType] lastObject];
 //                         NSLog(@"User: %@", account);
                 [self performSegueWithIdentifier:@"userLoggedIn" sender:self];

@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Accounts/Accounts.h"
 
-@interface HomeViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UITabBar *tabBar;
-@property (nonatomic, strong) ACAccount *tAccount;
+@interface HomeViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet UITableView *homeTable;
 @end
