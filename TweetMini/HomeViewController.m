@@ -25,13 +25,11 @@
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    NSLog(@"ResultsHome: %i", [self.homeTimeline count]);
     return [self.homeTimeline count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%F", [[self.homeTimeline objectAtIndex:[indexPath row]] rowHeight]);
     return [[self.homeTimeline objectAtIndex:[indexPath row]] rowHeight];
 }
 
@@ -55,7 +53,6 @@
 
 -(void) getTimeline
 {
-//    NSLog(@"Timeline");
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     if([TWTweetComposeViewController canSendTweet]){

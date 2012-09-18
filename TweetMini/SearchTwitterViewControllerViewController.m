@@ -91,6 +91,10 @@
     [self populateTweetWithSearch:searchBari.text];
 }
 
+-(void) searchBarCancelButtonClicked:(UISearchBar *)searchBari{
+    [searchBari resignFirstResponder];
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
