@@ -25,7 +25,6 @@
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"%i", [self.connectTimeline count]);
     return [self.connectTimeline count];
 }
 

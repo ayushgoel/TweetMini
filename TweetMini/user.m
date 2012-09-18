@@ -9,6 +9,12 @@
 #import "user.h"
 
 @implementation user
+@synthesize mUser;
 @synthesize followersCount, favoritesCount, friendsCount, statusCount, creationDate, description, lang, location, url;
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"User: %@  followers: %i favorites: %i friends: %i status: %i date: %@ description: %@ lang: %@ location: %@ url: %@", mUser, followersCount, favoritesCount, friendsCount, statusCount, creationDate, description, lang, location, url];
+}
 
 @end

@@ -46,8 +46,8 @@
     }
     
     [[cell detailTextLabel] setText:resTweet.text];
-    [[cell textLabel] setText:resTweet.user];
-    cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:resTweet.profileImageURL]]];   
+    [[cell textLabel] setText:resTweet.user.name];
+    cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:resTweet.user.profileImageURL]];   
     return cell;
 }
 
@@ -69,9 +69,9 @@
                         if(results){
                             [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                                 tweet *tempTweet = [[tweet alloc] init];
-                                tempTweet.user = [[obj valueForKey:@"user"] valueForKey:@"name"];
+                                tempTweet.user.name = [[obj valueForKey:@"user"] valueForKey:@"name"];
                                 tempTweet.text = [obj valueForKey:@"text"];
-                                tempTweet.profileImageURL = [[obj valueForKey:@"user"] valueForKey:@"profile_image_url"];
+                                tempTweet.user.profileImageURL = [NSURL URLWithString:[[obj valueForKey:@"user"] valueForKey:@"profile_image_url"]];
                                 
                                 [self.homeTimeline addObject:tempTweet];
                             }];
@@ -114,47 +114,6 @@
     self.homeTimeline = [[NSMutableArray alloc] init];
     [self getTimeline];
 	// Do any additional setup after loading the view.
-    
-//    NSDictionary * param = [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"Twitter Api", @"mixed", nil] forKeys:[[NSArray alloc] initWithObjects:@"q", @"result_type", nil]];
-//
-//    TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"http://search.twitter.com/search.json"] parameters:param requestMethod:TWRequestMethodGET];
-//    [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-//        if(responseData){
-//            NSError *jsonError;
-//            NSArray *timeline = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&jsonError];
-//            if(timeline){
-////                NSLog(@"id: %@", [[timeline valueForKey:@"results"] valueForKey:@"id"]);
-////                NSLog(@"%@", timeline);
-//            }
-//            else {
-//                NSLog(@"%@", error);
-//            }
-//        }
-//        else {
-//            NSLog(@"No response");
-//        }
-//    }];
-//    
-//    param = [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"1", nil] forKeys:[[NSArray alloc] initWithObjects:@"include_entities", nil]];
-//    
-//    request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"http://api.twitter.com/1/statuses/home_timeline.json"] parameters:param requestMethod:TWRequestMethodGET];
-//    [request setAccount:self.tAccount];
-//    [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-//        if(responseData){
-//            NSError *jsonError;
-//            NSArray *timeline = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&jsonError];
-//            if(timeline){
-////                NSLog(@"Starts here ---- %@", timeline);
-//            }
-//            else {
-//                NSLog(@"%@", error);
-//            }
-//        }
-//        else {
-//            NSLog(@"No response");
-//        }
-//    }];
-
 }
 
 - (void)viewDidUnload

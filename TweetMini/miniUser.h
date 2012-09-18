@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface miniUser : NSObject
+
 @property (nonatomic) NSInteger userId;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *screenName;

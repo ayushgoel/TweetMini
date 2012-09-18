@@ -21,12 +21,13 @@
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"Results: %i", [self.searchResult count]);
+    NSLog(@"Search Results: %i", [self.searchResult count]);
     return [self.searchResult count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    NSLog(@"Height: %f", [[self.searchResult objectAtIndex:[indexPath row]] rowHeight]);
     return [[self.searchResult objectAtIndex:[indexPath row]] rowHeight];
 }
 
@@ -109,6 +110,7 @@
     [super viewDidLoad];
     [self.tweetTable setDataSource:self];
     self.searchBar.delegate = self;
+    self.tweetTable.delegate = self;
     self.searchResult = [[NSMutableArray alloc] init];
 	
     // Uncomment the following line to preserve selection between presentations.

@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "miniUser.h"
 
 @interface user : NSObject
+
+@property (nonatomic, strong) miniUser *mUser;
 
 @property (nonatomic) NSInteger favoritesCount;
 @property (nonatomic) NSInteger followersCount;
