@@ -58,7 +58,7 @@
     if([TWTweetComposeViewController canSendTweet]){
         [accountStore requestAccessToAccountsWithType:accountType withCompletionHandler: ^(BOOL granted, NSError *error){
             if(granted){
-                NSDictionary * param = [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"0", @"true", @"0", nil] forKeys:[[NSArray alloc] initWithObjects:@"include_entities", @"exclude_replies", @"trim_user", nil]];
+                NSDictionary * param = [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"0", @"true", @"0", @"20", nil] forKeys:[[NSArray alloc] initWithObjects:@"include_entities", @"exclude_replies", @"trim_user", @"count", nil]];
                 
                 TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"http://api.twitter.com/1/statuses/home_timeline.json"] parameters:param requestMethod:TWRequestMethodGET];
                 [request setAccount:[[accountStore accountsWithAccountType:accountType] lastObject]];
@@ -66,14 +66,22 @@
                     if(responseData){
                         NSError *jsonError;
                         NSArray *results = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&jsonError];
+
                         if(results){
                             [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+
                                 tweet *tempTweet = [[tweet alloc] init];
-                                tempTweet.user.name = [[obj valueForKey:@"user"] valueForKey:@"name"];
                                 tempTweet.text = [obj valueForKey:@"text"];
-                                tempTweet.user.profileImageURL = [NSURL URLWithString:[[obj valueForKey:@"user"] valueForKey:@"profile_image_url"]];
+                                tempTweet.tweetId = [obj valueForKey:@"id"];
                                 
+                                id userDetails = [obj valueForKey:@"user"];
+                                tempTweet.user.userId = [[userDetails valueForKey:@"id"] intValue];
+                                tempTweet.user.name = [userDetails valueForKey:@"name"];
+                                tempTweet.user.screenName = [userDetails valueForKey:@"screen_name"];
+                                tempTweet.user.profileImageURL = [NSURL URLWithString:[userDetails valueForKey:@"profile_image_url"]];
+
                                 [self.homeTimeline addObject:tempTweet];
+
                             }];
                             
                             [self.homeTable reloadData];
