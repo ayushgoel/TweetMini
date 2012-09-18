@@ -43,8 +43,8 @@
     }
     
     [[cell detailTextLabel] setText:resTweet.text];
-    [[cell textLabel] setText:resTweet.user];
-    cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:resTweet.profileImageURL]]];   
+    [[cell textLabel] setText:resTweet.user.name];
+    cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:resTweet.user.profileImageURL]];   
     return cell;
 }
 
@@ -61,9 +61,9 @@
                 id results = [JSON valueForKey:@"results"];
                 [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                     tweet *tempTweet = [[tweet alloc] init];
-                    tempTweet.user = [obj valueForKey:@"from_user"];
+                    tempTweet.user.name = [obj valueForKey:@"from_user"];
                     tempTweet.text = [obj valueForKey:@"text"];
-                    tempTweet.profileImageURL = [obj valueForKey:@"profile_image_url"];
+                    tempTweet.user.profileImageURL = [NSURL URLWithString:[obj valueForKey:@"profile_image_url"]];
                     
                     [self.searchResult addObject:tempTweet];
                 }];
