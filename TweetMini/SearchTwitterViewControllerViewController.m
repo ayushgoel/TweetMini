@@ -51,7 +51,7 @@
 
 -(void) populateTweetWithSearch: (NSString *) searchTerm
 {
-    NSDictionary * param = [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:searchTerm, @"mixed", nil] forKeys:[[NSArray alloc] initWithObjects:@"q", @"result_type", nil]];
+    NSDictionary * param = [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:searchTerm, @"mixed", @"false", @"20", nil] forKeys:[[NSArray alloc] initWithObjects:@"q", @"result_type", @"include_entities", @"rpp", nil]];
     
     TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"http://search.twitter.com/search.json"] parameters:param requestMethod:TWRequestMethodGET];
     [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
@@ -62,8 +62,11 @@
                 id results = [JSON valueForKey:@"results"];
                 [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                     tweet *tempTweet = [[tweet alloc] init];
-                    tempTweet.user.name = [obj valueForKey:@"from_user"];
                     tempTweet.text = [obj valueForKey:@"text"];
+                    tempTweet.tweetId = [obj valueForKey:@"id"];
+
+                    tempTweet.user.name = tempTweet.user.screenName = [obj valueForKey:@"from_user"];
+                    tempTweet.user.userId = [[obj valueForKey:@"from_user_id"] intValue]; 
                     tempTweet.user.profileImageURL = [NSURL URLWithString:[obj valueForKey:@"profile_image_url"]];
                     
                     [self.searchResult addObject:tempTweet];
