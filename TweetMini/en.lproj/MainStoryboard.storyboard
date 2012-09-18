@@ -357,43 +357,6 @@
             <point key="canvasLocation" x="-503" y="-76"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="ConnectViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConnectViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="connectTable" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="HomeViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="homeTable" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="ProfileViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
-        </class>
-        <class className="SearchTwitterViewControllerViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchTwitterViewControllerViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="tweetTable" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="newTweetViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/newTweetViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tweetCharsLeft" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tweetText" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="tweetMiniViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/tweetMiniViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
