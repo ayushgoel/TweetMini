@@ -10,7 +10,7 @@
 
 @implementation tweet
 
-@synthesize tweetId, user, userId, text, profileImageURL, rowHeight;
+@synthesize tweetId, user, text, rowHeight;
 
 #define FONT_SIZE 14.0f
 #define CELL_CONTENT_WIDTH 320.0f
@@ -22,15 +22,7 @@
     CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
     CGSize size;
 
-    
-//    if ([self.text isKindOfClass:[NSNull class]]) {
-        size = [self.text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-//    }
-//    else {
-//        NSLog(@"WTF!");
-//        size = [@"S" sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-//    }
-    NSLog(@"text: %f", size.height);    
+    size = [self.text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
     CGFloat height = MAX(size.height, 44.0f);
     
     return height + (CELL_CONTENT_MARGIN * 2) + CELL_TITLE_HEIGHT;
@@ -38,7 +30,7 @@
 
 -(NSString *) description
 {
-    return [NSString stringWithFormat:@"%@ %@ %@", user, text, profileImageURL];
+    return [NSString stringWithFormat:@"User:%@ Text:%@", user, text];
 }
 
 @end

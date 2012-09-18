@@ -7,14 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "miniUser.h"
 
 @interface tweet : NSObject
 
 @property (nonatomic, strong) NSString *tweetId;
-@property (nonatomic, strong) NSString *user;
-@property (nonatomic, strong) NSString *userId;
+@property (nonatomic, strong) miniUser *user;
 @property (nonatomic, strong) NSString *text;
-@property (nonatomic, strong) NSString *profileImageURL;
 @property (nonatomic) CGFloat rowHeight;
 
 @end
