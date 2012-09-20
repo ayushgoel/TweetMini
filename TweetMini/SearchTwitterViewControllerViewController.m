@@ -9,6 +9,7 @@
 #import "SearchTwitterViewControllerViewController.h"
 #import "tweet.h"
 #import "Twitter/Twitter.h"
+#import "AFNetworking/AFNetworking.h"
 
 @interface SearchTwitterViewControllerViewController ()
 @property (nonatomic, strong) NSMutableArray *searchResult;
@@ -45,7 +46,8 @@
     
     [[cell detailTextLabel] setText:resTweet.text];
     [[cell textLabel] setText:resTweet.user.name];
-    cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:resTweet.user.profileImageURL]];   
+        //cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:resTweet.user.profileImageURL]];
+    [cell.imageView setImageWithURL: resTweet.user.profileImageURL placeholderImage:[UIImage imageWithContentsOfFile:@"/Users/Goel/Desktop/iOSDev/TweetMini/TweetMini/profile.gif"]];
     return cell;
 }
 

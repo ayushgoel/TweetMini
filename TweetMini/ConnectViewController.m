@@ -10,6 +10,7 @@
 #import "Twitter/Twitter.h"
 #import "Accounts/Accounts.h"
 #import "tweet.h"
+#import "AFNetworking.h"
 
 @interface ConnectViewController ()
 @property (nonatomic, strong) NSMutableArray *connectTimeline;
@@ -47,7 +48,8 @@
     
     [[cell detailTextLabel] setText:resTweet.text];
     [[cell textLabel] setText:resTweet.user.name];
-    cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:resTweet.user.profileImageURL]];   
+        //cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:resTweet.user.profileImageURL]];
+    [cell.imageView setImageWithURL: resTweet.user.profileImageURL placeholderImage:[UIImage imageWithContentsOfFile:@"/Users/Goel/Desktop/iOSDev/TweetMini/TweetMini/profile.gif"]];
     return cell;
 }
 
