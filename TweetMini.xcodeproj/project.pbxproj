@@ -18,7 +18,8 @@
 		5225806215FA020300399FB4 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5225805615FA020300399FB4 /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5225806315FA020300399FB4 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5225805815FA020300399FB4 /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5225806415FA020300399FB4 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 5225805A15FA020300399FB4 /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		526855511602FE1400003716 /* home.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 526855501602FE1400003716 /* home.jpg */; };
+		528646E0160B1B9A002851AD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 528646DF160B1B9A002851AD /* Default-568h@2x.png */; };
+		52864718160B465E002851AD /* profile.gif in Resources */ = {isa = PBXBuildFile; fileRef = 52864717160B465E002851AD /* profile.gif */; };
 		5293F9321608660C000E6906 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5293F9311608660C000E6906 /* ProfileViewController.m */; };
 		5293F9351608698E000E6906 /* user.m in Sources */ = {isa = PBXBuildFile; fileRef = 5293F9341608698E000E6906 /* user.m */; };
 		5293F93816086C02000E6906 /* miniUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5293F93716086C02000E6906 /* miniUser.m */; };
@@ -62,7 +63,8 @@
 		5225805815FA020300399FB4 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		5225805915FA020300399FB4 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		5225805A15FA020300399FB4 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		526855501602FE1400003716 /* home.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = home.jpg; sourceTree = "<group>"; };
+		528646DF160B1B9A002851AD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		52864717160B465E002851AD /* profile.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = profile.gif; sourceTree = "<group>"; };
 		5293F9301608660C000E6906 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		5293F9311608660C000E6906 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		5293F9331608698E000E6906 /* user.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = user.h; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		52C58F7015F87A3B003E84AE = {
 			isa = PBXGroup;
 			children = (
+				528646DF160B1B9A002851AD /* Default-568h@2x.png */,
 				52C58F8515F87A3B003E84AE /* TweetMini */,
 				52C58F7E15F87A3B003E84AE /* Frameworks */,
 				52C58F7C15F87A3B003E84AE /* Products */,
@@ -200,7 +203,7 @@
 		52C58F8615F87A3B003E84AE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				526855501602FE1400003716 /* home.jpg */,
+				52864717160B465E002851AD /* profile.gif */,
 				52C58F8715F87A3B003E84AE /* TweetMini-Info.plist */,
 				52C58F8815F87A3B003E84AE /* InfoPlist.strings */,
 				52C58F8B15F87A3B003E84AE /* main.m */,
@@ -262,7 +265,8 @@
 			files = (
 				52C58F8A15F87A3B003E84AE /* InfoPlist.strings in Resources */,
 				52C58F9315F87A3B003E84AE /* MainStoryboard.storyboard in Resources */,
-				526855511602FE1400003716 /* home.jpg in Resources */,
+				528646E0160B1B9A002851AD /* Default-568h@2x.png in Resources */,
+				52864718160B465E002851AD /* profile.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
