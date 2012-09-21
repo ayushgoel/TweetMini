@@ -22,32 +22,17 @@
 }
 
 - (IBAction)tweetButtonPressed:(id)sender {
-        //Not used cause uses a different view controller
-//    TWTweetComposeViewController *tweetViewController = [[TWTweetComposeViewController alloc] init];
-//    [tweetViewController setInitialText:self.tweetText.text];
-//    [tweetViewController setCompletionHandler:^(TWTweetComposeViewControllerResult result){
-//        switch (result) {
-//            case TWTweetComposeViewControllerResultCancelled:
-//                NSLog(@"Cancelled!!");
-//                break;
-//            case TWTweetComposeViewControllerResultDone:
-//                NSLog(@"Done :)");
-//                break;
-//            default:
-//                NSLog(@"default!!");
-//                break;
-//        }
-//        [self performSelectorOnMainThread:@selector(displayText:) withObject:@"DISPLAY!!" waitUntilDone:NO];
-//        [self dismissModalViewControllerAnimated:YES];
-//    }];
-//    [self presentModalViewController:tweetViewController animated:YES];
-    
+
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
     if([TWTweetComposeViewController canSendTweet]){
+    
         [accountStore requestAccessToAccountsWithType:accountType withCompletionHandler: ^(BOOL granted, NSError *error){
             if(granted){
+
                 self.tAccount = [[accountStore accountsWithAccountType:accountType] lastObject];
+
                 NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
                 [param setObject:@"1" forKey:@"include_entities"];
                 [param setObject:self.tweetText.text forKey:@"status"];
@@ -59,8 +44,6 @@
                     NSLog(@"%@", output);
                 }];
                 
-//                Gives an error cause this tries to update the UI from a secondary thread
-//                [self destroySelf];
                 [self performSelectorOnMainThread:@selector(destroySelf) withObject:self waitUntilDone:NO];
             }
             else {
