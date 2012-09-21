@@ -12,12 +12,12 @@
 #import "HomeViewController.h"
 
 @interface tweetMiniViewController ()
-@property (atomic) ACAccount *account; 
+//@property (atomic) ACAccount *account; 
 @end
 
 @implementation tweetMiniViewController
 @synthesize statusLabel;
-@synthesize account;
+//@synthesize account;
 
 -(UIAlertView *) getAlertViewWithMessage: (NSString *) msg{
     return [[UIAlertView alloc] initWithTitle:@"Twitter Authorisation" message:msg delegate:self cancelButtonTitle:@"Exit" otherButtonTitles: nil];
@@ -52,7 +52,7 @@
         [accountStore requestAccessToAccountsWithType:accountType withCompletionHandler: ^(BOOL granted, NSError *error){
             if(granted){
                 statusLabel.text = @"Twitter Account verified";
-                self.account = [[accountStore accountsWithAccountType:accountType] lastObject];
+//                self.account = [[accountStore accountsWithAccountType:accountType] lastObject];
 //                         NSLog(@"User: %@", account);
                 [self performSegueWithIdentifier:@"userLoggedIn" sender:self];
             }
