@@ -9,26 +9,24 @@
 #import "ProfileViewController.h"
 #import "Accounts/Accounts.h"
 #import "Twitter/Twitter.h"
-#import "tweet.h"
+#import "user.h"
 
 @interface ProfileViewController ()
-
+@property (atomic, strong) user *tUser;
 @end
 
 @implementation ProfileViewController
+@synthesize tUser;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+-(UIAlertView *) getAlertViewWithMessage: (NSString *) msg{
+    return [[UIAlertView alloc] initWithTitle:@"Twitter Authorisation" message:msg delegate:self cancelButtonTitle:@"Exit" otherButtonTitles: nil];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.userScrollView.contentSize = CGSizeMake(320.0, 750.0);
+    
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     if([TWTweetComposeViewController canSendTweet]){
@@ -45,17 +43,22 @@
                         NSArray *results = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&jsonError];
                         if(results){
                             NSLog(@"%@", results);
-//                            [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//                                tweet *tempTweet = [[tweet alloc] init];
-//                                tempTweet.user = [[obj valueForKey:@"user"] valueForKey:@"name"];
-//                                tempTweet.text = [obj valueForKey:@"text"];
-//                                tempTweet.profileImageURL = [[obj valueForKey:@"user"] valueForKey:@"profile_image_url"];
-                                
-//                                [self.connectTimeline addObject:tempTweet];
-//                            }];
                             
-//                            [self.connectTable reloadData];
-//                            [self.connectTable setNeedsDisplay];
+                            tUser.mUser.userId = [[results valueForKey:@"id"] integerValue];
+                            tUser.mUser.name = [results valueForKey:@"name"];
+                            tUser.mUser.screenName = [results valueForKey:@"screen_name"];
+                            tUser.mUser.profileImageURL = [results valueForKey:@"profile_image_url"];
+                            
+                            tUser.favoritesCount = [[results valueForKey:@"favourites_count"] integerValue];
+                            tUser.followersCount = [[results valueForKey:@"followers_count"] integerValue];
+                            tUser.friendsCount = [[results valueForKey:@"friends_count"] integerValue];
+                            tUser.statusCount = [[results valueForKey:@"statuses_count"] integerValue];
+                            
+                            tUser.creationDate = [results valueForKey:@"created_at"];
+                            tUser.description = [results valueForKey:@"description"];
+                            tUser.lang = [results valueForKey:@"lang"];
+                            tUser.location = [results valueForKey:@"location"];
+                            tUser.url = [NSURL URLWithString:[results valueForKey:@"url"]];
                         }
                         else {
                             NSLog(@"%@", error);
@@ -72,14 +75,14 @@
             }
             else {
                 
-//                UIAlertView *alert = [self getAlertViewWithMessage: @"Please give permission to access your twitter account in the Settings, then try again!"];
-//                [alert show];
+                UIAlertView *alert = [self getAlertViewWithMessage: @"Please give permission to access your twitter account in the Settings, then try again!"];
+                [alert show];
             }
         }];
     }
     else {
-//        UIAlertView *alert = [self getAlertViewWithMessage:@"Please log into Twitter in the Settings, then try again!"];
-//        [alert show];
+        UIAlertView *alert = [self getAlertViewWithMessage:@"Please log into Twitter in the Settings, then try again!"];
+        [alert show];
     }
 
 	// Do any additional setup after loading the view.
@@ -87,13 +90,24 @@
 
 - (void)viewDidUnload
 {
+    [self setUserScrollView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
+
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//{
+//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//    if (self) {
+//        // Custom initialization
+//    }
+//    return self;
+//}
+
 
 @end

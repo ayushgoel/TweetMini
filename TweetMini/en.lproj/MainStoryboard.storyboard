@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D2001" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vt5-ZR-Zza">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12B19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vt5-ZR-Zza">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
-        <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
         <!--New Tweet View Controller - New Tweet-->
         <scene sceneID="Uwa-U9-zCJ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y4N-ah-hWy" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="wv6-TX-T24" customClass="newTweetViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="redraw" id="zVJ-au-Omx">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
@@ -55,13 +53,13 @@
                         <outlet property="tweetText" destination="Rax-f0-OgB" id="UMa-k6-xlE"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y4N-ah-hWy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="22" y="-917"/>
         </scene>
         <!--Connect View Controller - Connect-->
         <scene sceneID="oVD-0R-Ima">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WLB-44-vnS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="iwW-iD-ndH" customClass="ConnectViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Io3-oV-Gqo" customClass="UITableView">
                         <rect key="frame" x="0.0" y="20" width="320" height="411"/>
@@ -126,13 +124,13 @@
                         <outlet property="connectTable" destination="bly-iM-hVW" id="dC8-EV-mD4"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WLB-44-vnS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-503" y="-641"/>
         </scene>
         <!--Home View Controller - Home-->
         <scene sceneID="xXy-YJ-49s">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vPu-9w-pBt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="eq7-MA-TMo" customClass="HomeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4JW-0v-cB8" customClass="UITableView">
                         <rect key="frame" x="0.0" y="20" width="320" height="411"/>
@@ -151,14 +149,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Mv-Ss-Cus">
-                                                    <rect key="frame" x="10" y="2" width="38" height="22"/>
+                                                    <rect key="frame" x="10" y="3" width="33" height="20"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="0.0060877451968238683" green="0.48707904880050401" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="M6a-27-cCz">
-                                                    <rect key="frame" x="10" y="24" width="47" height="18"/>
+                                                    <rect key="frame" x="10" y="23" width="47" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.1517857142857143" green="0.1517857142857143" blue="0.1517857142857143" alpha="1" colorSpace="calibratedRGB"/>
@@ -197,13 +195,13 @@
                         <outlet property="homeTable" destination="BIY-ox-I1G" id="fga-vo-fF3"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vPu-9w-pBt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-503" y="-1207"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="zKY-XK-iYg">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lfm-X4-ClR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController definesPresentationContext="YES" id="1qi-fg-iKb" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="3cw-3k-H7e">
@@ -218,13 +216,13 @@
                         <segue destination="8Zs-RV-cjI" kind="relationship" relationship="viewControllers" id="pqO-sJ-q5B"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lfm-X4-ClR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1020" y="-269"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="K4n-9p-2OW">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iGO-z1-EKI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="vt5-ZR-Zza" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="FVp-4m-0SR">
@@ -240,13 +238,13 @@
                         <segue destination="l3A-Ua-Kdi" kind="relationship" relationship="rootViewController" id="Z13-7H-a3b"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iGO-z1-EKI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1919" y="-269"/>
         </scene>
         <!--Tweet Mini View Controller - Logging in..-->
         <scene sceneID="2de-GB-d01">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KNt-m4-Utn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="l3A-Ua-Kdi" customClass="tweetMiniViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="esv-bH-71j">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
@@ -280,28 +278,32 @@
                         <segue destination="1qi-fg-iKb" kind="modal" identifier="userLoggedIn" id="bqU-jz-UMj"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KNt-m4-Utn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1469" y="-269"/>
         </scene>
         <!--Profile View Controller - Me-->
         <scene sceneID="Lo6-ln-yvS">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6c1-2H-dJR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="8Zs-RV-cjI" customClass="ProfileViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="FO8-oO-qhi" customClass="UITableView">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <viewController autoresizesArchivedViewToFullSize="NO" id="8Zs-RV-cjI" customClass="ProfileViewController" sceneMemberID="viewController">
+                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="FO8-oO-qhi" customClass="UIScrollView">
+                        <rect key="frame" x="0.0" y="20" width="320" height="750"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Me" id="E1q-SZ-lr7"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="userScrollView" destination="FO8-oO-qhi" id="BoY-58-zlS"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6c1-2H-dJR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-503" y="486"/>
         </scene>
         <!--Search Twitter View Controller View Controller-->
         <scene sceneID="nNp-yU-q3e">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3Ed-vw-p67" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Lhc-E5-qfX" customClass="SearchTwitterViewControllerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nyA-EZ-oxI" customClass="UITableView">
                         <rect key="frame" x="0.0" y="20" width="320" height="411"/>
@@ -353,10 +355,51 @@
                         <outlet property="tweetTable" destination="cfm-cc-vcb" id="8vk-ME-xhh"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Ed-vw-p67" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-503" y="-76"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="ConnectViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConnectViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="connectTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="HomeViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="homeTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ProfileViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="userScrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="SearchTwitterViewControllerViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchTwitterViewControllerViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="tweetTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="newTweetViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/newTweetViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tweetCharsLeft" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tweetText" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="tweetMiniViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/tweetMiniViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
