@@ -49,11 +49,11 @@
 {
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+
     if([TWTweetComposeViewController canSendTweet]){
         [accountStore requestAccessToAccountsWithType:accountType withCompletionHandler: ^(BOOL granted, NSError *error){
+    
             if(granted){
-                    //                NSDictionary * param = [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"0", @"0", @"20", nil] forKeys:[[NSArray alloc] initWithObjects:@"include_entities", @"trim_user", @"count", nil]];
-                NSLog(@"granted");
                 NSDictionary *param = [[NSDictionary alloc] init];
                 
                 TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1/account/verify_credentials.json"] parameters:param requestMethod:TWRequestMethodGET];
@@ -63,9 +63,7 @@
                         NSError *jsonError;
                         NSArray *results = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&jsonError];
                         if(results){
-                                //                            NSLog(@"%@", results);
                             
-                            NSLog(@"results");
                             self.tUser = [[user alloc] init];
                             self.tUser.mUser.userId = [[results valueForKey:@"id"] integerValue];
                             self.tUser.mUser.name = [results valueForKey:@"name"];
@@ -82,12 +80,10 @@
                             self.tUser.lang = [results valueForKey:@"lang"];
                             self.tUser.location = [results valueForKey:@"location"];
                             self.tUser.url = [NSURL URLWithString:[results valueForKey:@"url"]];
-                            NSLog(@"user: %@", self.tUser);
                             [self completeUIDetails];
 
                         }
                         else {
-                            NSLog(@"%@", error);
                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Error retrieving tweet" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
                             [alert show];
                         }
@@ -115,13 +111,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    self.userScrollView.contentSize = CGSizeMake(320.0, 750.0);
-    NSLog(@"view Loaded");
     self.userScrollView.hidden = TRUE;
 
     [self getUserDetails];
-
-	// Do any additional setup after loading the view.
 }
 
 - (void)viewDidUnload
@@ -139,22 +131,11 @@
     [self setFavoritesLabel:nil];
     [self setProfileImageView:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
 }
-
-//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-//{
-//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-//    if (self) {
-//        // Custom initialization
-//    }
-//    return self;
-//}
-
 
 @end
