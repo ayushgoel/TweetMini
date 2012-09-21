@@ -24,7 +24,6 @@
     CGSize size;
 
     size = [self.text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-//    CGFloat height = MAX(size.height, 34.0f);
     CGFloat height = size.height;
     
     return height + (CELL_CONTENT_MARGIN) + CELL_TITLE_HEIGHT;
