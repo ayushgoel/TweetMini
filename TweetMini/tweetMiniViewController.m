@@ -25,11 +25,8 @@
     statusLabel.text = @"Getting your timeline..";
 }
 
-- (void)viewDidLoad
+-(void) viewDidAppear:(BOOL)animated
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    
     statusLabel.text = @"Trying to get your twitter credentials";
     
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
@@ -52,6 +49,13 @@
     }
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view, typically from a nib.
+    
+}
+    
 -(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
         //Need something better to exit application
