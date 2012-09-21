@@ -10,11 +10,17 @@
 
 @implementation user
 @synthesize mUser;
-@synthesize followersCount, favoritesCount, friendsCount, statusCount, creationDate, description, lang, location, url;
+@synthesize followersCount, favoritesCount, friendsCount, statusCount, creationDate, userDescription, lang, location, url;
+@synthesize bigImageURL;
+
+-(NSURL *) bigImageURL
+{
+    return [NSURL URLWithString:[NSString stringWithFormat:@"http://api.twitter.com/1/users/profile_image?screen_name=%@&size=bigger", self.mUser.screenName]];
+}
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"User: %@  followers: %i favorites: %i friends: %i status: %i date: %@ description: %@ lang: %@ location: %@ url: %@", mUser, followersCount, favoritesCount, friendsCount, statusCount, creationDate, description, lang, location, url];
+    return [NSString stringWithFormat:@"User: %@  followers: %i favorites: %i friends: %i status: %i date: %@ description: %@ lang: %@ location: %@ url: %@", mUser, followersCount, favoritesCount, friendsCount, statusCount, creationDate, userDescription, lang, location, url];
 }
 
 - (id)init {

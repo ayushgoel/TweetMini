@@ -19,10 +19,11 @@
 @property (nonatomic) NSInteger statusCount;
 
 @property (nonatomic, strong) NSString *creationDate;
-@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *userDescription;
 @property (nonatomic, strong) NSString *lang;
 @property (nonatomic, strong) NSString *location;
 
 @property (nonatomic, strong) NSURL *url;
+@property (nonatomic, strong) NSURL *bigImageURL;
 
 @end
