@@ -28,7 +28,6 @@
 
 -(void) completeUIDetails
 {    
-    NSLog(@"UI update");
     self.nameLabel.text = self.tUser.mUser.name;
     self.screenNameLabel.text = [NSString stringWithFormat:@"@%@", self.tUser.mUser.screenName];
     self.userIDLabel.text = [NSString stringWithFormat:@"userID: %i", self.tUser.mUser.userId];
