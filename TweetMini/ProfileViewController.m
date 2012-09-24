@@ -40,7 +40,7 @@
     self.followersLabel.text = [NSString stringWithFormat:@"%i", self.tUser.followersCount];
     self.followingLabel.text = [NSString stringWithFormat:@"%i", self.tUser.friendsCount];
     
-    self.userScrollView.hidden = FALSE;
+//    self.userScrollView.hidden = FALSE;
     [self.profileImageView setImageWithURL: self.tUser.bigImageURL placeholderImage:[UIImage imageWithContentsOfFile:@"/Users/Goel/Desktop/iOSDev/TweetMini/TweetMini/profile.gif"]];
 }
 
@@ -110,7 +110,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.userScrollView.hidden = TRUE;
+//    self.userScrollView.hidden = TRUE;
 
     [self getUserDetails];
 }
