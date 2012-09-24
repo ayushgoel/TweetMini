@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TParentViewController.h"
 
-@interface HomeViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>
+@interface HomeViewController : TParentViewController<UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *homeTable;
 @end
