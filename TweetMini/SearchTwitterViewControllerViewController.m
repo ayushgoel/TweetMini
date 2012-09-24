@@ -12,41 +12,20 @@
 #import "AFNetworking/AFNetworking.h"
 
 @interface SearchTwitterViewControllerViewController ()
-@property (nonatomic, strong) NSMutableArray *searchResult;
 @end
 
 @implementation SearchTwitterViewControllerViewController
 @synthesize searchBar;
 @synthesize tweetTable;
-@synthesize searchResult;
 
--(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+-(UITableView *) getTableViewObject
 {
-    NSLog(@"Search Results: %i", [self.searchResult count]);
-    return [self.searchResult count];
+    return self.tweetTable;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+-(NSString *) getCellIdentifier
 {
-    return [[self.searchResult objectAtIndex:[indexPath row]] rowHeight];
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString * cellIdentifier = @"tweetCell";
-    UITableViewCell * cell = nil;
-    
-    tweet *resTweet = [self.searchResult objectAtIndex:[indexPath row]];
-    cell = [self.tweetTable dequeueReusableCellWithIdentifier:cellIdentifier];
-    
-    if(cell == nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-    }
-    
-    [[cell detailTextLabel] setText:resTweet.text];
-    [[cell textLabel] setText:resTweet.user.name];
-    [cell.imageView setImageWithURL: resTweet.user.profileImageURL placeholderImage:[UIImage imageWithContentsOfFile:@"/Users/Goel/Desktop/iOSDev/TweetMini/TweetMini/profile.gif"]];
-    return cell;
+    return @"tweetCell";
 }
 
 -(void) populateTweetWithSearch: (NSString *) searchTerm
@@ -69,7 +48,7 @@
                     tempTweet.user.userId = [[obj valueForKey:@"from_user_id"] intValue]; 
                     tempTweet.user.profileImageURL = [NSURL URLWithString:[obj valueForKey:@"profile_image_url"]];
                     
-                    [self.searchResult addObject:tempTweet];
+                    [self.TTimeline addObject:tempTweet];
                 }];
                 
                 [self.tweetTable reloadData];
@@ -77,13 +56,13 @@
             }
             else {
                 NSLog(@"%@", error);
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Error retrieving tweet" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+                UIAlertView *alert = [self getAlertViewWithMessage:@"Error retrieving tweet"];
                 [alert show];
             }
         }
         else {
-            NSLog(@"No response");
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No response for the search Query" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+            NSLog(@"%@", error);
+            UIAlertView *alert = [self getAlertViewWithMessage:@"No response for the search Query"];
             [alert show];
         }
     }];
@@ -99,22 +78,13 @@
     [searchBari resignFirstResponder];
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.tweetTable setDataSource:self];
     self.searchBar.delegate = self;
     self.tweetTable.delegate = self;
-    self.searchResult = [[NSMutableArray alloc] init];
+    self.TTimeline = [[NSMutableArray alloc] init];
 }
 
 - (void)viewDidUnload

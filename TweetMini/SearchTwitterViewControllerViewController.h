@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TParentViewController.h"
 
-@interface SearchTwitterViewControllerViewController : UITableViewController<UITableViewDataSource, UISearchBarDelegate>
+@interface SearchTwitterViewControllerViewController : TParentViewController<UITableViewDataSource, UISearchBarDelegate>
+
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet UITableView *tweetTable;
 
