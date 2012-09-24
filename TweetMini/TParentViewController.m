@@ -96,13 +96,13 @@
                         }
                         else {
                             NSLog(@"%@", error);
-                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Error retrieving tweet" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+                            UIAlertView *alert = [self getAlertViewWithMessage:@"Error retrieving tweet"];
                             [alert show];
                         }
                     }
                     else {
                         NSLog(@"No response");
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No response for the search Query" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+                        UIAlertView *alert = [self getAlertViewWithMessage: @"No response for the search Query"];
                         [alert show];
                     }
                 }];
