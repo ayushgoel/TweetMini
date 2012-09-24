@@ -18,9 +18,9 @@
 
 @implementation ProfileViewController
 @synthesize tUser;
-
 @synthesize nameLabel, screenNameLabel, userIDLabel;
-@synthesize locationLabel, creationDateLabel, descriptionLabel, tweetsLabel, favoritesLabel, followersLabel, followingLabel, profileImageView;
+@synthesize locationLabel, creationDateLabel, descriptionLabel, tweetsLabel, favoritesLabel, followersLabel, followingLabel;
+@synthesize profileImageView;
 
 -(UIAlertView *) getAlertViewWithMessage: (NSString *) msg{
     return [[UIAlertView alloc] initWithTitle:@"Twitter Authorisation" message:msg delegate:self cancelButtonTitle:@"Exit" otherButtonTitles: nil];

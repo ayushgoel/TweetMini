@@ -8,9 +8,6 @@
 
 #import "HomeViewController.h"
 #import "Twitter/Twitter.h"
-#import "Accounts/Accounts.h"
-#import "tweet.h"
-#import "AFNetworking.h"
 
 @interface HomeViewController ()
 @end

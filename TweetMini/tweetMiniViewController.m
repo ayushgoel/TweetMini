@@ -9,7 +9,6 @@
 #import "tweetMiniViewController.h"
 #import "Twitter/Twitter.h"
 #import "Accounts/Accounts.h"
-#import "HomeViewController.h"
 
 @interface tweetMiniViewController ()
 @end

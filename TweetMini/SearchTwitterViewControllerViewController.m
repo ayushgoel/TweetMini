@@ -9,7 +9,6 @@
 #import "SearchTwitterViewControllerViewController.h"
 #import "tweet.h"
 #import "Twitter/Twitter.h"
-#import "AFNetworking/AFNetworking.h"
 
 @interface SearchTwitterViewControllerViewController ()
 @end
