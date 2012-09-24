@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TParentViewController.h"
 
-@interface ConnectViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>
+@interface ConnectViewController : TParentViewController<UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *connectTable;
 @end
