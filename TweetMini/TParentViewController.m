@@ -55,7 +55,7 @@
     
     [[cell detailTextLabel] setText:resTweet.text];
     [[cell textLabel] setText:resTweet.user.name];
-    [cell.imageView setImageWithURL: resTweet.user.profileImageURL placeholderImage:[UIImage imageWithContentsOfFile:@"/Users/Goel/Desktop/iOSDev/TweetMini/TweetMini/profile.gif"]];
+    [cell.imageView setImageWithURL: resTweet.user.profileImageURL placeholderImage:[UIImage imageNamed:@"profile.gif"]];
     return cell;
 }
 
