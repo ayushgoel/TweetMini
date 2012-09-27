@@ -12,6 +12,7 @@
 
 @implementation Tweet
 
+@dynamic isForSelf;
 @dynamic text;
 @dynamic tweetId;
 @dynamic user;

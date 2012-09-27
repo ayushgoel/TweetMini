@@ -13,6 +13,7 @@
 
 @interface Tweet : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * isForSelf;
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSString * tweetId;
 @property (nonatomic, retain) MiniUser *user;
