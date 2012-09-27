@@ -1,19 +1,20 @@
 //
-//  tweet.h
+//  Tweet.h
 //  TweetMini
 //
-//  Created by Ayush on 9/17/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Ayush on 9/27/12.
+//
 //
 
 #import <Foundation/Foundation.h>
-#import "miniUser.h"
+#import <CoreData/CoreData.h>
 
-@interface tweet : NSObject
+@class MiniUser;
 
-@property (nonatomic, strong) NSString *tweetId;
-@property (nonatomic, strong) miniUser *user;
-@property (nonatomic, strong) NSString *text;
-@property (nonatomic) CGFloat rowHeight;
+@interface Tweet : NSManagedObject
+
+@property (nonatomic, retain) NSString * text;
+@property (nonatomic, retain) NSString * tweetId;
+@property (nonatomic, retain) MiniUser *user;
 
 @end

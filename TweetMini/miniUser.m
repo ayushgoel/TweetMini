@@ -1,20 +1,24 @@
 //
-//  miniUser.m
+//  MiniUser.m
 //  TweetMini
 //
-//  Created by Ayush on 9/18/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Ayush on 9/27/12.
+//
 //
 
-#import "miniUser.h"
+#import "MiniUser.h"
+#import "Tweet.h"
+#import "User.h"
 
-@implementation miniUser
 
-@synthesize userId, name, screenName, profileImageURL;
+@implementation MiniUser
 
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"ID: %i Name: %@ Handle: %@ ImageURL: %@", userId, name, screenName, profileImageURL];
-}
+@dynamic name;
+@dynamic profileImageURL;
+@dynamic screenName;
+@dynamic smallImage;
+@dynamic userId;
+@dynamic tweets;
+@dynamic userData;
 
 @end
