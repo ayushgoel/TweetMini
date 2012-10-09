@@ -17,7 +17,7 @@
 
 @implementation Tweet (Create)
 
-+ (Tweet *)createTweetWithInfo:(id)info inManagedObjectCOntext:(NSManagedObjectContext *)context
++ (Tweet *)createTweetWithInfo:(id)info inManagedObjectContext:(NSManagedObjectContext *)context
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tweet"];
     request.predicate = [NSPredicate predicateWithFormat:@"tweetID = %@", [info objectForKey:@"id"]];

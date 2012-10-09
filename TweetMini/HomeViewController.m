@@ -29,9 +29,9 @@
 	// Do any additional setup after loading the view.
 }
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
+    [super viewWillAppear:animated];
     [self setManagedDocument];
 }
 

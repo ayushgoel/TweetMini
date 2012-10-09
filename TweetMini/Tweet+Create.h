@@ -11,7 +11,7 @@
 
 @interface Tweet (Create)
 
-+ (Tweet *)createTweetWithInfo:(id)info inManagedObjectCOntext:(NSManagedObjectContext *)context;
++ (Tweet *)createTweetWithInfo:(id)info inManagedObjectContext:(NSManagedObjectContext *)context;
 
 - (CGFloat)getRowHeight;
 @end

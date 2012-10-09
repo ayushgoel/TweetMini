@@ -16,7 +16,7 @@
 @property (nonatomic, strong) UIManagedDocument *twitterDatabase;
 
 
-- (UIAlertView *)getAlertViewWithMessage:(NSString *) msg;
+- (UIAlertView *)getAlertViewWithMessage:(NSString *)msg;
 - (NSString *)getCellIdentifier;
 
 - (void)setManagedDocument;

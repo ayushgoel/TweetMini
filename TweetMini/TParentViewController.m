@@ -44,8 +44,13 @@
 
 - (void)useDocument
 {
-//    NSLog(@"useDoc");
-    if (![[NSFileManager defaultManager] fileExistsAtPath: [self.twitterDatabase.fileURL path]]) {
+    NSLog(@"useDoc");
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[self.twitterDatabase.fileURL path]]) {
+        
+        NSError *error = nil;
+        NSLog(@"%@ %d", self.twitterDatabase.fileURL, [self.twitterDatabase.fileURL checkResourceIsReachableAndReturnError:&error]);
+//        NSLog(@"%@", error);
+//        NSLog(@"--%@", self.twitterDatabase.fileURL);
         [self.twitterDatabase saveToURL:self.twitterDatabase.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
             NSLog(@"Document Created");
             [self setupFetchedResultsController];
@@ -63,7 +68,7 @@
 
 - (void)setTwitterDatabase:(UIManagedDocument *)twitterDatabase
 {
-//    NSLog(@"Setting Twitterdatabase");
+    NSLog(@"Setting Twitterdatabase");
     if (_twitterDatabase != twitterDatabase) {
         _twitterDatabase = twitterDatabase;
         [self useDocument];
@@ -74,7 +79,13 @@
 {
     if (!self.twitterDatabase) {
         NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-        url = [url URLByAppendingPathComponent:@"Default Twitter Database"];
+        url = [url URLByAppendingPathComponent:@"TwitterDatabase"];
+//        url = [NSURL URLWithString:@"~/Library/Application Support/iPhone Simulator/6.0/Applications/96AA01A2-929E-4C43-BB3D-0DA4A8B46702/Documents/TwitterDatabase"];
+
+        NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                                 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+        self.twitterDatabase.persistentStoreOptions = options;
         self.twitterDatabase = [[UIManagedDocument alloc] initWithFileURL:url];
     }
 }
@@ -108,7 +119,9 @@
 #pragma Network Data Methods
 
 - (void)requestForTimelineusing:(UIManagedDocument *)document
-{}
+{
+    NSLog(@"Wrong Request for timeline called!");
+}
 
 - (void)getTimelineWithParam: (NSDictionary *) param usingRequest: (TWRequest *) request inDocument:(UIManagedDocument *)document
 {
@@ -126,11 +139,8 @@
                         
                         if(results){
                             [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                                
-                                Tweet *tempTweet = [[Tweet alloc] init];
-                                
-                            }];
-                            
+                                [Tweet createTweetWithInfo:obj inManagedObjectContext:document.managedObjectContext];
+                            }];                            
                         }
                         else {
                             NSLog(@"%@", error);
