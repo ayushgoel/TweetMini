@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSString * tweetID;
 @property (nonatomic, retain) NSNumber * isForSelf;
+@property (nonatomic, retain) NSDate * createTime;
 @property (nonatomic, retain) MiniUser *user;
 
 @end

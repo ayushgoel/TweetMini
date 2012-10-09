@@ -15,6 +15,7 @@
 @dynamic text;
 @dynamic tweetID;
 @dynamic isForSelf;
+@dynamic createTime;
 @dynamic user;
 
 @end

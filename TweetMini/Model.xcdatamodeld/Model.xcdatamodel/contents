@@ -10,6 +10,7 @@
         <relationship name="userData" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="miniUser" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Tweet" representedClassName="Tweet" syncable="YES">
+        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="isForSelf" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tweetID" optional="YES" attributeType="String" syncable="YES"/>
@@ -29,7 +30,7 @@
         <relationship name="miniUser" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="MiniUser" inverseName="userData" inverseEntity="MiniUser" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Tweet" positionX="135" positionY="261" width="128" height="103"/>
+        <element name="Tweet" positionX="135" positionY="261" width="128" height="118"/>
         <element name="MiniUser" positionX="-36" positionY="-45" width="128" height="148"/>
         <element name="User" positionX="295" positionY="18" width="128" height="208"/>
     </elements>
