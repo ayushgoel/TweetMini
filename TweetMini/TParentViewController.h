@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Twitter/Twitter.h"
 
-@interface TParentViewController : UITableViewController
+#import "CoreDataTableViewController.h"
+
+@interface TParentViewController : CoreDataTableViewController
 
 @property (nonatomic, strong) NSMutableArray *TTimeline;
 

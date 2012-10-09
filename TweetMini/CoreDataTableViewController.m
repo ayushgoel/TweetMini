@@ -73,7 +73,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger numberOfRows = [[[self.fetchedResultsController sections] objectAtIndex:section] numberOfObjects];
-    NSLog(@"%d", numberOfRows);
+    if (self.debug)
+        NSLog(@"%d number of rows", numberOfRows);
     return numberOfRows;
 }
 
