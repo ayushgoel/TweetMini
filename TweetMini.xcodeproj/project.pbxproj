@@ -11,6 +11,7 @@
 		2A06002D1623F79200DBE085 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A06002C1623F79200DBE085 /* User.m */; };
 		2A0600301623F79200DBE085 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A06002F1623F79200DBE085 /* Tweet.m */; };
 		2A0600331623F79300DBE085 /* MiniUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0600321623F79200DBE085 /* MiniUser.m */; };
+		2A060035162405A600DBE085 /* profile.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2A060034162405A600DBE085 /* profile.gif */; };
 		2AB580C01622EFFB00D39F01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB580BF1622EFFB00D39F01 /* UIKit.framework */; };
 		2AB580C21622EFFB00D39F01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB580C11622EFFB00D39F01 /* Foundation.framework */; };
 		2AB580C41622EFFB00D39F01 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB580C31622EFFB00D39F01 /* CoreGraphics.framework */; };
@@ -36,6 +37,7 @@
 		2A06002F1623F79200DBE085 /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
 		2A0600311623F79200DBE085 /* MiniUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiniUser.h; sourceTree = "<group>"; };
 		2A0600321623F79200DBE085 /* MiniUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiniUser.m; sourceTree = "<group>"; };
+		2A060034162405A600DBE085 /* profile.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = profile.gif; sourceTree = "<group>"; };
 		2AB580BB1622EFFB00D39F01 /* TweetMini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetMini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB580BF1622EFFB00D39F01 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2AB580C11622EFFB00D39F01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -131,6 +133,7 @@
 		2AB580C61622EFFB00D39F01 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2A060034162405A600DBE085 /* profile.gif */,
 				2AB580C71622EFFB00D39F01 /* TweetMini-Info.plist */,
 				2AB580C81622EFFB00D39F01 /* InfoPlist.strings */,
 				2AB580CB1622EFFB00D39F01 /* main.m */,
@@ -199,6 +202,7 @@
 				2AB580D41622EFFB00D39F01 /* Default@2x.png in Resources */,
 				2AB580D61622EFFB00D39F01 /* Default-568h@2x.png in Resources */,
 				2AB580D91622EFFB00D39F01 /* MainStoryboard.storyboard in Resources */,
+				2A060035162405A600DBE085 /* profile.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

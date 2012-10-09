@@ -27,7 +27,7 @@
     
     if([TWTweetComposeViewController canSendTweet]){
     
-        [accountStore requestAccessToAccountsWithType:accountType withCompletionHandler: ^(BOOL granted, NSError *error){
+        [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
             if(granted){
 
                 ACAccount *tAccount = [[ACAccount alloc] init];;
