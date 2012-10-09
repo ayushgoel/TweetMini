@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface loggingInViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UILabel *statusLabel;
 
 @end
