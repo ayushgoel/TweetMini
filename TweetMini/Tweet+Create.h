@@ -7,7 +7,10 @@
 //
 
 #import "Tweet.h"
+#import "MiniUser.h"
 
 @interface Tweet (Create)
+
++ (Tweet *)createTweetWithInfo:(id)info inManagedObjectCOntext:(NSManagedObjectContext *)context;
 
 @end

@@ -10,7 +10,7 @@
 #import "AFNetworking.h"
 #import "Twitter/Twitter.h"
 #import "Accounts/Accounts.h"
-#import "Tweet.h"
+#import "Tweet+Create.h"
 #import "MiniUser.h"
 
 @interface TParentViewController ()
@@ -128,14 +128,6 @@
                             [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                                 
                                 Tweet *tempTweet = [[Tweet alloc] init];
-                                tempTweet.text = [obj valueForKey:@"text"];
-                                tempTweet.tweetID = [obj valueForKey:@"id"];
-                                
-                                id userDetails = [obj valueForKey:@"user"];
-                                tempTweet.user.userID = [userDetails valueForKey:@"id"];
-                                tempTweet.user.name = [userDetails valueForKey:@"name"];
-                                tempTweet.user.screenName = [userDetails valueForKey:@"screen_name"];
-                                tempTweet.user.profileImageURL = [NSURL URLWithString:[userDetails valueForKey:@"profile_image_url"]];
                                 
                             }];
                             
