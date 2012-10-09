@@ -23,6 +23,7 @@
 		2A060056162407F300DBE085 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A06004A162407F300DBE085 /* AFURLConnectionOperation.m */; };
 		2A060057162407F300DBE085 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A06004C162407F300DBE085 /* AFXMLRequestOperation.m */; };
 		2A060058162407F300DBE085 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A06004E162407F300DBE085 /* UIImageView+AFNetworking.m */; };
+		2A06005B16240C4300DBE085 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A06005A16240C4300DBE085 /* CoreDataTableViewController.m */; };
 		2AB580C01622EFFB00D39F01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB580BF1622EFFB00D39F01 /* UIKit.framework */; };
 		2AB580C21622EFFB00D39F01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB580C11622EFFB00D39F01 /* Foundation.framework */; };
 		2AB580C41622EFFB00D39F01 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB580C31622EFFB00D39F01 /* CoreGraphics.framework */; };
@@ -72,6 +73,8 @@
 		2A06004C162407F300DBE085 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		2A06004D162407F300DBE085 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		2A06004E162407F300DBE085 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		2A06005916240C4300DBE085 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
+		2A06005A16240C4300DBE085 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
 		2AB580BB1622EFFB00D39F01 /* TweetMini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetMini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB580BF1622EFFB00D39F01 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2AB580C11622EFFB00D39F01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -185,6 +188,8 @@
 				2A0600361624060300DBE085 /* TParentViewController.h */,
 				2A0600371624060300DBE085 /* TParentViewController.m */,
 				2A06001E1623EB6000DBE085 /* Model.xcdatamodeld */,
+				2A06005916240C4300DBE085 /* CoreDataTableViewController.h */,
+				2A06005A16240C4300DBE085 /* CoreDataTableViewController.m */,
 				2A0600311623F79200DBE085 /* MiniUser.h */,
 				2A0600321623F79200DBE085 /* MiniUser.m */,
 				2A06002E1623F79200DBE085 /* Tweet.h */,
@@ -298,6 +303,7 @@
 				2A060056162407F300DBE085 /* AFURLConnectionOperation.m in Sources */,
 				2A060057162407F300DBE085 /* AFXMLRequestOperation.m in Sources */,
 				2A060058162407F300DBE085 /* UIImageView+AFNetworking.m in Sources */,
+				2A06005B16240C4300DBE085 /* CoreDataTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
