@@ -13,12 +13,6 @@
 @end
 
 @implementation HomeViewController
-@synthesize homeTable;
-
--(UITableView *) getTableViewObject
-{
-    return self.homeTable;
-}
 
 -(NSString *) getCellIdentifier
 {
@@ -28,10 +22,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.homeTable setDataSource:self];
-    [self.homeTable setDelegate:self];
-    self.TTimeline = [[NSMutableArray alloc] init];
-    
+
     NSDictionary * param = [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"0", @"true", @"0", @"20", nil] forKeys:[[NSArray alloc] initWithObjects:@"include_entities", @"exclude_replies", @"trim_user", @"count", nil]];
     
     TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"http://api.twitter.com/1/statuses/home_timeline.json"] parameters:param requestMethod:TWRequestMethodGET];
@@ -42,7 +33,6 @@
 
 - (void)viewDidUnload
 {
-    [self setHomeTable:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

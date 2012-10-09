@@ -10,5 +10,4 @@
 #import "TParentViewController.h"
 
 @interface HomeViewController : TParentViewController<UITableViewDataSource, UITableViewDelegate>
-@property (strong, nonatomic) IBOutlet UITableView *homeTable;
 @end
