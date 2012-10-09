@@ -19,22 +19,14 @@
     return @"homeTweetCell";
 }
 
-- (void)viewDidLoad
+- (void)requestForTimelineusing:(UIManagedDocument *)document
 {
-    [super viewDidLoad];
-
     NSDictionary * param = [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"0", @"true", @"0", @"20", nil] forKeys:[[NSArray alloc] initWithObjects:@"include_entities", @"exclude_replies", @"trim_user", @"count", nil]];
     
     TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"http://api.twitter.com/1/statuses/home_timeline.json"] parameters:param requestMethod:TWRequestMethodGET];
-
-    [self getTimelineWithParam: param usingRequest: request];
+    
+    [self getTimelineWithParam:param usingRequest:request inDocument:document];
 	// Do any additional setup after loading the view.
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

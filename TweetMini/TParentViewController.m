@@ -49,7 +49,7 @@
         [self.twitterDatabase saveToURL:self.twitterDatabase.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
             NSLog(@"Document Created");
             [self setupFetchedResultsController];
-            [self fetchTwitterDataIntoDocument:self.twitterDatabase];
+            [self requestForTimelineusing:self.twitterDatabase];
         }];
     } else if (self.twitterDatabase.documentState == UIDocumentStateClosed) {
         [self.twitterDatabase openWithCompletionHandler:^(BOOL success) {
@@ -69,7 +69,6 @@
         [self useDocument];
     }
 }
-
 
 - (void)setManagedDocument
 {
@@ -106,7 +105,12 @@
     return [[self.fetchedResultsController objectAtIndexPath:indexPath] getRowHeight];
 }
 
-- (void)getTimelineWithParam: (NSDictionary *) param usingRequest: (TWRequest *) request
+#pragma Network Data Methods
+
+- (void)requestForTimelineusing:(UIManagedDocument *)document
+{}
+
+- (void)getTimelineWithParam: (NSDictionary *) param usingRequest: (TWRequest *) request inDocument:(UIManagedDocument *)document
 {
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
@@ -133,12 +137,8 @@
                                 tempTweet.user.screenName = [userDetails valueForKey:@"screen_name"];
                                 tempTweet.user.profileImageURL = [NSURL URLWithString:[userDetails valueForKey:@"profile_image_url"]];
                                 
-                                [self.TTimeline addObject:tempTweet];
-                                
                             }];
                             
-                            [[self getTableViewObject] reloadData];
-                            [[self getTableViewObject] setNeedsDisplay];
                         }
                         else {
                             NSLog(@"%@", error);

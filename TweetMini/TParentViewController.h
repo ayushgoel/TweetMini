@@ -19,5 +19,6 @@
 - (UIAlertView *)getAlertViewWithMessage:(NSString *) msg;
 - (NSString *)getCellIdentifier;
 
-- (void)getTimelineWithParam:(NSDictionary *)param usingRequest:(TWRequest *)request;
+- (void)requestForTimelineusing:(UIManagedDocument *)document;
+- (void)getTimelineWithParam:(NSDictionary *)param usingRequest:(TWRequest *)request inDocument:(UIManagedDocument *)document;
 @end
