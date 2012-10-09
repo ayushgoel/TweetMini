@@ -29,6 +29,12 @@
 	// Do any additional setup after loading the view.
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self setManagedDocument];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
