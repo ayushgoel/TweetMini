@@ -7,6 +7,7 @@
 //
 
 #import "Tweet+Create.h"
+#import "MiniUser+Create.h"
 
 @implementation Tweet (Create)
 
@@ -28,18 +29,12 @@
         tempTweet = [matches lastObject];
     } else {
         tempTweet = [NSEntityDescription insertNewObjectForEntityForName:@"Tweet" inManagedObjectContext:context];
+        tempTweet.text = [info valueForKey:@"text"];
+        tempTweet.tweetID = [info valueForKey:@"id"];
         
+        tempTweet.user = [MiniUser createUserWithInfo:[info valueForKey:@"user"] inManagedObjectContext:context];
     }
-    
-    tempTweet.text = [info valueForKey:@"text"];
-    tempTweet.tweetID = [info valueForKey:@"id"];
-    
-    tempTweet.user = [MiniUser createUserWithInfo:[info valueForKey:@"user"] inManagedObjectContext:context];
-    id userDetails = [info valueForKey:@"user"];
-    tempTweet.user.userID = [userDetails valueForKey:@"id"];
-    tempTweet.user.name = [userDetails valueForKey:@"name"];
-    tempTweet.user.screenName = [userDetails valueForKey:@"screen_name"];
-    tempTweet.user.profileImageURL = [NSURL URLWithString:[userDetails valueForKey:@"profile_image_url"]];
+    return tempTweet;
 }
 
 @end

@@ -26,6 +26,7 @@
 		2A06005E16240E2200DBE085 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A06005D16240E2200DBE085 /* HomeViewController.m */; };
 		2A060061162413FB00DBE085 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A060060162413FB00DBE085 /* Tweet.m */; };
 		2A0600641624292400DBE085 /* Tweet+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0600631624292400DBE085 /* Tweet+Create.m */; };
+		2A0600671624336200DBE085 /* MiniUser+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0600661624336200DBE085 /* MiniUser+Create.m */; };
 		2AB580C01622EFFB00D39F01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB580BF1622EFFB00D39F01 /* UIKit.framework */; };
 		2AB580C21622EFFB00D39F01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB580C11622EFFB00D39F01 /* Foundation.framework */; };
 		2AB580C41622EFFB00D39F01 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB580C31622EFFB00D39F01 /* CoreGraphics.framework */; };
@@ -81,6 +82,8 @@
 		2A060060162413FB00DBE085 /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
 		2A0600621624292300DBE085 /* Tweet+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tweet+Create.h"; sourceTree = "<group>"; };
 		2A0600631624292400DBE085 /* Tweet+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Tweet+Create.m"; sourceTree = "<group>"; };
+		2A0600651624336200DBE085 /* MiniUser+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MiniUser+Create.h"; sourceTree = "<group>"; };
+		2A0600661624336200DBE085 /* MiniUser+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MiniUser+Create.m"; sourceTree = "<group>"; };
 		2AB580BB1622EFFB00D39F01 /* TweetMini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetMini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB580BF1622EFFB00D39F01 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2AB580C11622EFFB00D39F01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -204,6 +207,8 @@
 				2A0600631624292400DBE085 /* Tweet+Create.m */,
 				2A0600311623F79200DBE085 /* MiniUser.h */,
 				2A0600321623F79200DBE085 /* MiniUser.m */,
+				2A0600651624336200DBE085 /* MiniUser+Create.h */,
+				2A0600661624336200DBE085 /* MiniUser+Create.m */,
 				2A06002B1623F79200DBE085 /* User.h */,
 				2A06002C1623F79200DBE085 /* User.m */,
 				2AB580C61622EFFB00D39F01 /* Supporting Files */,
@@ -316,6 +321,7 @@
 				2A06005E16240E2200DBE085 /* HomeViewController.m in Sources */,
 				2A060061162413FB00DBE085 /* Tweet.m in Sources */,
 				2A0600641624292400DBE085 /* Tweet+Create.m in Sources */,
+				2A0600671624336200DBE085 /* MiniUser+Create.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
