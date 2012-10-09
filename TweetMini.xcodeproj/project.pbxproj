@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2A0600201623EB6000DBE085 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A06001E1623EB6000DBE085 /* Model.xcdatamodeld */; };
+		2A06002D1623F79200DBE085 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A06002C1623F79200DBE085 /* User.m */; };
+		2A0600301623F79200DBE085 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A06002F1623F79200DBE085 /* Tweet.m */; };
+		2A0600331623F79300DBE085 /* MiniUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0600321623F79200DBE085 /* MiniUser.m */; };
 		2AB580C01622EFFB00D39F01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB580BF1622EFFB00D39F01 /* UIKit.framework */; };
 		2AB580C21622EFFB00D39F01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB580C11622EFFB00D39F01 /* Foundation.framework */; };
 		2AB580C41622EFFB00D39F01 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB580C31622EFFB00D39F01 /* CoreGraphics.framework */; };
@@ -27,6 +30,12 @@
 
 /* Begin PBXFileReference section */
 		2A06001F1623EB6000DBE085 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		2A06002B1623F79200DBE085 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		2A06002C1623F79200DBE085 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		2A06002E1623F79200DBE085 /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
+		2A06002F1623F79200DBE085 /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
+		2A0600311623F79200DBE085 /* MiniUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiniUser.h; sourceTree = "<group>"; };
+		2A0600321623F79200DBE085 /* MiniUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiniUser.m; sourceTree = "<group>"; };
 		2AB580BB1622EFFB00D39F01 /* TweetMini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetMini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB580BF1622EFFB00D39F01 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2AB580C11622EFFB00D39F01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -108,6 +117,12 @@
 				2AB580ED1623015800D39F01 /* newTweetViewController.h */,
 				2AB580EE1623015800D39F01 /* newTweetViewController.m */,
 				2A06001E1623EB6000DBE085 /* Model.xcdatamodeld */,
+				2A0600311623F79200DBE085 /* MiniUser.h */,
+				2A0600321623F79200DBE085 /* MiniUser.m */,
+				2A06002E1623F79200DBE085 /* Tweet.h */,
+				2A06002F1623F79200DBE085 /* Tweet.m */,
+				2A06002B1623F79200DBE085 /* User.h */,
+				2A06002C1623F79200DBE085 /* User.m */,
 				2AB580C61622EFFB00D39F01 /* Supporting Files */,
 			);
 			path = TweetMini;
@@ -199,6 +214,9 @@
 				2AB580DC1622EFFB00D39F01 /* loggingInViewController.m in Sources */,
 				2AB580EF1623015800D39F01 /* newTweetViewController.m in Sources */,
 				2A0600201623EB6000DBE085 /* Model.xcdatamodeld in Sources */,
+				2A06002D1623F79200DBE085 /* User.m in Sources */,
+				2A0600301623F79200DBE085 /* Tweet.m in Sources */,
+				2A0600331623F79300DBE085 /* MiniUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
