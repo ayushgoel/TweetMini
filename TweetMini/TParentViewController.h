@@ -14,6 +14,8 @@
 @interface TParentViewController : CoreDataTableViewController
 
 @property (nonatomic, strong) NSMutableArray *TTimeline;
+@property (nonatomic, strong) UIManagedDocument *twitterDatabase;
+
 
 - (UIAlertView *)getAlertViewWithMessage:(NSString *) msg;
 - (UITableView *)getTableViewObject;

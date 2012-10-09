@@ -23,6 +23,57 @@
     return [[UITableView alloc] init];
 }
 
+- (void)setupFetchedResultsController
+{
+    //    NSLog(@"Setting up FRC");
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tweet"];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
+    
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                        managedObjectContext:self.twitterDatabase.managedObjectContext
+                                                                          sectionNameKeyPath:nil
+                                                                                   cacheName:nil];
+    //    NSLog(@"Set up");
+}
+
+- (void)useDocument
+{
+//    NSLog(@"useDoc");
+    if (![[NSFileManager defaultManager] fileExistsAtPath: [self.twitterDatabase.fileURL path]]) {
+        [self.twitterDatabase saveToURL:self.twitterDatabase.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+            NSLog(@"Document Created");
+            [self setupFetchedResultsController];
+            [self fetchFlickrDataIntoDocument:self.twitterDatabase];
+        }];
+    } else if (self.twitterDatabase.documentState == UIDocumentStateClosed) {
+        [self.twitterDatabase openWithCompletionHandler:^(BOOL success) {
+            NSLog(@"Open");
+            [self setupFetchedResultsController];
+        }];
+    } else if (self.twitterDatabase.documentState == UIDocumentStateNormal) {
+        [self setupFetchedResultsController];
+    }
+}
+
+- (void)setTwitterDatabase:(UIManagedDocument *)twitterDatabase
+{
+//    NSLog(@"Setting Twitterdatabase");
+    if (_twitterDatabase != twitterDatabase) {
+        _twitterDatabase = twitterDatabase;
+        [self useDocument];
+    }
+}
+
+
+- (void)setManagedDocument
+{
+    if (!self.twitterDatabase) {
+        NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+        url = [url URLByAppendingPathComponent:@"Default Twitter Database"];
+        self.twitterDatabase = [[UIManagedDocument alloc] initWithFileURL:url];
+    }
+}
+
 -(NSString *) getCellIdentifier
 {
     return [[NSString alloc] init];
