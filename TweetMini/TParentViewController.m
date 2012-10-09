@@ -7,10 +7,11 @@
 //
 
 #import "TParentViewController.h"
-#import "tweet.h"
 #import "AFNetworking.h"
 #import "Twitter/Twitter.h"
 #import "Accounts/Accounts.h"
+#import "Tweet.h"
+#import "MiniUser.h"
 
 @interface TParentViewController ()
 @end
@@ -46,16 +47,17 @@
     NSString * cellIdentifier = [self getCellIdentifier];
     UITableViewCell * cell = nil;
     
-    tweet *resTweet = [self.TTimeline objectAtIndex:[indexPath row]];
+    Tweet *resTweet = [self.TTimeline objectAtIndex:[indexPath row]];
     cell = [self.getTableViewObject dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if(cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
-    [[cell detailTextLabel] setText:resTweet.text];
-    [[cell textLabel] setText:resTweet.user.name];
-    [cell.imageView setImageWithURL: resTweet.user.profileImageURL placeholderImage:[UIImage imageNamed:@"profile.gif"]];
+    cell.textLabel.text = resTweet.user.name;
+    cell.detailTextLabel.text = resTweet.text;
+
+    [cell.imageView setImageWithURL:[NSURL URLWithString:resTweet.user.profileImageURL] placeholderImage:[UIImage imageNamed:@"profile.gif"]];
     return cell;
 }
 
@@ -65,8 +67,7 @@
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     
     if([TWTweetComposeViewController canSendTweet]){
-        [accountStore requestAccessToAccountsWithType:accountType withCompletionHandler: ^(BOOL granted, NSError *error){
-            
+        [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
             if(granted){
                 [request setAccount:[[accountStore accountsWithAccountType:accountType] lastObject]];
                 [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
@@ -77,12 +78,12 @@
                         if(results){
                             [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                                 
-                                tweet *tempTweet = [[tweet alloc] init];
+                                Tweet *tempTweet = [[Tweet alloc] init];
                                 tempTweet.text = [obj valueForKey:@"text"];
-                                tempTweet.tweetId = [obj valueForKey:@"id"];
+                                tempTweet.tweetID = [obj valueForKey:@"id"];
                                 
                                 id userDetails = [obj valueForKey:@"user"];
-                                tempTweet.user.userId = [[userDetails valueForKey:@"id"] intValue];
+                                tempTweet.user.userID = [userDetails valueForKey:@"id"];
                                 tempTweet.user.name = [userDetails valueForKey:@"name"];
                                 tempTweet.user.screenName = [userDetails valueForKey:@"screen_name"];
                                 tempTweet.user.profileImageURL = [NSURL URLWithString:[userDetails valueForKey:@"profile_image_url"]];

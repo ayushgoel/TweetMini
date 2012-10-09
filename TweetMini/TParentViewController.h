@@ -13,8 +13,8 @@
 
 @property (nonatomic, strong) NSMutableArray *TTimeline;
 
--(UIAlertView *) getAlertViewWithMessage: (NSString *) msg;
--(UITableView *) getTableViewObject;
--(NSString *) getCellIdentifier;
--(void) getTimelineWithParam: (NSDictionary *) param usingRequest: (TWRequest *) request;
+- (UIAlertView *)getAlertViewWithMessage:(NSString *) msg;
+- (UITableView *)getTableViewObject;
+- (NSString *)getCellIdentifier;
+- (void)getTimelineWithParam:(NSDictionary *)param usingRequest:(TWRequest *)request;
 @end
