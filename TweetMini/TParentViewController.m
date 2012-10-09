@@ -18,16 +18,22 @@
 
 @implementation TParentViewController
 
--(UITableView *) getTableViewObject
+-(NSString *) getCellIdentifier
 {
-    return [[UITableView alloc] init];
+    return [[NSString alloc] init];
 }
+
+-(UIAlertView *) getAlertViewWithMessage: (NSString *) msg{
+    return [[UIAlertView alloc] initWithTitle:@"Twitter Authorisation" message:msg delegate:self cancelButtonTitle:@"Exit" otherButtonTitles: nil];
+}
+
+#pragma Document functions
 
 - (void)setupFetchedResultsController
 {
     //    NSLog(@"Setting up FRC");
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tweet"];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"createTime" ascending:NO selector:nil]];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                         managedObjectContext:self.twitterDatabase.managedObjectContext
@@ -43,7 +49,7 @@
         [self.twitterDatabase saveToURL:self.twitterDatabase.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
             NSLog(@"Document Created");
             [self setupFetchedResultsController];
-            [self fetchFlickrDataIntoDocument:self.twitterDatabase];
+            [self fetchTwitterDataIntoDocument:self.twitterDatabase];
         }];
     } else if (self.twitterDatabase.documentState == UIDocumentStateClosed) {
         [self.twitterDatabase openWithCompletionHandler:^(BOOL success) {
@@ -74,32 +80,15 @@
     }
 }
 
--(NSString *) getCellIdentifier
-{
-    return [[NSString alloc] init];
-}
-
--(UIAlertView *) getAlertViewWithMessage: (NSString *) msg{
-    return [[UIAlertView alloc] initWithTitle:@"Twitter Authorisation" message:msg delegate:self cancelButtonTitle:@"Exit" otherButtonTitles: nil];
-}
-
--(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.TTimeline count];
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [[self.TTimeline objectAtIndex:[indexPath row]] rowHeight];
-}
+#pragma TVC methods
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString * cellIdentifier = [self getCellIdentifier];
     UITableViewCell * cell = nil;
     
-    Tweet *resTweet = [self.TTimeline objectAtIndex:[indexPath row]];
-    cell = [self.getTableViewObject dequeueReusableCellWithIdentifier:cellIdentifier];
+    Tweet *resTweet = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if(cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
@@ -112,7 +101,12 @@
     return cell;
 }
 
--(void) getTimelineWithParam: (NSDictionary *) param usingRequest: (TWRequest *) request
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [[self.fetchedResultsController objectAtIndexPath:indexPath] getRowHeight];
+}
+
+- (void)getTimelineWithParam: (NSDictionary *) param usingRequest: (TWRequest *) request
 {
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
