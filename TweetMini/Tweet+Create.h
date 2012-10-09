@@ -13,4 +13,5 @@
 
 + (Tweet *)createTweetWithInfo:(id)info inManagedObjectCOntext:(NSManagedObjectContext *)context;
 
+- (CGFloat)getRowHeight;
 @end
