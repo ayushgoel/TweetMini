@@ -65,22 +65,6 @@
                             [document.managedObjectContext performBlock:^{                                    [User createUserWithInfo:results inManagedObjectContext:document.managedObjectContext];
                             }];
 
-                            self.tUser = [[user alloc] init];
-                            self.tUser.mUser.userId = [[results valueForKey:@"id"] integerValue];
-                            self.tUser.mUser.name = [results valueForKey:@"name"];
-                            self.tUser.mUser.screenName = [results valueForKey:@"screen_name"];
-                            self.tUser.mUser.profileImageURL = [results valueForKey:@"profile_image_url"];
-                            
-                            self.tUser.favoritesCount = [[results valueForKey:@"favourites_count"] integerValue];
-                            self.tUser.followersCount = [[results valueForKey:@"followers_count"] integerValue];
-                            self.tUser.friendsCount = [[results valueForKey:@"friends_count"] integerValue];
-                            self.tUser.statusCount = [[results valueForKey:@"statuses_count"] integerValue];
-                            
-                            self.tUser.creationDate = [results valueForKey:@"created_at"];
-                            self.tUser.userDescription = [results valueForKey:@"description"];
-                            self.tUser.lang = [results valueForKey:@"lang"];
-                            self.tUser.location = [results valueForKey:@"location"];
-                            self.tUser.url = [NSURL URLWithString:[results valueForKey:@"url"]];
                             [self completeUIDetails];
 
                         }

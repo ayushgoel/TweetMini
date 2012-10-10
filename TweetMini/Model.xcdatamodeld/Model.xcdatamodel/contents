@@ -27,11 +27,12 @@
         <attribute name="statusCount" optional="YES" attributeType="Integer 64" defaultValueString="0.0" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="miniUser" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="MiniUser" inverseName="userData" inverseEntity="MiniUser" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Tweet" positionX="135" positionY="261" width="128" height="118"/>
         <element name="MiniUser" positionX="-36" positionY="-45" width="128" height="148"/>
-        <element name="User" positionX="295" positionY="18" width="128" height="208"/>
+        <element name="Tweet" positionX="135" positionY="261" width="128" height="118"/>
+        <element name="User" positionX="295" positionY="18" width="128" height="225"/>
     </elements>
 </model>
