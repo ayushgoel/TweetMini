@@ -65,7 +65,7 @@
         [self.twitterDatabase openWithCompletionHandler:^(BOOL success) {
             NSLog(@"Open");
             [self setupFetchedResultsController];
-            [self requestForTimelineusing:self.twitterDatabase];
+//            [self requestForTimelineusing:self.twitterDatabase];
         }];
     } else if (self.twitterDatabase.documentState == UIDocumentStateNormal) {
         [self setupFetchedResultsController];
@@ -132,9 +132,11 @@
                         NSArray *results = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&jsonError];
                         
                         if(results){
-                            [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                                [Tweet createTweetWithInfo:obj isForSelf:isForSelf inManagedObjectContext:document.managedObjectContext];
-                            }];                            
+                            [document.managedObjectContext performBlock:^{
+                                [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                                    [Tweet createTweetWithInfo:obj isForSelf:isForSelf inManagedObjectContext:document.managedObjectContext];
+                                }];
+                            }];
                         }
                         else {
                             NSLog(@"%@", error);

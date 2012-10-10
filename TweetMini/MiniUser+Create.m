@@ -13,7 +13,7 @@
 + (MiniUser *)createUserWithInfo:(id)info inManagedObjectContext:(NSManagedObjectContext *)context
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"MiniUser"];
-    request.predicate = [NSPredicate predicateWithFormat:@"userID = %@", [info objectForKey:@"id"]];
+    request.predicate = [NSPredicate predicateWithFormat:@"userID == %@", [info objectForKey:@"id_str"]];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"userID" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
@@ -28,10 +28,10 @@
         miniUser = [matches lastObject];
     } else {
         miniUser = [NSEntityDescription insertNewObjectForEntityForName:@"MiniUser" inManagedObjectContext:context];
-        miniUser.userID = [info valueForKey:@"id_str"];
-        miniUser.name = [info valueForKey:@"name"];
-        miniUser.screenName = [info valueForKey:@"screen_name"];
-        miniUser.profileImageURL = [info valueForKey:@"profile_image_url"];
+        miniUser.userID = [info objectForKey:@"id_str"];
+        miniUser.name = [info objectForKey:@"name"];
+        miniUser.screenName = [info objectForKey:@"screen_name"];
+        miniUser.profileImageURL = [info objectForKey:@"profile_image_url"];
     }
     return miniUser;
 }

@@ -19,14 +19,14 @@
 
 + (Tweet *)createTweetWithInfo:(id)info isForSelf:(NSNumber *)isForSelf inManagedObjectContext:(NSManagedObjectContext *)context
 {
+    Tweet *tempTweet = nil;
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tweet"];
-    request.predicate = [NSPredicate predicateWithFormat:@"tweetID = %@", [info objectForKey:@"id"]];
+    request.predicate = [NSPredicate predicateWithFormat:@"tweetID == %@", [info objectForKey:@"id_str"]];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"tweetID" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
     NSError *error = nil;
     NSArray *matches = [context executeFetchRequest:request error:&error];
-    Tweet *tempTweet = nil;
     
     if (!matches || ([matches count] > 1)) {
         NSLog(@"More than one matches when inserting tweet!");
@@ -36,15 +36,15 @@
         tempTweet = [matches lastObject];
     } else {
         tempTweet = [NSEntityDescription insertNewObjectForEntityForName:@"Tweet" inManagedObjectContext:context];
-        tempTweet.text = [info valueForKey:@"text"];
-        tempTweet.tweetID = [info valueForKey:@"id_str"];
+        tempTweet.text = [info objectForKey:@"text"];
+        tempTweet.tweetID = [info objectForKey:@"id_str"];
         tempTweet.isForSelf = isForSelf;
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"eee MMM dd HH:mm:ss ZZZZ yyyy"];
-        tempTweet.createTime = [dateFormatter dateFromString:[info valueForKey:@"created_at"]];
+        tempTweet.createTime = [dateFormatter dateFromString:[info objectForKey:@"created_at"]];
 
-        tempTweet.user = [MiniUser createUserWithInfo:[info valueForKey:@"user"] inManagedObjectContext:context];
+        tempTweet.user = [MiniUser createUserWithInfo:[info objectForKey:@"user"] inManagedObjectContext:context];
         NSLog(@"New Tweet Created");
     }
     return tempTweet;
