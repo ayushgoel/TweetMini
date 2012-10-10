@@ -44,6 +44,7 @@
 		2AB580EF1623015800D39F01 /* newTweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB580EE1623015800D39F01 /* newTweetViewController.m */; };
 		2AD6AC201625771500630089 /* ConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD6AC1F1625771500630089 /* ConnectViewController.m */; };
 		2AD6AC241625820F00630089 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD6AC231625820F00630089 /* ProfileViewController.m */; };
+		2AD6AC27162590F400630089 /* User+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD6AC26162590F400630089 /* User+Create.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +112,8 @@
 		2AD6AC1F1625771500630089 /* ConnectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectViewController.m; sourceTree = "<group>"; };
 		2AD6AC221625820E00630089 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		2AD6AC231625820F00630089 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		2AD6AC25162590F400630089 /* User+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+Create.h"; sourceTree = "<group>"; };
+		2AD6AC26162590F400630089 /* User+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+Create.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,9 +211,6 @@
 				2AD6AC1F1625771500630089 /* ConnectViewController.m */,
 				2AD6AC221625820E00630089 /* ProfileViewController.h */,
 				2AD6AC231625820F00630089 /* ProfileViewController.m */,
-				2A06005916240C4300DBE085 /* CoreDataTableViewController.h */,
-				2A06005A16240C4300DBE085 /* CoreDataTableViewController.m */,
-				2A06001E1623EB6000DBE085 /* Model.xcdatamodeld */,
 				2A06005F162413FB00DBE085 /* Tweet.h */,
 				2A060060162413FB00DBE085 /* Tweet.m */,
 				2A0600621624292300DBE085 /* Tweet+Create.h */,
@@ -221,6 +221,8 @@
 				2A0600661624336200DBE085 /* MiniUser+Create.m */,
 				2A06002B1623F79200DBE085 /* User.h */,
 				2A06002C1623F79200DBE085 /* User.m */,
+				2AD6AC25162590F400630089 /* User+Create.h */,
+				2AD6AC26162590F400630089 /* User+Create.m */,
 				2AB580C61622EFFB00D39F01 /* Supporting Files */,
 			);
 			path = TweetMini;
@@ -229,6 +231,9 @@
 		2AB580C61622EFFB00D39F01 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2A06005916240C4300DBE085 /* CoreDataTableViewController.h */,
+				2A06005A16240C4300DBE085 /* CoreDataTableViewController.m */,
+				2A06001E1623EB6000DBE085 /* Model.xcdatamodeld */,
 				2A060034162405A600DBE085 /* profile.gif */,
 				2AB580C71622EFFB00D39F01 /* TweetMini-Info.plist */,
 				2AB580C81622EFFB00D39F01 /* InfoPlist.strings */,
@@ -334,6 +339,7 @@
 				2A0600671624336200DBE085 /* MiniUser+Create.m in Sources */,
 				2AD6AC201625771500630089 /* ConnectViewController.m in Sources */,
 				2AD6AC241625820F00630089 /* ProfileViewController.m in Sources */,
+				2AD6AC27162590F400630089 /* User+Create.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
