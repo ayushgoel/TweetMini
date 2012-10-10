@@ -36,7 +36,7 @@
         [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
             if(granted){
                 self.statusLabel.text = @"Twitter Account verified";
-                NSLog(@"Going to segue");
+//                NSLog(@"Going to segue");
                 [self performSegueWithIdentifier:@"userLoggedIn" sender:self];
             }
             else {

@@ -17,7 +17,7 @@
 
 @implementation Tweet (Create)
 
-+ (Tweet *)createTweetWithInfo:(id)info inManagedObjectContext:(NSManagedObjectContext *)context
++ (Tweet *)createTweetWithInfo:(id)info isForSelf:(NSNumber *)isForSelf inManagedObjectContext:(NSManagedObjectContext *)context
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tweet"];
     request.predicate = [NSPredicate predicateWithFormat:@"tweetID = %@", [info objectForKey:@"id"]];
@@ -36,9 +36,14 @@
     } else {
         tempTweet = [NSEntityDescription insertNewObjectForEntityForName:@"Tweet" inManagedObjectContext:context];
         tempTweet.text = [info valueForKey:@"text"];
-        tempTweet.tweetID = [info valueForKey:@"id"];
+        NSLog(@"%@", [info valueForKey:@"id"]);
+        tempTweet.tweetID = [info valueForKey:@"id_str"]; //id_str
+        tempTweet.isForSelf = isForSelf;
         
-        //todo: date-time and isFOrSelf
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"eee MMM dd HH:mm:ss ZZZZ yyyy"];
+        tempTweet.createTime = [df dateFromString:[info valueForKey:@"created_at"]];
+
         tempTweet.user = [MiniUser createUserWithInfo:[info valueForKey:@"user"] inManagedObjectContext:context];
     }
     return tempTweet;
@@ -53,5 +58,11 @@
     CGFloat height = size.height;
     
     return height + (CELL_CONTENT_MARGIN) + CELL_TITLE_HEIGHT;
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"User:%@ Text:%@ ID:%@ CreateTime:%@ ForSelf:%@", self.user, self.text, self.tweetID, self.createTime, self.isForSelf];
+
 }
 @end
