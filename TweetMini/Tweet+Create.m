@@ -37,15 +37,15 @@
     } else {
         tempTweet = [NSEntityDescription insertNewObjectForEntityForName:@"Tweet" inManagedObjectContext:context];
         tempTweet.text = [info valueForKey:@"text"];
-        tempTweet.tweetID = [info valueForKey:@"id_str"]; //id_str
+        tempTweet.tweetID = [info valueForKey:@"id_str"];
         tempTweet.isForSelf = isForSelf;
         
-        NSDateFormatter *df = [[NSDateFormatter alloc] init];
-        [df setDateFormat:@"eee MMM dd HH:mm:ss ZZZZ yyyy"];
-        tempTweet.createTime = [df dateFromString:[info valueForKey:@"created_at"]];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"eee MMM dd HH:mm:ss ZZZZ yyyy"];
+        tempTweet.createTime = [dateFormatter dateFromString:[info valueForKey:@"created_at"]];
 
         tempTweet.user = [MiniUser createUserWithInfo:[info valueForKey:@"user"] inManagedObjectContext:context];
-        NSLog(@"%@", tempTweet);
+        NSLog(@"New Tweet Created");
     }
     return tempTweet;
 }
