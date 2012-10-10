@@ -44,7 +44,6 @@
 
 - (void)setupFetchedResultsController
 {
-    //    NSLog(@"Setting up FRC");
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tweet"];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"createTime" ascending:NO selector:nil]];
     
@@ -52,7 +51,6 @@
                                                                         managedObjectContext:self.twitterDatabase.managedObjectContext
                                                                           sectionNameKeyPath:nil
                                                                                    cacheName:nil];
-    //    NSLog(@"Set up");
 }
 
 - (void)useDocument
@@ -77,11 +75,9 @@
 
 - (void)setTwitterDatabase:(UIManagedDocument *)twitterDatabase
 {
-    NSLog(@"Setting Twitterdatabase");
     if (_twitterDatabase != twitterDatabase) {
         _twitterDatabase = twitterDatabase;
         [self performSelectorOnMainThread:@selector(useDocument) withObject:self waitUntilDone:YES];
-//        [self useDocument];
     }
 }
 
@@ -90,12 +86,6 @@
     if (!self.twitterDatabase) {
         NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
         url = [url URLByAppendingPathComponent:@"TwitterDatabase"];
-//        url = [NSURL URLWithString:@"~/Library/Application Support/iPhone Simulator/6.0/Applications/96AA01A2-929E-4C43-BB3D-0DA4A8B46702/Documents/TwitterDatabase"];
-//
-//        NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
-//                                 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
-//        self.twitterDatabase.persistentStoreOptions = options;
         self.twitterDatabase = [[UIManagedDocument alloc] initWithFileURL:url];
     }
 }
@@ -128,7 +118,7 @@
 
 #pragma Network Data Methods
 
-- (void)getTimelineWithParam: (NSDictionary *) param usingRequest: (TWRequest *) request inDocument:(UIManagedDocument *)document
+- (void)getTimelineWithParam:(NSDictionary *)param usingRequest:(TWRequest *)request inDocument:(UIManagedDocument *)document isForSelf:(NSNumber *)isForSelf
 {
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
@@ -144,7 +134,7 @@
                         
                         if(results){
                             [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                                [Tweet createTweetWithInfo:obj isForSelf:[NSNumber numberWithBool:NO] inManagedObjectContext:document.managedObjectContext];
+                                [Tweet createTweetWithInfo:obj isForSelf:isForSelf inManagedObjectContext:document.managedObjectContext];
                             }];                            
                         }
                         else {

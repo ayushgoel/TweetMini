@@ -33,7 +33,7 @@
     
     TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"http://api.twitter.com/1/statuses/home_timeline.json"] parameters:param requestMethod:TWRequestMethodGET];
     
-    [self getTimelineWithParam:param usingRequest:request inDocument:document];
+    [self getTimelineWithParam:param usingRequest:request inDocument:document isForSelf:[NSNumber numberWithBool:NO]];
 	// Do any additional setup after loading the view.
 }
 

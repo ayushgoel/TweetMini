@@ -23,5 +23,5 @@
 - (NSFetchRequest *)getRequest;
 
 - (void)requestForTimelineusing:(UIManagedDocument *)document;
-- (void)getTimelineWithParam:(NSDictionary *)param usingRequest:(TWRequest *)request inDocument:(UIManagedDocument *)document;
+- (void)getTimelineWithParam:(NSDictionary *)param usingRequest:(TWRequest *)request inDocument:(UIManagedDocument *)document isForSelf:(NSNumber *)isForSelf;
 @end

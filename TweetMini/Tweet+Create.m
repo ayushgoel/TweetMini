@@ -32,11 +32,11 @@
         NSLog(@"More than one matches when inserting tweet!");
         tempTweet = [matches lastObject];
     } else if ([matches count] == 1) {
+        NSLog(@"Found Same");
         tempTweet = [matches lastObject];
     } else {
         tempTweet = [NSEntityDescription insertNewObjectForEntityForName:@"Tweet" inManagedObjectContext:context];
         tempTweet.text = [info valueForKey:@"text"];
-        NSLog(@"%@", [info valueForKey:@"id"]);
         tempTweet.tweetID = [info valueForKey:@"id_str"]; //id_str
         tempTweet.isForSelf = isForSelf;
         
@@ -45,6 +45,7 @@
         tempTweet.createTime = [df dateFromString:[info valueForKey:@"created_at"]];
 
         tempTweet.user = [MiniUser createUserWithInfo:[info valueForKey:@"user"] inManagedObjectContext:context];
+        NSLog(@"%@", tempTweet);
     }
     return tempTweet;
 }

@@ -38,7 +38,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"ID: %i Name: %@ Handle: %@ ImageURL: %@", self.userID, self.name, self.screenName, self.profileImageURL];
+    return [NSString stringWithFormat:@"ID: %@ Name: %@ Handle: %@ ImageURL: %@", self.userID, self.name, self.screenName, self.profileImageURL];
 }
 
 @end
