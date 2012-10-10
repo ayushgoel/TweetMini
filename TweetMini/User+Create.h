@@ -7,7 +7,10 @@
 //
 
 #import "User.h"
+#import "MiniUser.h"
 
 @interface User (Create)
+
++ (User *)createUserWithInfo:(id)info inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end

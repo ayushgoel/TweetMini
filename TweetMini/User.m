@@ -2,7 +2,7 @@
 //  User.m
 //  TweetMini
 //
-//  Created by Ayush on 09/10/12.
+//  Created by Ayush on 10/10/12.
 //  Copyright (c) 2012 Ayush. All rights reserved.
 //
 
@@ -12,16 +12,17 @@
 
 @implementation User
 
-@dynamic favoritesCount;
-@dynamic creationDate;
-@dynamic bigImageURL;
 @dynamic bigImage;
+@dynamic bigImageURL;
+@dynamic creationDate;
+@dynamic favoritesCount;
 @dynamic followersCount;
 @dynamic friendsCount;
 @dynamic location;
 @dynamic statusCount;
 @dynamic url;
 @dynamic userDescription;
+@dynamic userID;
 @dynamic miniUser;
 
 @end
