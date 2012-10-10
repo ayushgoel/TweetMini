@@ -27,6 +27,7 @@
 
 -(NSString *) getCellIdentifier
 {
+    NSLog(@"Not implemented getCellIdentifier!");
     return [[NSString alloc] init];
 }
 
@@ -37,6 +38,7 @@
 
 - (NSFetchRequest *)getFetchRequest
 {
+    NSLog(@"Not implemented getFetchRequest!");
     return [[NSFetchRequest alloc] init];
 }
 
@@ -44,12 +46,14 @@
 
 - (void)setupFetchedResultsController
 {
+    NSLog(@"Setting up fetch results controller");
     NSFetchRequest *request = [self getFetchRequest];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                         managedObjectContext:self.twitterDatabase.managedObjectContext
                                                                           sectionNameKeyPath:nil
                                                                                    cacheName:nil];
+    NSLog(@"FRC set up");
 }
 
 - (void)useDocument
@@ -65,7 +69,7 @@
         [self.twitterDatabase openWithCompletionHandler:^(BOOL success) {
             NSLog(@"Open");
             [self setupFetchedResultsController];
-//            [self requestForTimelineusing:self.twitterDatabase];
+            [self requestForTimelineusing:self.twitterDatabase];
         }];
     } else if (self.twitterDatabase.documentState == UIDocumentStateNormal) {
         [self setupFetchedResultsController];
@@ -74,6 +78,7 @@
 
 - (void)setTwitterDatabase:(UIManagedDocument *)twitterDatabase
 {
+    NSLog(@"Setter called database");
     if (_twitterDatabase != twitterDatabase) {
         _twitterDatabase = twitterDatabase;
         [self performSelectorOnMainThread:@selector(useDocument) withObject:self waitUntilDone:YES];
@@ -85,6 +90,7 @@
     if (!self.twitterDatabase) {
         NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
         url = [url URLByAppendingPathComponent:@"TwitterDatabase"];
+        NSLog(@"Setting managed document");
         self.twitterDatabase = [[UIManagedDocument alloc] initWithFileURL:url];
     }
 }
@@ -119,6 +125,7 @@
 
 - (void)getTimelineWithParam:(NSDictionary *)param usingRequest:(TWRequest *)request inDocument:(UIManagedDocument *)document isForSelf:(NSNumber *)isForSelf
 {
+    NSLog(@"Getting timeline for %@", isForSelf);
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     
@@ -132,6 +139,8 @@
                         NSArray *results = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&jsonError];
                         
                         if(results){
+//                            NSLog(@"Got results: %@", results);
+                            NSLog(@"Got Results");
                             [document.managedObjectContext performBlock:^{
                                 [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                                     [Tweet createTweetWithInfo:obj isForSelf:isForSelf inManagedObjectContext:document.managedObjectContext];

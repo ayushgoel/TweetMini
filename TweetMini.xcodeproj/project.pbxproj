@@ -42,6 +42,7 @@
 		2AB580EA1622FDAD00D39F01 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB580E91622FDAD00D39F01 /* CoreData.framework */; };
 		2AB580EC1622FDEA00D39F01 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB580EB1622FDEA00D39F01 /* Twitter.framework */; };
 		2AB580EF1623015800D39F01 /* newTweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB580EE1623015800D39F01 /* newTweetViewController.m */; };
+		2AD6AC201625771500630089 /* ConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD6AC1F1625771500630089 /* ConnectViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +106,8 @@
 		2AB580EB1622FDEA00D39F01 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		2AB580ED1623015800D39F01 /* newTweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newTweetViewController.h; sourceTree = "<group>"; };
 		2AB580EE1623015800D39F01 /* newTweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newTweetViewController.m; sourceTree = "<group>"; };
+		2AD6AC1E1625771500630089 /* ConnectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectViewController.h; sourceTree = "<group>"; };
+		2AD6AC1F1625771500630089 /* ConnectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +201,8 @@
 				2A0600371624060300DBE085 /* TParentViewController.m */,
 				2A06005C16240E2200DBE085 /* HomeViewController.h */,
 				2A06005D16240E2200DBE085 /* HomeViewController.m */,
+				2AD6AC1E1625771500630089 /* ConnectViewController.h */,
+				2AD6AC1F1625771500630089 /* ConnectViewController.m */,
 				2A06005916240C4300DBE085 /* CoreDataTableViewController.h */,
 				2A06005A16240C4300DBE085 /* CoreDataTableViewController.m */,
 				2A06001E1623EB6000DBE085 /* Model.xcdatamodeld */,
@@ -322,6 +327,7 @@
 				2A060061162413FB00DBE085 /* Tweet.m in Sources */,
 				2A0600641624292400DBE085 /* Tweet+Create.m in Sources */,
 				2A0600671624336200DBE085 /* MiniUser+Create.m in Sources */,
+				2AD6AC201625771500630089 /* ConnectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
