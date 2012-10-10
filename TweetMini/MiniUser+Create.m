@@ -28,11 +28,17 @@
         miniUser = [matches lastObject];
     } else {
         miniUser = [NSEntityDescription insertNewObjectForEntityForName:@"MiniUser" inManagedObjectContext:context];
-        miniUser.userID = [info valueForKey:@"id"];
+        miniUser.userID = [info valueForKey:@"id_str"];
         miniUser.name = [info valueForKey:@"name"];
         miniUser.screenName = [info valueForKey:@"screen_name"];
         miniUser.profileImageURL = [info valueForKey:@"profile_image_url"];
     }
     return miniUser;
 }
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"ID: %i Name: %@ Handle: %@ ImageURL: %@", self.userID, self.name, self.screenName, self.profileImageURL];
+}
+
 @end
