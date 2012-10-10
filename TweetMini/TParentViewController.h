@@ -15,12 +15,10 @@
 
 @property (nonatomic, strong) UIManagedDocument *twitterDatabase;
 
-
-- (UIAlertView *)getAlertViewWithMessage:(NSString *)msg;
 - (NSString *)getCellIdentifier;
+- (NSFetchRequest *)getFetchRequest;
 
 - (void)setManagedDocument;
-- (NSFetchRequest *)getRequest;
 
 - (void)requestForTimelineusing:(UIManagedDocument *)document;
 - (void)getTimelineWithParam:(NSDictionary *)param usingRequest:(TWRequest *)request inDocument:(UIManagedDocument *)document isForSelf:(NSNumber *)isForSelf;

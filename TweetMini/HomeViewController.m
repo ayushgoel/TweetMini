@@ -19,7 +19,7 @@
     return @"homeTweetCell";
 }
 
-- (NSFetchRequest *)getRequest
+- (NSFetchRequest *)getFetchRequest
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tweet"];
     request.predicate = [NSPredicate predicateWithFormat:@"isForSelf = %@", [NSNumber numberWithBool:NO]];

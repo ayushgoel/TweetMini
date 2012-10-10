@@ -35,7 +35,7 @@
     NSLog(@"Wrong Request for timeline called!");
 }
 
-- (NSFetchRequest *)getRequest
+- (NSFetchRequest *)getFetchRequest
 {
     return [[NSFetchRequest alloc] init];
 }
@@ -44,7 +44,7 @@
 
 - (void)setupFetchedResultsController
 {
-    NSFetchRequest *request = [self getRequest];
+    NSFetchRequest *request = [self getFetchRequest];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                         managedObjectContext:self.twitterDatabase.managedObjectContext
