@@ -7,7 +7,7 @@
 //
 
 #import "User.h"
-#import "MiniUser.h"
+#import "MiniUser+Create.h"
 
 @interface User (Create)
 
