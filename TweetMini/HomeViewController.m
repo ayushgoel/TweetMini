@@ -22,7 +22,7 @@
 - (NSFetchRequest *)getRequest
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tweet"];
-    request.predicate = [NSPredicate predicateWithFormat:@""];
+//    request.predicate = [NSPredicate predicateWithFormat:@"isForSelf = NO"];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"createTime" ascending:NO selector:nil]];
     return request;
 }

@@ -68,6 +68,7 @@
         [self.twitterDatabase openWithCompletionHandler:^(BOOL success) {
             NSLog(@"Open");
             [self setupFetchedResultsController];
+            [self requestForTimelineusing:self.twitterDatabase];
         }];
     } else if (self.twitterDatabase.documentState == UIDocumentStateNormal) {
         [self setupFetchedResultsController];
@@ -143,7 +144,7 @@
                         
                         if(results){
                             [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                                [Tweet createTweetWithInfo:obj inManagedObjectContext:document.managedObjectContext];
+                                [Tweet createTweetWithInfo:obj isForSelf:[NSNumber numberWithBool:NO] inManagedObjectContext:document.managedObjectContext];
                             }];                            
                         }
                         else {
