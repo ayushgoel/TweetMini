@@ -11,5 +11,6 @@
 @interface MiniUser (Create)
 
 + (MiniUser *)createUserWithInfo:(id)info inManagedObjectContext:(NSManagedObjectContext *)context;
++ (MiniUser *)createMiniUserWithInfo:(id)info inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end
