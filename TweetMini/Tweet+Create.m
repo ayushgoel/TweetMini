@@ -38,6 +38,7 @@
         tempTweet.text = [info valueForKey:@"text"];
         tempTweet.tweetID = [info valueForKey:@"id"];
         
+        //todo: date-time and isFOrSelf
         tempTweet.user = [MiniUser createUserWithInfo:[info valueForKey:@"user"] inManagedObjectContext:context];
     }
     return tempTweet;

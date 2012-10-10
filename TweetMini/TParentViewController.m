@@ -17,14 +17,27 @@
 @end
 
 @implementation TParentViewController
+@synthesize twitterDatabase = _twitterDatabase;
+
+-(UIAlertView *) getAlertViewWithMessage: (NSString *) msg{
+    return [[UIAlertView alloc] initWithTitle:@"Twitter Authorisation" message:msg delegate:self cancelButtonTitle:@"Exit" otherButtonTitles: nil];
+}
+
+#pragma Implemented by child classes
 
 -(NSString *) getCellIdentifier
 {
     return [[NSString alloc] init];
 }
 
--(UIAlertView *) getAlertViewWithMessage: (NSString *) msg{
-    return [[UIAlertView alloc] initWithTitle:@"Twitter Authorisation" message:msg delegate:self cancelButtonTitle:@"Exit" otherButtonTitles: nil];
+- (void)requestForTimelineusing:(UIManagedDocument *)document
+{
+    NSLog(@"Wrong Request for timeline called!");
+}
+
+- (NSFetchRequest *)getRequest
+{
+    return [[NSFetchRequest alloc] init];
 }
 
 #pragma Document functions
@@ -46,11 +59,6 @@
 {
     NSLog(@"useDoc");
     if (![[NSFileManager defaultManager] fileExistsAtPath:[self.twitterDatabase.fileURL path]]) {
-        
-        NSError *error = nil;
-        NSLog(@"%@ %d", self.twitterDatabase.fileURL, [self.twitterDatabase.fileURL checkResourceIsReachableAndReturnError:&error]);
-//        NSLog(@"%@", error);
-//        NSLog(@"--%@", self.twitterDatabase.fileURL);
         [self.twitterDatabase saveToURL:self.twitterDatabase.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
             NSLog(@"Document Created");
             [self setupFetchedResultsController];
@@ -71,7 +79,8 @@
     NSLog(@"Setting Twitterdatabase");
     if (_twitterDatabase != twitterDatabase) {
         _twitterDatabase = twitterDatabase;
-        [self useDocument];
+        [self performSelectorOnMainThread:@selector(useDocument) withObject:self waitUntilDone:YES];
+//        [self useDocument];
     }
 }
 
@@ -81,11 +90,11 @@
         NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
         url = [url URLByAppendingPathComponent:@"TwitterDatabase"];
 //        url = [NSURL URLWithString:@"~/Library/Application Support/iPhone Simulator/6.0/Applications/96AA01A2-929E-4C43-BB3D-0DA4A8B46702/Documents/TwitterDatabase"];
-
-        NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
-                                 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
-        self.twitterDatabase.persistentStoreOptions = options;
+//
+//        NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+//                                 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+//        self.twitterDatabase.persistentStoreOptions = options;
         self.twitterDatabase = [[UIManagedDocument alloc] initWithFileURL:url];
     }
 }
@@ -117,11 +126,6 @@
 }
 
 #pragma Network Data Methods
-
-- (void)requestForTimelineusing:(UIManagedDocument *)document
-{
-    NSLog(@"Wrong Request for timeline called!");
-}
 
 - (void)getTimelineWithParam: (NSDictionary *) param usingRequest: (TWRequest *) request inDocument:(UIManagedDocument *)document
 {

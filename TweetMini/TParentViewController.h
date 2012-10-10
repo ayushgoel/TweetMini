@@ -20,6 +20,7 @@
 - (NSString *)getCellIdentifier;
 
 - (void)setManagedDocument;
+- (NSFetchRequest *)getRequest;
 
 - (void)requestForTimelineusing:(UIManagedDocument *)document;
 - (void)getTimelineWithParam:(NSDictionary *)param usingRequest:(TWRequest *)request inDocument:(UIManagedDocument *)document;
