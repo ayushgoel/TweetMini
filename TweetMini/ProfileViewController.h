@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ProfileViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UIScrollView *userScrollView;
+
 @property (strong, nonatomic) IBOutlet UIImageView *profileImageView;
 
 @property (strong, nonatomic) IBOutlet UILabel *locationLabel;

@@ -10,10 +10,10 @@
 #import "Accounts/Accounts.h"
 #import "Twitter/Twitter.h"
 #import "AFNetworking.h"
-#import "user.h"
+#import "User.h"
 
 @interface ProfileViewController ()
-@property (atomic, strong) user *tUser;
+@property (atomic, strong) User *tUser;
 @end
 
 @implementation ProfileViewController
@@ -28,7 +28,7 @@
 
 -(void) completeUIDetails
 {    
-    self.nameLabel.text = self.tUser.mUser.name;
+    self.nameLabel.text = self.tUser.miniUser.name;
     self.screenNameLabel.text = [NSString stringWithFormat:@"@%@", self.tUser.mUser.screenName];
     self.userIDLabel.text = [NSString stringWithFormat:@"userID: %i", self.tUser.mUser.userId];
 
@@ -40,7 +40,6 @@
     self.followersLabel.text = [NSString stringWithFormat:@"%i", self.tUser.followersCount];
     self.followingLabel.text = [NSString stringWithFormat:@"%i", self.tUser.friendsCount];
     
-//    self.userScrollView.hidden = FALSE;
     [self.profileImageView setImageWithURL: self.tUser.bigImageURL placeholderImage:[UIImage imageWithContentsOfFile:@"/Users/Goel/Desktop/iOSDev/TweetMini/TweetMini/profile.gif"]];
 }
 
@@ -62,7 +61,10 @@
                         NSError *jsonError;
                         NSArray *results = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&jsonError];
                         if(results){
-                            
+                            NSLog(@"Got Results");
+                            [document.managedObjectContext performBlock:^{                                    [User createUserWithInfo:results inManagedObjectContext:document.managedObjectContext];
+                            }];
+
                             self.tUser = [[user alloc] init];
                             self.tUser.mUser.userId = [[results valueForKey:@"id"] integerValue];
                             self.tUser.mUser.name = [results valueForKey:@"name"];
@@ -110,14 +112,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    self.userScrollView.hidden = TRUE;
 
     [self getUserDetails];
 }
 
 - (void)viewDidUnload
 {
-    [self setUserScrollView:nil];
     [self setLocationLabel:nil];
     [self setNameLabel:nil];
     [self setScreenNameLabel:nil];
