@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TParentViewController.h"
 
-@interface SearchTwitterViewControllerViewController : TParentViewController<UITableViewDataSource, UISearchBarDelegate>
+@interface SearchTwitterViewControllerViewController : UITableViewController<UITableViewDataSource, UISearchBarDelegate>
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSMutableArray *searchResults;

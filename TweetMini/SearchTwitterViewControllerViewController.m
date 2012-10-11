@@ -47,6 +47,7 @@
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"Results in array: %i", [self.searchResults count]);
     return [self.searchResults count];
 }
 
@@ -57,6 +58,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"Creating cell");
     NSString * cellIdentifier = @"tweetCell";
     UITableViewCell * cell = nil;
     
@@ -80,22 +82,25 @@
     TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"http://search.twitter.com/search.json"] parameters:param requestMethod:TWRequestMethodGET];
     [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
         if(responseData){
+            NSLog(@"Data recieved");
             NSError *jsonError;
             NSArray *JSON = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&jsonError];
             if(JSON){
                 id results = [JSON valueForKey:@"results"];
+                NSLog(@"Results: %i", [results count]);
                 [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                     tweet *tempTweet = [[tweet alloc] init];
                     tempTweet.text = [obj objectForKey:@"text"];
-                    tempTweet.tweetID = [obj objectForKey:@"id"];
-                    tempTweet.userName = [obj objectForKey:@"from_user"];
-                    tempTweet.userProfileImageURL = [obj objectForKey:@"profile_image_url"];
-                    
+                    tempTweet.tweetID = [obj objectForKey:@"id_str"];
+                    tempTweet.userName = [obj objectForKey:@"from_user_name"];
+                    tempTweet.userProfileImageURL = [NSURL URLWithString:[obj objectForKey:@"profile_image_url"]];
+                    NSLog(@"Tweet created");
                     [self.searchResults addObject:tempTweet];
                 }];
-                
+                NSLog(@"All tweets created");
                 [self.tweetTable reloadData];
                 [self.tweetTable setNeedsDisplay];
+                NSLog(@"tableView set needs display");
             }
             else {
                 NSLog(@"%@", error);
@@ -114,10 +119,13 @@
 
 -(void) searchBarSearchButtonClicked:(UISearchBar *)searchBari
 {
+    NSLog(@"Got search: %@", searchBari.text);
+    self.searchResults = [[NSMutableArray alloc] init];
     [self populateTweetWithSearch:searchBari.text];
 }
 
--(void) searchBarCancelButtonClicked:(UISearchBar *)searchBari{
+-(void) searchBarCancelButtonClicked:(UISearchBar *)searchBari
+{
     [searchBari resignFirstResponder];
 }
 
@@ -128,6 +136,7 @@
     self.tweetTable.dataSource = self;
     self.tweetTable.delegate = self;
     self.searchResults = [[NSMutableArray alloc] init];
+    NSLog(@"VC set");
 }
 
 - (void)viewDidUnload
@@ -135,7 +144,6 @@
     [self setSearchBar:nil];
     [self setTweetTable:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

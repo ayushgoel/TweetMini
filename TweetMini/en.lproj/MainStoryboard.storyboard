@@ -22,7 +22,6 @@
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
                                 <color key="textColor" red="0.03425934294437951" green="0.097542628202166179" blue="0.16775645380434778" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.20422071501544581" green="0.58145380395277613" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="1" height="-1"/>
                             </label>
                         </subviews>
@@ -600,7 +599,7 @@
                 <relationship kind="outlet" name="userIDLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
-        <class className="SearchTwitterViewControllerViewController" superclassName="TParentViewController">
+        <class className="SearchTwitterViewControllerViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchTwitterViewControllerViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
