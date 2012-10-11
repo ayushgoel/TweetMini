@@ -41,7 +41,6 @@
         user.creationDate = [dateFormatter dateFromString:[info objectForKey:@"created_at"]];
         user.miniUser = [MiniUser createMiniUserWithInfo:info inManagedObjectContext:context];
         user.bigImageURL = [NSString stringWithFormat:@"http://api.twitter.com/1/users/profile_image?screen_name=%@&size=bigger", user.miniUser.screenName];
-        
     }
     return user;
 }

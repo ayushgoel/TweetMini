@@ -10,6 +10,9 @@
 
 @interface ProfileViewController : UIViewController
 
+@property (nonatomic, strong) UIManagedDocument *twitterDatabase;
+@property (nonatomic, strong) NSString *userID;
+
 @property (strong, nonatomic) IBOutlet UIImageView *profileImageView;
 
 @property (strong, nonatomic) IBOutlet UILabel *locationLabel;

@@ -10,14 +10,13 @@
 #import "Accounts/Accounts.h"
 #import "Twitter/Twitter.h"
 #import "AFNetworking.h"
-#import "User.h"
+#import "User+Create.h"
 
 @interface ProfileViewController ()
-@property (atomic, strong) User *tUser;
 @end
 
 @implementation ProfileViewController
-@synthesize tUser;
+@synthesize userID;
 @synthesize nameLabel, screenNameLabel, userIDLabel;
 @synthesize locationLabel, creationDateLabel, descriptionLabel, tweetsLabel, favoritesLabel, followersLabel, followingLabel;
 @synthesize profileImageView;
@@ -27,20 +26,36 @@
 }
 
 -(void) completeUIDetails
-{    
-    self.nameLabel.text = self.tUser.miniUser.name;
-    self.screenNameLabel.text = [NSString stringWithFormat:@"@%@", self.tUser.mUser.screenName];
-    self.userIDLabel.text = [NSString stringWithFormat:@"userID: %i", self.tUser.mUser.userId];
-
-    self.locationLabel.text = self.tUser.location;
-    self.creationDateLabel.text = [NSString stringWithFormat:@"Since: %@", self.tUser.creationDate];
-    self.descriptionLabel.text = self.tUser.userDescription;
-    self.tweetsLabel.text = [NSString stringWithFormat:@"%i", self.tUser.statusCount];
-    self.favoritesLabel.text = [NSString stringWithFormat:@"%i", self.tUser.favoritesCount];
-    self.followersLabel.text = [NSString stringWithFormat:@"%i", self.tUser.followersCount];
-    self.followingLabel.text = [NSString stringWithFormat:@"%i", self.tUser.friendsCount];
+{
+    User *user = nil;
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+    request.predicate = [NSPredicate predicateWithFormat:@" userID= %@", self.userID];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"userID" ascending:NO selector:nil]];
+    NSError *error = nil;
+    NSArray *match = [self.twitterDatabase.managedObjectContext executeFetchRequest:request error:&error];
     
-    [self.profileImageView setImageWithURL: self.tUser.bigImageURL placeholderImage:[UIImage imageWithContentsOfFile:@"/Users/Goel/Desktop/iOSDev/TweetMini/TweetMini/profile.gif"]];
+    if (!match || [match count]>1) {
+        NSLog(@"Problem with match");
+    } else if ([match count] == 0) {
+        NSLog(@"No User Details Found!");
+    } else {
+        user = [match lastObject];
+        self.nameLabel.text = user.miniUser.name;
+        self.screenNameLabel.text = [NSString stringWithFormat:@"@%@", user.miniUser.screenName];
+        self.userIDLabel.text = user.userID;
+        
+        self.locationLabel.text = user.location;
+        self.creationDateLabel.text = [NSString stringWithFormat:@"Since: %@", user.creationDate];
+        self.descriptionLabel.text = user.userDescription;
+        self.tweetsLabel.text = [NSString stringWithFormat:@"%@", user.statusCount];
+        self.favoritesLabel.text = [NSString stringWithFormat:@"%@", user.favoritesCount];
+        self.followersLabel.text = [NSString stringWithFormat:@"%@", user.followersCount];
+        self.followingLabel.text = [NSString stringWithFormat:@"%@", user.friendsCount];
+        
+        [self.profileImageView setImageWithURL: [NSURL URLWithString:user.bigImageURL] placeholderImage:[UIImage imageWithContentsOfFile:@"/Users/Goel/Desktop/iOSDev/TweetMini/TweetMini/profile.gif"]];
+        
+    }
+    
 }
 
 -(void) getUserDetails
@@ -49,8 +64,7 @@
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
 
     if([TWTweetComposeViewController canSendTweet]){
-        [accountStore requestAccessToAccountsWithType:accountType withCompletionHandler: ^(BOOL granted, NSError *error){
-    
+        [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {    
             if(granted){
                 NSDictionary *param = [[NSDictionary alloc] init];
                 
@@ -62,11 +76,10 @@
                         NSArray *results = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&jsonError];
                         if(results){
                             NSLog(@"Got Results");
-                            [document.managedObjectContext performBlock:^{                                    [User createUserWithInfo:results inManagedObjectContext:document.managedObjectContext];
+                            [self.twitterDatabase.managedObjectContext performBlock:^{
+                                [User createUserWithInfo:results inManagedObjectContext:self.twitterDatabase.managedObjectContext];
                             }];
-
                             [self completeUIDetails];
-
                         }
                         else {
                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Error retrieving tweet" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
@@ -93,9 +106,45 @@
     }
 }
 
+- (void)useDocument
+{
+    NSLog(@"useDoc");
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[self.twitterDatabase.fileURL path]]) {
+        [self.twitterDatabase saveToURL:self.twitterDatabase.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+            NSLog(@"Document Created");
+        }];
+    } else if (self.twitterDatabase.documentState == UIDocumentStateClosed) {
+        [self.twitterDatabase openWithCompletionHandler:^(BOOL success) {
+            NSLog(@"Open");
+        }];
+    } else if (self.twitterDatabase.documentState == UIDocumentStateNormal) {
+        NSLog(@"Normal Document");
+    }
+}
+
+- (void)setTwitterDatabase:(UIManagedDocument *)twitterDatabase
+{
+    NSLog(@"Setter called database");
+    if (_twitterDatabase != twitterDatabase) {
+        _twitterDatabase = twitterDatabase;
+        [self performSelectorOnMainThread:@selector(useDocument) withObject:self waitUntilDone:YES];
+    }
+}
+
+- (void)setManagedDocument
+{
+    if (!self.twitterDatabase) {
+        NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+        url = [url URLByAppendingPathComponent:@"TwitterDatabase"];
+        NSLog(@"Setting managed document");
+        self.twitterDatabase = [[UIManagedDocument alloc] initWithFileURL:url];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setManagedDocument];
 
     [self getUserDetails];
 }
