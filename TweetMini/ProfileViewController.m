@@ -38,6 +38,7 @@
         NSLog(@"Problem with match");
     } else if ([match count] == 0) {
         NSLog(@"No User Details Found!");
+        NSLog(@"UserID: %@", self.userID);
     } else {
         user = [match lastObject];
         self.nameLabel.text = user.miniUser.name;
@@ -52,8 +53,7 @@
         self.followersLabel.text = [NSString stringWithFormat:@"%@", user.followersCount];
         self.followingLabel.text = [NSString stringWithFormat:@"%@", user.friendsCount];
         
-        [self.profileImageView setImageWithURL: [NSURL URLWithString:user.bigImageURL] placeholderImage:[UIImage imageWithContentsOfFile:@"/Users/Goel/Desktop/iOSDev/TweetMini/TweetMini/profile.gif"]];
-        
+        [self.profileImageView setImageWithURL: [NSURL URLWithString:user.bigImageURL] placeholderImage:[UIImage imageNamed:@"profile.gif"]];
     }
     
 }
@@ -76,6 +76,7 @@
                         NSArray *results = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&jsonError];
                         if(results){
                             NSLog(@"Got Results");
+                            self.userID = [NSString stringWithFormat:@"%@", [(id)results objectForKey:@"id"]];
                             [self.twitterDatabase.managedObjectContext performBlock:^{
                                 [User createUserWithInfo:results inManagedObjectContext:self.twitterDatabase.managedObjectContext];
                             }];

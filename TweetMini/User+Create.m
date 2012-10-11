@@ -25,6 +25,7 @@
         NSLog(@"More than one matches when inserting User!");
         user = [matches lastObject];
     } else if ([matches count] == 1) {
+        NSLog(@"User Already here");
         user = [matches lastObject];
     } else {
         user = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:context];
