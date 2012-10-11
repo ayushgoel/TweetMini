@@ -386,6 +386,9 @@
                                     <constraint firstItem="0Br-92-Cz5" firstAttribute="leading" secondItem="F1G-up-wki" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="vm7-VB-oWR"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cVM-lW-Rb2">
+                                <color key="color" white="0.20147125912408759" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -405,7 +408,9 @@
                             <constraint firstItem="Q0C-U3-mzQ" firstAttribute="leading" secondItem="8yw-uA-rV5" secondAttribute="leading" constant="11" id="T3d-qU-cK0"/>
                             <constraint firstAttribute="trailing" secondItem="uKc-Yv-NXz" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="WRO-oA-Xhd"/>
                             <constraint firstItem="QXn-ZC-DiX" firstAttribute="leading" secondItem="NJF-w0-RuA" secondAttribute="leading" type="default" id="aJA-lt-Xd6"/>
+                            <constraint firstItem="cVM-lW-Rb2" firstAttribute="centerX" secondItem="ZLM-t2-ELd" secondAttribute="centerX" type="default" id="gaq-Fu-x35"/>
                             <constraint firstItem="ZLM-t2-ELd" firstAttribute="top" secondItem="QXn-ZC-DiX" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="jB5-Dm-cnD"/>
+                            <constraint firstItem="cVM-lW-Rb2" firstAttribute="top" secondItem="8yw-uA-rV5" secondAttribute="top" constant="125" id="kZt-tv-hCx"/>
                             <constraint firstAttribute="trailing" secondItem="F1G-up-wki" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="miR-c5-I1t"/>
                             <constraint firstAttribute="trailing" secondItem="ZLM-t2-ELd" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="pDB-FM-B5B"/>
                             <constraint firstItem="uKc-Yv-NXz" firstAttribute="top" secondItem="8yw-uA-rV5" secondAttribute="top" type="default" id="q3Y-ri-Xyz"/>
@@ -426,6 +431,7 @@
                         <outlet property="screenNameLabel" destination="NJF-w0-RuA" id="9MN-Nq-RNc"/>
                         <outlet property="tweetsLabel" destination="5Xz-HP-XS3" id="ZL7-cc-cjt"/>
                         <outlet property="userIDLabel" destination="Q0C-U3-mzQ" id="DJh-FU-bWD"/>
+                        <outlet property="waitIndicator" destination="cVM-lW-Rb2" id="T1t-fh-Mcp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSi-IG-Obf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -597,6 +603,7 @@
                 <relationship kind="outlet" name="screenNameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="tweetsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="userIDLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="waitIndicator" candidateClass="UIActivityIndicatorView"/>
             </relationships>
         </class>
         <class className="SearchTwitterViewControllerViewController" superclassName="UITableViewController">
