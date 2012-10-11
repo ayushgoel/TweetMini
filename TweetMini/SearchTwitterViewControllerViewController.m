@@ -13,6 +13,7 @@
 @synthesize searchBar = _searchBar;
 @synthesize searchResults = _searchResults;
 @synthesize tweetTable = _tweetTable;
+@synthesize cache = _cache;
 
 -(UIAlertView *) getAlertViewWithMessage: (NSString *) msg{
     return [[UIAlertView alloc] initWithTitle:@"Twitter Authorisation" message:msg delegate:self cancelButtonTitle:@"Exit" otherButtonTitles: nil];
@@ -35,7 +36,7 @@
     NSString * cellIdentifier = @"tweetCell";
     UITableViewCell * cell = nil;
     
-    searchTweet *resTweet = [self.searchResults objectAtIndex:[indexPath row]];
+    __block searchTweet *resTweet = [self.searchResults objectAtIndex:[indexPath row]];
     cell = [self.tweetTable dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if(cell == nil){
@@ -44,7 +45,23 @@
     
     cell.textLabel.text = resTweet.userName;
     cell.detailTextLabel.text = resTweet.text;
-    [cell.imageView setImageWithURL: resTweet.userProfileImageURL placeholderImage:[UIImage imageNamed:@"profile.gif"]];
+    cell.imageView.image = [UIImage imageNamed:@"profile.gif"];
+    if ([self.cache objectForKey:resTweet.userName]) {
+        NSLog(@"Image in cache");
+        cell.imageView.image = [UIImage imageWithData:[self.cache objectForKey:resTweet.userName]];
+    } else {
+        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+        [queue addOperationWithBlock:^{
+            NSLog(@"Setting image to cache %@", resTweet.userName);
+            NSData *data = [NSData dataWithContentsOfURL:resTweet.userProfileImageURL];
+            [self.cache setObject:data forKey:resTweet.userName];
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                NSLog(@"Updating image %@", [self.cache objectForKey:resTweet.userName]);
+                cell.imageView.image = [UIImage imageWithData:[self.cache objectForKey:resTweet.userName]];
+            }];
+        }];
+    }
+//    [cell.imageView setImageWithURL: resTweet.userProfileImageURL placeholderImage:[UIImage imageNamed:@"profile.gif"]];
     return cell;
 }
 
@@ -109,6 +126,7 @@
     self.tweetTable.dataSource = self;
     self.tweetTable.delegate = self;
     self.searchResults = [[NSMutableArray alloc] init];
+    self.cache = [[NSCache alloc] init];
     NSLog(@"VC set");
 }
 

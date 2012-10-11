@@ -14,5 +14,6 @@
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSMutableArray *searchResults;
 @property (strong, nonatomic) IBOutlet UITableView *tweetTable;
+@property (strong, nonatomic) NSCache *cache;
 @end
 
