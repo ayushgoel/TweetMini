@@ -7,21 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TParentViewController.h"
+#import "Twitter/Twitter.h"
+#import "searchTweet.h"
 
 @interface SearchTwitterViewControllerViewController : UITableViewController<UITableViewDataSource, UISearchBarDelegate>
-
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSMutableArray *searchResults;
 @property (strong, nonatomic) IBOutlet UITableView *tweetTable;
 @end
 
-@interface tweet : NSObject
-
-@property (nonatomic, strong) NSString *tweetID;
-@property (nonatomic, strong) NSString *text;
-@property (nonatomic, strong) NSString *userName;
-@property (nonatomic, strong) NSURL *userProfileImageURL;
-@property (nonatomic) CGFloat rowHeight;
-
-@end

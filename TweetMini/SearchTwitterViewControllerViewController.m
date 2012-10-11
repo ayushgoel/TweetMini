@@ -7,34 +7,7 @@
 //
 
 #import "SearchTwitterViewControllerViewController.h"
-#import "Twitter/Twitter.h"
 #import "AFNetworking.h"
-
-@implementation tweet
-@synthesize tweetID, text, rowHeight, userName, userProfileImageURL;
-
-#define FONT_SIZE 14.0f
-#define CELL_CONTENT_WIDTH 320.0f
-#define CELL_CONTENT_MARGIN 10.0f
-#define CELL_TITLE_HEIGHT 30.0f
-#define CELL_IMAGE_WIDTH 60.0f
-
-- (CGFloat)rowHeight
-{
-    CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2) - CELL_IMAGE_WIDTH, 20000.0f);
-    CGSize size;
-    
-    size = [self.text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
-    CGFloat height = size.height;
-    
-    return height + (CELL_CONTENT_MARGIN) + CELL_TITLE_HEIGHT;
-}
-
--(NSString *) description
-{
-    return [NSString stringWithFormat:@"Text:%@", text];
-}
-@end
 
 @implementation SearchTwitterViewControllerViewController
 @synthesize searchBar = _searchBar;
@@ -62,7 +35,7 @@
     NSString * cellIdentifier = @"tweetCell";
     UITableViewCell * cell = nil;
     
-    tweet *resTweet = [self.searchResults objectAtIndex:[indexPath row]];
+    searchTweet *resTweet = [self.searchResults objectAtIndex:[indexPath row]];
     cell = [self.tweetTable dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if(cell == nil){
@@ -89,7 +62,7 @@
                 id results = [JSON valueForKey:@"results"];
                 NSLog(@"Results: %i", [results count]);
                 [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                    tweet *tempTweet = [[tweet alloc] init];
+                    searchTweet *tempTweet = [[searchTweet alloc] init];
                     tempTweet.text = [obj objectForKey:@"text"];
                     tempTweet.tweetID = [obj objectForKey:@"id_str"];
                     tempTweet.userName = [obj objectForKey:@"from_user_name"];
