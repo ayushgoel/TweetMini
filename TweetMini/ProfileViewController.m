@@ -19,7 +19,8 @@
 @synthesize userID;
 @synthesize nameLabel, screenNameLabel, userIDLabel;
 @synthesize locationLabel, creationDateLabel, descriptionLabel, tweetsLabel, favoritesLabel, followersLabel, followingLabel;
-@synthesize profileImageView;
+@synthesize profileImageView = _profileImageView;
+@synthesize waitIndicator = _waitIndicator;
 
 -(UIAlertView *) getAlertViewWithMessage: (NSString *) msg{
     return [[UIAlertView alloc] initWithTitle:@"Twitter Authorisation" message:msg delegate:self cancelButtonTitle:@"Exit" otherButtonTitles: nil];
@@ -56,6 +57,7 @@
         self.followingLabel.text = [NSString stringWithFormat:@"%@", user.friendsCount];
         
         [self.profileImageView setImageWithURL: [NSURL URLWithString:user.bigImageURL] placeholderImage:[UIImage imageNamed:@"profile.gif"]];
+        [self.waitIndicator stopAnimating];
     }
     
 }
@@ -147,6 +149,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.waitIndicator startAnimating];
     [self setManagedDocument];
 
     [self getUserDetails];

@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSString *userID;
 
 @property (strong, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *waitIndicator;
 
 @property (strong, nonatomic) IBOutlet UILabel *locationLabel;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
