@@ -7,11 +7,10 @@
 //
 
 #import "TParentViewController.h"
-#import "AFNetworking.h"
 #import "Twitter/Twitter.h"
 #import "Accounts/Accounts.h"
 #import "Tweet+Create.h"
-#import "MiniUser.h"
+#import "MiniUser+Create.h"
 
 @interface TParentViewController ()
 @end
@@ -111,8 +110,20 @@
     
     cell.textLabel.text = resTweet.user.name;
     cell.detailTextLabel.text = resTweet.text;
-
-    [cell.imageView setImageWithURL:[NSURL URLWithString:resTweet.user.profileImageURL] placeholderImage:[UIImage imageNamed:@"profile.gif"]];
+    cell.imageView.image = [UIImage imageNamed:@"profile.gif"];
+    
+    if (resTweet.user.smallImage) {
+        cell.imageView.image = [UIImage imageWithData:resTweet.user.smallImage];
+    } else {
+        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+        [queue addOperationWithBlock:^{
+            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:resTweet.user.profileImageURL]];
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                cell.imageView.image = [UIImage imageWithData:data];
+            }];
+            [resTweet.user addImageData:data forUserID:resTweet.user.userID inContext:resTweet.user.managedObjectContext];
+        }];
+    }
     return cell;
 }
 

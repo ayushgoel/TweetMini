@@ -13,4 +13,5 @@
 + (MiniUser *)createUserWithInfo:(id)info inManagedObjectContext:(NSManagedObjectContext *)context;
 + (MiniUser *)createMiniUserWithInfo:(id)info inManagedObjectContext:(NSManagedObjectContext *)context;
 
+- (void)addImageData:(NSData *)data forUserID:(NSString *)userID inContext:(NSManagedObjectContext *)context;
 @end
