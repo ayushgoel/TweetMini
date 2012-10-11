@@ -27,6 +27,7 @@
 
 -(void) completeUIDetails
 {
+    NSLog(@"Completing PVC");
     User *user = nil;
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
     request.predicate = [NSPredicate predicateWithFormat:@" userID= %@", self.userID];
@@ -40,6 +41,7 @@
         NSLog(@"No User Details Found!");
         NSLog(@"UserID: %@", self.userID);
     } else {
+        NSLog(@"Setting UI");
         user = [match lastObject];
         self.nameLabel.text = user.miniUser.name;
         self.screenNameLabel.text = [NSString stringWithFormat:@"@%@", user.miniUser.screenName];
