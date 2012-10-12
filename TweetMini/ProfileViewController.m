@@ -57,6 +57,7 @@
     } else if ([match count] == 0) {
         NSLog(@"No User Details Found!");
         NSLog(@"UserID: %@", self.userID);
+        [self getUserDetails];
     } else {
         NSLog(@"Setting UI");
         user = [match lastObject];
@@ -100,6 +101,7 @@
                             [self.twitterDatabase.managedObjectContext performBlock:^{
                                 [User createUserWithInfo:results inManagedObjectContext:self.twitterDatabase.managedObjectContext];
                             }];
+                            [self performSelectorOnMainThread:@selector(completeUIDetails) withObject:self waitUntilDone:NO];
                         }
                         else {
                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Error retrieving tweet" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
@@ -171,10 +173,7 @@
         if (!self.userID) {
             [self getUserDetails];
         }
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            [self completeUIDetails];
-        }];
-//        [self performSelectorOnMainThread:@selector(completeUIDetails) withObject:self waitUntilDone:NO];        
+        [self performSelectorOnMainThread:@selector(completeUIDetails) withObject:self waitUntilDone:NO];
     }];
 }
 

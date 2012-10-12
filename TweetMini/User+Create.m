@@ -21,8 +21,10 @@
     NSArray *matches = [context executeFetchRequest:request error:&error];
     User *user = nil;
     
-    if (!matches || ([matches count] > 1)) {
-        NSLog(@"More than one matches when inserting User!");
+    if (!matches) {
+        NSLog(@"User Create Error, matches array is NULL");
+    } else if ([matches count] > 1) {
+        NSLog(@"More than one matches when inserting User! %i %@", [matches count], matches);
         user = [matches lastObject];
     } else if ([matches count] == 1) {
         NSLog(@"User Already here");
@@ -45,6 +47,11 @@
         NSLog(@"New User created with ID: %@", user.userID);
     }
     return user;
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"ID:%@ miniUser:{%@}", self.userID, self.miniUser];
 }
 
 @end
