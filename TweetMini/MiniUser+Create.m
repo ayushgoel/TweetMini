@@ -70,16 +70,18 @@
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"userID" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
-    NSError *error = nil;
+    __block NSError *error = nil;
     NSArray *matches = [context executeFetchRequest:request error:&error];
     MiniUser *miniUser = nil;
 
     if (!matches || [matches count]>1) {
-        NSLog(@"More than one photo with same ID");
+        NSLog(@"More than one photo with same ID: %@", userID);
     } else if ([matches count] == 1) {
         miniUser = [matches lastObject];
         miniUser.smallImage = data;
-        [context save:&error];
+        [context performBlock:^{
+            [context save:&error];            
+        }];
     } else {
         NSLog(@"What is this? Please check!");
     }

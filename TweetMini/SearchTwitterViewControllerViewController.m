@@ -7,7 +7,6 @@
 //
 
 #import "SearchTwitterViewControllerViewController.h"
-#import "AFNetworking.h"
 
 @implementation SearchTwitterViewControllerViewController
 @synthesize searchBar = _searchBar;
@@ -56,12 +55,10 @@
             NSData *data = [NSData dataWithContentsOfURL:resTweet.userProfileImageURL];
             [self.cache setObject:data forKey:resTweet.userName];
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                NSLog(@"Updating image %@", [self.cache objectForKey:resTweet.userName]);
                 cell.imageView.image = [UIImage imageWithData:[self.cache objectForKey:resTweet.userName]];
             }];
         }];
     }
-//    [cell.imageView setImageWithURL: resTweet.userProfileImageURL placeholderImage:[UIImage imageNamed:@"profile.gif"]];
     return cell;
 }
 
