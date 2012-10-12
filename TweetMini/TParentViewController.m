@@ -117,6 +117,7 @@
     } else {
         NSOperationQueue *queue = [[NSOperationQueue alloc] init];
         [queue addOperationWithBlock:^{
+            NSLog(@"Getting image data for tweet %@", resTweet.tweetID);
             NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:resTweet.user.profileImageURL]];
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 cell.imageView.image = [UIImage imageWithData:data];
@@ -148,7 +149,6 @@
                     if(responseData){
                         NSError *jsonError;
                         NSArray *results = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&jsonError];
-                        
                         if(results){
 //                            NSLog(@"Got results: %@", results);
                             NSLog(@"Got Results");

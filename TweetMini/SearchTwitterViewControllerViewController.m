@@ -75,6 +75,7 @@
             if(JSON){
                 id results = [JSON valueForKey:@"results"];
                 NSLog(@"Results: %i", [results count]);
+                self.searchResults = [[NSMutableArray alloc] init];
                 [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                     searchTweet *tempTweet = [[searchTweet alloc] init];
                     tempTweet.text = [obj objectForKey:@"text"];
@@ -107,7 +108,6 @@
 -(void) searchBarSearchButtonClicked:(UISearchBar *)searchBari
 {
     NSLog(@"Got search: %@", searchBari.text);
-    self.searchResults = [[NSMutableArray alloc] init];
     [self populateTweetWithSearch:searchBari.text];
 }
 

@@ -34,7 +34,6 @@
     TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1/statuses/mentions.json"] parameters:param requestMethod:TWRequestMethodGET];
     
     [self getTimelineWithParam:param usingRequest:request inDocument:document isForSelf:[NSNumber numberWithBool:YES]];
-	// Do any additional setup after loading the view.
 }
 
 - (void)viewWillAppear:(BOOL)animated
