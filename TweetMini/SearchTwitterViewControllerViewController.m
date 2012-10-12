@@ -75,6 +75,7 @@
             if(JSON){
                 id results = [JSON valueForKey:@"results"];
                 NSLog(@"Results: %i", [results count]);
+                self.tableView.scrollEnabled = NO;
                 self.searchResults = [[NSMutableArray alloc] init];
                 [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                     searchTweet *tempTweet = [[searchTweet alloc] init];
@@ -109,7 +110,6 @@
 -(void) searchBarSearchButtonClicked:(UISearchBar *)searchBari
 {
     NSLog(@"Got search: %@", searchBari.text);
-    self.tableView.scrollEnabled = NO;
     [self populateTweetWithSearch:searchBari.text];
 }
 
