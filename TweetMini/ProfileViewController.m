@@ -16,11 +16,27 @@
 @end
 
 @implementation ProfileViewController
-@synthesize userID;
-@synthesize nameLabel, screenNameLabel, userIDLabel;
-@synthesize locationLabel, creationDateLabel, descriptionLabel, tweetsLabel, favoritesLabel, followersLabel, followingLabel;
+@synthesize userID = _userID;
+@synthesize nameLabel = _nameLabel, screenNameLabel = _screenNameLabel, userIDLabel = _userIDLabel;
+@synthesize locationLabel = _locationLabel, creationDateLabel = _creationDateLabel, descriptionLabel = _descriptionLabel, tweetsLabel = _tweetsLabel, favoritesLabel = _favoritesLabel, followersLabel = _followersLabel, followingLabel = _followingLabel;
 @synthesize profileImageView = _profileImageView;
 @synthesize waitIndicator = _waitIndicator;
+
+- (NSString *)userID
+{
+    if (!_userID) {
+        _userID = [[NSUserDefaults standardUserDefaults] stringForKey:@"selfUserID"];
+    }
+    return _userID;
+}
+- (void)setUserID:(NSString *)userID
+{
+    if (_userID != userID) {
+        _userID = userID;
+        NSLog(@"Added id to user defaults");
+        [[NSUserDefaults standardUserDefaults] setObject:userID forKey:@"selfUserID"];
+    }
+}
 
 -(UIAlertView *) getAlertViewWithMessage: (NSString *) msg{
     return [[UIAlertView alloc] initWithTitle:@"Twitter Authorisation" message:msg delegate:self cancelButtonTitle:@"Exit" otherButtonTitles: nil];
@@ -84,7 +100,6 @@
                             [self.twitterDatabase.managedObjectContext performBlock:^{
                                 [User createUserWithInfo:results inManagedObjectContext:self.twitterDatabase.managedObjectContext];
                             }];
-                            [self performSelectorOnMainThread:@selector(completeUIDetails) withObject:self waitUntilDone:NO];
                         }
                         else {
                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Error retrieving tweet" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
@@ -150,8 +165,17 @@
 {
     [super viewDidLoad];
     [self.waitIndicator startAnimating];
-    [self setManagedDocument];
-    [self getUserDetails];
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [queue addOperationWithBlock:^{
+        [self setManagedDocument];
+        if (!self.userID) {
+            [self getUserDetails];
+        }
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self completeUIDetails];
+        }];
+//        [self performSelectorOnMainThread:@selector(completeUIDetails) withObject:self waitUntilDone:NO];        
+    }];
 }
 
 - (void)viewDidUnload
