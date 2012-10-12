@@ -88,6 +88,7 @@
                 NSLog(@"All tweets created");
                 [self.tweetTable reloadData];
                 [self.tweetTable setNeedsDisplay];
+                self.tweetTable.scrollEnabled = YES;
                 NSLog(@"tableView set needs display");
             }
             else {
@@ -108,6 +109,7 @@
 -(void) searchBarSearchButtonClicked:(UISearchBar *)searchBari
 {
     NSLog(@"Got search: %@", searchBari.text);
+    self.tableView.scrollEnabled = NO;
     [self populateTweetWithSearch:searchBari.text];
 }
 
