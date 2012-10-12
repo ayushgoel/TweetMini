@@ -84,7 +84,7 @@
                             [self.twitterDatabase.managedObjectContext performBlock:^{
                                 [User createUserWithInfo:results inManagedObjectContext:self.twitterDatabase.managedObjectContext];
                             }];
-                            [self completeUIDetails];
+                            [self performSelectorOnMainThread:@selector(completeUIDetails) withObject:self waitUntilDone:NO];
                         }
                         else {
                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Error retrieving tweet" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
@@ -151,7 +151,6 @@
     [super viewDidLoad];
     [self.waitIndicator startAnimating];
     [self setManagedDocument];
-
     [self getUserDetails];
 }
 
