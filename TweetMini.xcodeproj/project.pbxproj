@@ -168,6 +168,49 @@
 			path = ../../oldTweetMini/TweetMini/TweetMini/AFNetworking;
 			sourceTree = "<group>";
 		};
+		2A15C6CB162D816B001754B7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2A33B1991626F9EE00DD2F18 /* searchTweet.h */,
+				2A33B19A1626F9EE00DD2F18 /* searchTweet.m */,
+				2A06001E1623EB6000DBE085 /* Model.xcdatamodeld */,
+				2A06005F162413FB00DBE085 /* Tweet.h */,
+				2A060060162413FB00DBE085 /* Tweet.m */,
+				2A0600621624292300DBE085 /* Tweet+Create.h */,
+				2A0600631624292400DBE085 /* Tweet+Create.m */,
+				2A0600311623F79200DBE085 /* MiniUser.h */,
+				2A0600321623F79200DBE085 /* MiniUser.m */,
+				2A0600651624336200DBE085 /* MiniUser+Create.h */,
+				2A0600661624336200DBE085 /* MiniUser+Create.m */,
+				2A33B18F16268F0B00DD2F18 /* User.h */,
+				2A33B19016268F0B00DD2F18 /* User.m */,
+				2AD6AC25162590F400630089 /* User+Create.h */,
+				2AD6AC26162590F400630089 /* User+Create.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		2A15C6CC162D81A5001754B7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2AB580DA1622EFFB00D39F01 /* loggingInViewController.h */,
+				2AB580DB1622EFFB00D39F01 /* loggingInViewController.m */,
+				2AB580ED1623015800D39F01 /* newTweetViewController.h */,
+				2AB580EE1623015800D39F01 /* newTweetViewController.m */,
+				2A0600361624060300DBE085 /* TParentViewController.h */,
+				2A0600371624060300DBE085 /* TParentViewController.m */,
+				2A06005C16240E2200DBE085 /* HomeViewController.h */,
+				2A06005D16240E2200DBE085 /* HomeViewController.m */,
+				2AD6AC1E1625771500630089 /* ConnectViewController.h */,
+				2AD6AC1F1625771500630089 /* ConnectViewController.m */,
+				2A33B1961626A05000DD2F18 /* SearchTwitterViewControllerViewController.h */,
+				2A33B1971626A05000DD2F18 /* SearchTwitterViewControllerViewController.m */,
+				2AD6AC221625820E00630089 /* ProfileViewController.h */,
+				2AD6AC231625820F00630089 /* ProfileViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		2AB580B01622EFFB00D39F01 = {
 			isa = PBXGroup;
 			children = (
@@ -202,37 +245,11 @@
 		2AB580C51622EFFB00D39F01 /* TweetMini */ = {
 			isa = PBXGroup;
 			children = (
+				2A15C6CC162D81A5001754B7 /* ViewControllers */,
+				2A15C6CB162D816B001754B7 /* Model */,
 				2AB580CE1622EFFB00D39F01 /* loggingInAppDelegate.h */,
 				2AB580CF1622EFFB00D39F01 /* loggingInAppDelegate.m */,
 				2AB580D71622EFFB00D39F01 /* MainStoryboard.storyboard */,
-				2AB580DA1622EFFB00D39F01 /* loggingInViewController.h */,
-				2AB580DB1622EFFB00D39F01 /* loggingInViewController.m */,
-				2AB580ED1623015800D39F01 /* newTweetViewController.h */,
-				2AB580EE1623015800D39F01 /* newTweetViewController.m */,
-				2A0600361624060300DBE085 /* TParentViewController.h */,
-				2A0600371624060300DBE085 /* TParentViewController.m */,
-				2A06005C16240E2200DBE085 /* HomeViewController.h */,
-				2A06005D16240E2200DBE085 /* HomeViewController.m */,
-				2AD6AC1E1625771500630089 /* ConnectViewController.h */,
-				2AD6AC1F1625771500630089 /* ConnectViewController.m */,
-				2A33B1991626F9EE00DD2F18 /* searchTweet.h */,
-				2A33B19A1626F9EE00DD2F18 /* searchTweet.m */,
-				2A33B1961626A05000DD2F18 /* SearchTwitterViewControllerViewController.h */,
-				2A33B1971626A05000DD2F18 /* SearchTwitterViewControllerViewController.m */,
-				2AD6AC221625820E00630089 /* ProfileViewController.h */,
-				2AD6AC231625820F00630089 /* ProfileViewController.m */,
-				2A06005F162413FB00DBE085 /* Tweet.h */,
-				2A060060162413FB00DBE085 /* Tweet.m */,
-				2A0600621624292300DBE085 /* Tweet+Create.h */,
-				2A0600631624292400DBE085 /* Tweet+Create.m */,
-				2A0600311623F79200DBE085 /* MiniUser.h */,
-				2A0600321623F79200DBE085 /* MiniUser.m */,
-				2A0600651624336200DBE085 /* MiniUser+Create.h */,
-				2A0600661624336200DBE085 /* MiniUser+Create.m */,
-				2A33B18F16268F0B00DD2F18 /* User.h */,
-				2A33B19016268F0B00DD2F18 /* User.m */,
-				2AD6AC25162590F400630089 /* User+Create.h */,
-				2AD6AC26162590F400630089 /* User+Create.m */,
 				2AB580C61622EFFB00D39F01 /* Supporting Files */,
 			);
 			path = TweetMini;
@@ -243,7 +260,6 @@
 			children = (
 				2A06005916240C4300DBE085 /* CoreDataTableViewController.h */,
 				2A06005A16240C4300DBE085 /* CoreDataTableViewController.m */,
-				2A06001E1623EB6000DBE085 /* Model.xcdatamodeld */,
 				2A060034162405A600DBE085 /* profile.gif */,
 				2AB580C71622EFFB00D39F01 /* TweetMini-Info.plist */,
 				2AB580C81622EFFB00D39F01 /* InfoPlist.strings */,
