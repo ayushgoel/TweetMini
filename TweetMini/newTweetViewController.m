@@ -30,8 +30,7 @@
         [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
             if(granted){
 
-                ACAccount *tAccount = [[ACAccount alloc] init];;
-                tAccount = [[accountStore accountsWithAccountType:accountType] lastObject];
+                ACAccount *tAccount = [[accountStore accountsWithAccountType:accountType] lastObject];
 
                 NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
                 [param setObject:@"1" forKey:@"include_entities"];
