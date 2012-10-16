@@ -109,7 +109,7 @@
                     <navigationItem key="navigationItem" title="Home" id="1fk-Gb-jz9">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="2Ic-Aj-CIU">
                             <connections>
-                                <segue destination="Hhe-Wk-tpj" kind="modal" modalTransitionStyle="flipHorizontal" id="DEQ-ql-fQp"/>
+                                <segue destination="xOb-c5-iYh" kind="modal" modalTransitionStyle="flipHorizontal" id="DEQ-ql-fQp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -123,63 +123,46 @@
             <objects>
                 <viewController id="Hhe-Wk-tpj" customClass="newTweetViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ao0-Ak-LHl">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3h7-Iw-C8j">
-                                <items>
-                                    <barButtonItem systemItem="cancel" id="Uey-gJ-Vam">
-                                        <color key="tintColor" red="0.72632897418478259" green="0.10775633877614152" blue="0.026577399433710784" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <action selector="cancelButtonPressed:" destination="Hhe-Wk-tpj" id="4lL-mO-GG3"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="MKN-Rk-j9f"/>
-                                    <barButtonItem title="Tweet" id="IZT-h2-ZrL">
-                                        <connections>
-                                            <action selector="tweetButtonPressed:" destination="Hhe-Wk-tpj" id="rQO-j7-eIq"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uUs-GW-4H5">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="407" id="Mg6-5t-hlC"/>
+                                    <constraint firstAttribute="height" constant="200" id="BkE-YM-FK4"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="989" constant="180" type="user" id="bHh-OQ-34g"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXQ-QM-VKZ">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="166" id="kB0-bO-Uz5"/>
-                                    <constraint firstAttribute="height" constant="21" id="zc6-JK-ofL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3h7-Iw-C8j" firstAttribute="top" secondItem="Ao0-Ak-LHl" secondAttribute="top" type="default" id="AB3-RG-kJh"/>
                             <constraint firstItem="uUs-GW-4H5" firstAttribute="trailing" secondItem="Ao0-Ak-LHl" secondAttribute="trailing" type="default" id="Aji-l7-f8O"/>
                             <constraint firstItem="uUs-GW-4H5" firstAttribute="leading" secondItem="Ao0-Ak-LHl" secondAttribute="leading" type="default" id="Ap9-NS-PAy"/>
-                            <constraint firstItem="bXQ-QM-VKZ" firstAttribute="leading" secondItem="Ao0-Ak-LHl" secondAttribute="leading" constant="80" id="BJN-YB-84W"/>
-                            <constraint firstItem="3h7-Iw-C8j" firstAttribute="trailing" secondItem="Ao0-Ak-LHl" secondAttribute="trailing" type="default" id="VtF-Q8-yFO"/>
-                            <constraint firstItem="uUs-GW-4H5" firstAttribute="top" secondItem="3h7-Iw-C8j" secondAttribute="bottom" type="default" id="fHg-A0-v9F"/>
-                            <constraint firstItem="3h7-Iw-C8j" firstAttribute="leading" secondItem="Ao0-Ak-LHl" secondAttribute="leading" type="default" id="fMX-8P-2bd"/>
-                            <constraint firstItem="bXQ-QM-VKZ" firstAttribute="top" secondItem="Ao0-Ak-LHl" secondAttribute="top" constant="11" id="pzs-ca-nzn"/>
+                            <constraint firstItem="uUs-GW-4H5" firstAttribute="top" secondItem="Ao0-Ak-LHl" secondAttribute="top" type="default" id="JIF-eL-Mi6"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="yU0-Ef-CA6">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Uey-gJ-Vam">
+                            <color key="tintColor" red="0.72632897418478259" green="0.10775633877614152" blue="0.026577399433710784" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="Hhe-Wk-tpj" id="4lL-mO-GG3"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="IZT-h2-ZrL">
+                            <connections>
+                                <action selector="tweetButtonPressed:" destination="Hhe-Wk-tpj" id="rQO-j7-eIq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="tweetCharsLeft" destination="bXQ-QM-VKZ" id="VSv-hr-YMs"/>
                         <outlet property="tweetText" destination="uUs-GW-4H5" id="EUq-2T-8rn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VNK-gB-2st" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1659" y="-945"/>
+            <point key="canvasLocation" x="2185" y="-945"/>
         </scene>
         <!--Connect View Controller - Connect-->
         <scene sceneID="pze-PQ-C7I">
@@ -224,7 +207,7 @@
                     <navigationItem key="navigationItem" title="Connect" id="sSe-BA-8FZ">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="vj3-K2-j8M">
                             <connections>
-                                <segue destination="Hhe-Wk-tpj" kind="modal" modalTransitionStyle="flipHorizontal" id="KT1-Nn-k28"/>
+                                <segue destination="xOb-c5-iYh" kind="modal" modalTransitionStyle="flipHorizontal" id="KT1-Nn-k28"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -572,6 +555,24 @@
             </objects>
             <point key="canvasLocation" x="722" y="84"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="v5R-Qu-1HW">
+            <objects>
+                <navigationController id="xOb-c5-iYh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KmQ-u4-kDY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Hhe-Wk-tpj" kind="relationship" relationship="rootViewController" id="y6h-Lt-CdQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oeR-Ji-CEg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1659" y="-945"/>
+        </scene>
     </scenes>
     <resources>
         <image name="profile.gif" width="48" height="48"/>
@@ -625,7 +626,6 @@
         <class className="newTweetViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/newTweetViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="tweetCharsLeft" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="tweetText" candidateClass="UITextView"/>
             </relationships>
         </class>

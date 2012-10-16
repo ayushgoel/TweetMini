@@ -11,7 +11,6 @@
 
 @interface newTweetViewController : UIViewController <UITextViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UILabel *tweetCharsLeft;
 @property (strong, nonatomic) IBOutlet UITextView *tweetText;
 
 @end

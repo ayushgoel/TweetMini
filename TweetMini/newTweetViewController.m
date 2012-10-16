@@ -13,7 +13,6 @@
 @end
 
 @implementation newTweetViewController
-@synthesize tweetCharsLeft = _tweetCharsLeft;
 @synthesize tweetText = _tweetText;
 
 -(UIAlertView *) getAlertViewWithMessage: (NSString *) msg{
@@ -59,13 +58,13 @@
 
 -(void) textViewDidChange:(UITextView *)textView{
     int charsLeft = 140-self.tweetText.text.length;
-    if(charsLeft <0){
-        [self.tweetCharsLeft setTextColor:[UIColor colorWithRed:0.5 green:0.2 blue:0.3 alpha:0.9]];
-    }
-    else {
-        [self.tweetCharsLeft setTextColor:[UIColor lightTextColor]];
-    }
-    self.tweetCharsLeft.text = [NSString stringWithFormat:@"%d left", charsLeft];
+//    if(charsLeft <0){
+//        [self.title setTextColor:[UIColor colorWithRed:0.5 green:0.2 blue:0.3 alpha:0.9]];
+//    }
+//    else {
+//        [self.title setTextColor:[UIColor lightTextColor]];
+//    }
+    self.title = [NSString stringWithFormat:@"%d left", charsLeft];
 }
 
 -(void) destroySelf
@@ -84,14 +83,13 @@
     [self.tweetText becomeFirstResponder];
     self.tweetText.delegate = self;
 
-    [self.tweetCharsLeft setTextColor:[UIColor lightTextColor]];
-    self.tweetCharsLeft.text = @"140 left";
+//    [self.title setTextColor:[UIColor lightTextColor]];
+    self.title = @"140 left";
 }
 
 - (void)viewDidUnload
 {
     [self setTweetText:nil];
-    [self setTweetCharsLeft:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
