@@ -29,6 +29,7 @@
 		2A33B19116268F0B00DD2F18 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A33B19016268F0B00DD2F18 /* User.m */; };
 		2A33B1981626A05000DD2F18 /* SearchTwitterViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A33B1971626A05000DD2F18 /* SearchTwitterViewControllerViewController.m */; };
 		2A33B19B1626F9EF00DD2F18 /* searchTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A33B19A1626F9EE00DD2F18 /* searchTweet.m */; };
+		2A582B1D16311DDF002FED5A /* TwitterAccessAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A582B1C16311DDF002FED5A /* TwitterAccessAPI.m */; };
 		2AB580C01622EFFB00D39F01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB580BF1622EFFB00D39F01 /* UIKit.framework */; };
 		2AB580C21622EFFB00D39F01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB580C11622EFFB00D39F01 /* Foundation.framework */; };
 		2AB580C41622EFFB00D39F01 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB580C31622EFFB00D39F01 /* CoreGraphics.framework */; };
@@ -93,6 +94,8 @@
 		2A33B1971626A05000DD2F18 /* SearchTwitterViewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTwitterViewControllerViewController.m; sourceTree = "<group>"; };
 		2A33B1991626F9EE00DD2F18 /* searchTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchTweet.h; sourceTree = "<group>"; };
 		2A33B19A1626F9EE00DD2F18 /* searchTweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchTweet.m; sourceTree = "<group>"; };
+		2A582B1B16311DDF002FED5A /* TwitterAccessAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAccessAPI.h; sourceTree = "<group>"; };
+		2A582B1C16311DDF002FED5A /* TwitterAccessAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAccessAPI.m; sourceTree = "<group>"; };
 		2AB580BB1622EFFB00D39F01 /* TweetMini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetMini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB580BF1622EFFB00D39F01 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2AB580C11622EFFB00D39F01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -268,6 +271,8 @@
 				2AB580D11622EFFB00D39F01 /* Default.png */,
 				2AB580D31622EFFB00D39F01 /* Default@2x.png */,
 				2AB580D51622EFFB00D39F01 /* Default-568h@2x.png */,
+				2A582B1B16311DDF002FED5A /* TwitterAccessAPI.h */,
+				2A582B1C16311DDF002FED5A /* TwitterAccessAPI.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -368,6 +373,7 @@
 				2A33B19116268F0B00DD2F18 /* User.m in Sources */,
 				2A33B1981626A05000DD2F18 /* SearchTwitterViewControllerViewController.m in Sources */,
 				2A33B19B1626F9EF00DD2F18 /* searchTweet.m in Sources */,
+				2A582B1D16311DDF002FED5A /* TwitterAccessAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
