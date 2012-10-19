@@ -119,10 +119,12 @@
         [queue addOperationWithBlock:^{
             NSLog(@"Getting image data for tweet %@", resTweet.tweetID);
             NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:resTweet.user.profileImageURL]];
+            UIImage *image = [UIImage imageWithData:data];
+            data = UIImageJPEGRepresentation(image, 1);
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 cell.imageView.image = [UIImage imageWithData:data];
+                [resTweet.user addImageData:data forUserID:resTweet.user.userID inContext:resTweet.user.managedObjectContext];
             }];
-            [resTweet.user addImageData:data forUserID:resTweet.user.userID inContext:resTweet.user.managedObjectContext];
         }];
     }
     return cell;
