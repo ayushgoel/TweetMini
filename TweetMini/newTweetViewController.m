@@ -7,95 +7,69 @@
 //
 
 #import "newTweetViewController.h"
-#import "Accounts/Accounts.h"
+
+#define TweetURL @"http://api.twitter.com/1/statuses/update.json"
 
 @interface newTweetViewController ()
+@property (nonatomic, strong) TwitterAccessAPI *TapiObject;
 @end
 
 @implementation newTweetViewController
 @synthesize tweetText = _tweetText;
+@synthesize TapiObject = _TapiObject;
 
--(UIAlertView *) getAlertViewWithMessage: (NSString *) msg{
-    return [[UIAlertView alloc] initWithTitle:@"Twitter Authorisation" message:msg delegate:self cancelButtonTitle:@"Exit" otherButtonTitles: nil];
+-(void) destroySelf {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)tweetSend {
+    ACAccount *tAccount = [[self.TapiObject.accountStore
+                            accountsWithAccountType:self.TapiObject.accountType] lastObject];
+    
+    NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
+    [param setObject:@"1" forKey:@"include_entities"];
+    [param setObject:self.tweetText.text forKey:@"status"];
+    TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:TweetURL]
+                                             parameters:param
+                                          requestMethod:TWRequestMethodPOST];
+    [request setAccount:tAccount];
+    
+    [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+        NSString *output = [NSString stringWithFormat:@"Status code: %i", urlResponse.statusCode];
+        NSLog(@"%@", output);
+    }];
+    
+    [self performSelectorOnMainThread:@selector(destroySelf) withObject:self waitUntilDone:NO];
 }
 
 - (IBAction)tweetButtonPressed:(id)sender {
-
-    ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-    
-    if([TWTweetComposeViewController canSendTweet]){
-    
-        [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
-            if(granted){
-
-                ACAccount *tAccount = [[accountStore accountsWithAccountType:accountType] lastObject];
-
-                NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
-                [param setObject:@"1" forKey:@"include_entities"];
-                [param setObject:self.tweetText.text forKey:@"status"];
-                TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"http://api.twitter.com/1/statuses/update.json"] parameters:param requestMethod:TWRequestMethodPOST];
-                [request setAccount:tAccount];
-                
-                [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                    NSString *output = [NSString stringWithFormat:@"Status code: %i", urlResponse.statusCode];
-                    NSLog(@"%@", output);
-                }];
-                
-                [self performSelectorOnMainThread:@selector(destroySelf) withObject:self waitUntilDone:NO];
-            }
-            else {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Twitter Authorisation" message:@"Please give permission to access your twitter account in the Settings, then try again!" delegate:self cancelButtonTitle:@"Exit" otherButtonTitles: nil];
-                [alert show];
-            }
-        }];
-    }
-    else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Twitter Authorisation" message:@"Please log into Twitter in the Settings, then try again!" delegate:self cancelButtonTitle:@"Exit" otherButtonTitles: nil];
-        [alert show];
-    }
+    self.TapiObject = [[TwitterAccessAPI alloc] init];
+    [self.TapiObject withTwitterCallSelector:@selector(tweetSend) withObject:self];
 }
 
--(void) textViewDidChange:(UITextView *)textView{
+- (void)textViewDidChange:(UITextView *) textView {
     int charsLeft = 140-self.tweetText.text.length;
-//    if(charsLeft <0){
-//        [self.title setTextColor:[UIColor colorWithRed:0.5 green:0.2 blue:0.3 alpha:0.9]];
-//    }
-//    else {
-//        [self.title setTextColor:[UIColor lightTextColor]];
-//    }
     self.title = [NSString stringWithFormat:@"%d left", charsLeft];
-}
-
--(void) destroySelf
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender {
     [self destroySelf];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self.tweetText becomeFirstResponder];
     self.tweetText.delegate = self;
-
-//    [self.title setTextColor:[UIColor lightTextColor]];
     self.title = @"140 left";
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     [self setTweetText:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
 

@@ -74,8 +74,10 @@
     NSArray *matches = [context executeFetchRequest:request error:&error];
     MiniUser *miniUser = nil;
 
-    if (!matches || [matches count]>1) {
-        NSLog(@"More than one photo with same ID: %@", userID);
+    if (!matches) {
+        NSLog(@"No matches array!");
+    } else if ([matches count]>1) {
+        NSLog(@"More than one photo with same ID: %@ %@", userID, [[matches lastObject] name]);
     } else if ([matches count] == 1) {
         miniUser = [matches lastObject];
         miniUser.smallImage = data;

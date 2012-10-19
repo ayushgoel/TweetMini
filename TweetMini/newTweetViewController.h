@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Twitter/Twitter.h"
+#import "TwitterAccessAPI.h"
 
 @interface newTweetViewController : UIViewController <UITextViewDelegate>
 

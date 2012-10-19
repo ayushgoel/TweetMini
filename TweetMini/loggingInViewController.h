@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Accounts/Accounts.h"
-#import "Twitter/Twitter.h"
 #import "TwitterAccessAPI.h"
 
 @interface loggingInViewController : UIViewController
