@@ -12,5 +12,6 @@
 @interface User (Create)
 
 + (User *)createUserWithInfo:(id)info inManagedObjectContext:(NSManagedObjectContext *)context;
+- (void)addImageData:(NSData *)data inContext:(NSManagedObjectContext *)context;
 
 @end

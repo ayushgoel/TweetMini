@@ -14,23 +14,20 @@
 @synthesize tweetTable = _tweetTable;
 @synthesize cache = _cache;
 
--(UIAlertView *) getAlertViewWithMessage: (NSString *) msg{
+-(UIAlertView *) getAlertViewWithMessage: (NSString *) msg {
     return [[UIAlertView alloc] initWithTitle:@"Twitter Authorisation" message:msg delegate:self cancelButtonTitle:@"Exit" otherButtonTitles: nil];
 }
 
--(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSLog(@"Results in array: %i", [self.searchResults count]);
     return [self.searchResults count];
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [[self.searchResults objectAtIndex:[indexPath row]] rowHeight];
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Creating cell");
     NSString * cellIdentifier = @"tweetCell";
     UITableViewCell * cell = nil;
@@ -62,8 +59,7 @@
     return cell;
 }
 
--(void) populateTweetWithSearch: (NSString *) searchTerm
-{
+-(void) populateTweetWithSearch: (NSString *) searchTerm {
     NSDictionary * param = [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:searchTerm, @"mixed", @"false", @"20", nil] forKeys:[[NSArray alloc] initWithObjects:@"q", @"result_type", @"include_entities", @"rpp", nil]];
     
     TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"http://search.twitter.com/search.json"] parameters:param requestMethod:TWRequestMethodGET];
@@ -107,19 +103,16 @@
     [self.searchBar resignFirstResponder];
 }
 
--(void) searchBarSearchButtonClicked:(UISearchBar *)searchBari
-{
+-(void) searchBarSearchButtonClicked:(UISearchBar *)searchBari {
     NSLog(@"Got search: %@", searchBari.text);
     [self populateTweetWithSearch:searchBari.text];
 }
 
--(void) searchBarCancelButtonClicked:(UISearchBar *)searchBari
-{
+-(void) searchBarCancelButtonClicked:(UISearchBar *)searchBari {
     [searchBari resignFirstResponder];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     self.searchBar.delegate = self;
     self.tweetTable.dataSource = self;
@@ -129,15 +122,13 @@
     NSLog(@"VC set");
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     [self setSearchBar:nil];
     [self setTweetTable:nil];
     [super viewDidUnload];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
 

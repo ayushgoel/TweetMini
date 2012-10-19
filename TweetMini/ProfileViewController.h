@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User+Create.h"
+#import "TwitterAccessAPI.h"
 
 @interface ProfileViewController : UIViewController
 
 @property (nonatomic, strong) UIManagedDocument *twitterDatabase;
+@property (nonatomic, strong) TwitterAccessAPI *TapiObject;
 @property (nonatomic, strong) NSString *userID;
 
 @property (strong, nonatomic) IBOutlet UIImageView *profileImageView;

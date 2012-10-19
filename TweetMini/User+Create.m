@@ -10,14 +10,13 @@
 
 @implementation User (Create)
 
-+ (User *)createUserWithInfo:(id)info inManagedObjectContext:(NSManagedObjectContext *)context
-{
++ (User *)createUserWithInfo:(id)info inManagedObjectContext:(NSManagedObjectContext *)context {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
     request.predicate = [NSPredicate predicateWithFormat:@"userID == %@", [NSString stringWithFormat:@"%@", [info objectForKey:@"id"]]];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"userID" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
-    NSError *error = nil;
+    __block NSError *error = nil;
     NSArray *matches = [context executeFetchRequest:request error:&error];
     User *user = nil;
     
@@ -29,6 +28,15 @@
     } else if ([matches count] == 1) {
         NSLog(@"User Already here");
         user = [matches lastObject];
+        user.favoritesCount = [info objectForKey:@"favourites_count"];
+        user.followersCount = [info objectForKey:@"followers_count"];
+        user.friendsCount = [info objectForKey:@"friends_count"];
+        user.statusCount = [info objectForKey:@"statuses_count"];
+        user.url = [info objectForKey:@"url"];
+        user.userDescription = [info objectForKey:@"description"];
+        [context performBlock:^{
+            [context save:&error];
+        }];
     } else {
         user = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:context];
         user.userID = [NSString stringWithFormat:@"%@", [info objectForKey:@"id"]];
@@ -49,8 +57,32 @@
     return user;
 }
 
-- (NSString *)description
-{
+- (void)addImageData:(NSData *)data inContext:(NSManagedObjectContext *)context {
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+    request.predicate = [NSPredicate predicateWithFormat:@"userID == %@", self.userID];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"userID" ascending:YES];
+    request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    
+    __block NSError *error = nil;
+    NSArray *matches = [context executeFetchRequest:request error:&error];
+    User *user = nil;
+    
+    if (!matches) {
+        NSLog(@"No matches array!");
+    } else if ([matches count]>1) {
+        NSLog(@"More than one photo with same ID: %@", self.userID);
+    } else if ([matches count] == 1) {
+        user = [matches lastObject];
+        user.bigImage = data;
+        [context performBlock:^{
+            [context save:&error];
+        }];
+    } else {
+        NSLog(@"What is this? Please check!");
+    }
+}
+
+- (NSString *)description {
     return [NSString stringWithFormat:@"ID:%@ miniUser:{%@}", self.userID, self.miniUser];
 }
 
