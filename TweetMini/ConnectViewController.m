@@ -27,13 +27,16 @@
     return request;
 }
 
-- (void)requestForTimelineusing:(UIManagedDocument *)document
+- (TWRequest *)getTwitterRequest
 {
-    NSDictionary * param = [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"0", @"0", @"50", nil] forKeys:[[NSArray alloc] initWithObjects:@"include_entities", @"trim_user", @"count", nil]];
+    NSDictionary * param = [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"0", @"0", @"30", nil] forKeys:[[NSArray alloc] initWithObjects:@"include_entities", @"trim_user", @"count", nil]];
     
-    TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1/statuses/mentions.json"] parameters:param requestMethod:TWRequestMethodGET];
-    
-    [self getTimelineWithParam:param usingRequest:request inDocument:document isForSelf:[NSNumber numberWithBool:YES]];
+    return [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1/statuses/mentions.json"] parameters:param requestMethod:TWRequestMethodGET];
+}
+
+- (NSNumber *)isForSelf
+{
+    return [NSNumber numberWithBool:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated

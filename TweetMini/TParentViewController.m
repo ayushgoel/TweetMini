@@ -7,16 +7,21 @@
 //
 
 #import "TParentViewController.h"
-#import "Twitter/Twitter.h"
-#import "Accounts/Accounts.h"
-#import "Tweet+Create.h"
-#import "MiniUser+Create.h"
 
 @interface TParentViewController ()
 @end
 
 @implementation TParentViewController
 @synthesize twitterDatabase = _twitterDatabase;
+@synthesize TapiObject = _TapiObject;
+
+- (TwitterAccessAPI *)TapiObject
+{
+    if (!_TapiObject) {
+        _TapiObject = [[TwitterAccessAPI alloc] init];
+    }
+    return _TapiObject;
+}
 
 -(UIAlertView *) getAlertViewWithMessage: (NSString *) msg{
     return [[UIAlertView alloc] initWithTitle:@"Twitter Authorisation" message:msg delegate:self cancelButtonTitle:@"Exit" otherButtonTitles: nil];
@@ -30,15 +35,22 @@
     return [[NSString alloc] init];
 }
 
-- (void)requestForTimelineusing:(UIManagedDocument *)document
-{
-    NSLog(@"Wrong Request for timeline called!");
-}
-
 - (NSFetchRequest *)getFetchRequest
 {
     NSLog(@"Not implemented getFetchRequest!");
     return [[NSFetchRequest alloc] init];
+}
+
+- (TWRequest *)getTwitterRequest
+{
+    NSLog(@"Twitter request not implemented!");
+    return [[TWRequest alloc] init];
+}
+
+- (NSNumber *)isForSelf
+{
+    NSLog(@"isForSelf not implemented");
+    return [NSNumber numberWithBool:NO];
 }
 
 #pragma Document functions
@@ -62,13 +74,13 @@
         [self.twitterDatabase saveToURL:self.twitterDatabase.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
             NSLog(@"Document Created");
             [self setupFetchedResultsController];
-            [self requestForTimelineusing:self.twitterDatabase];
+            [self.TapiObject withTwitterCallSelector:@selector(getTimeline) withObject:self];
         }];
     } else if (self.twitterDatabase.documentState == UIDocumentStateClosed) {
         [self.twitterDatabase openWithCompletionHandler:^(BOOL success) {
             NSLog(@"Open");
             [self setupFetchedResultsController];
-            [self requestForTimelineusing:self.twitterDatabase];
+            [self.TapiObject withTwitterCallSelector:@selector(getTimeline) withObject:self];
         }];
     } else if (self.twitterDatabase.documentState == UIDocumentStateNormal) {
         [self setupFetchedResultsController];
@@ -117,11 +129,12 @@
     } else {
         NSOperationQueue *queue = [[NSOperationQueue alloc] init];
         [queue addOperationWithBlock:^{
-            NSLog(@"Getting image data for tweet %@", resTweet.tweetID);
+            NSLog(@"Getting image data %@", resTweet.user.screenName);
             NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:resTweet.user.profileImageURL]];
             UIImage *image = [UIImage imageWithData:data];
             data = UIImageJPEGRepresentation(image, 1);
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                NSLog(@"Putting image data %@", resTweet.user.screenName);
                 cell.imageView.image = [UIImage imageWithData:data];
                 [resTweet.user addImageData:data forUserID:resTweet.user.userID inContext:resTweet.user.managedObjectContext];
             }];
@@ -137,53 +150,36 @@
 
 #pragma Network Data Methods
 
-- (void)getTimelineWithParam:(NSDictionary *)param usingRequest:(TWRequest *)request inDocument:(UIManagedDocument *)document isForSelf:(NSNumber *)isForSelf
+- (void)getTimeline
 {
-    NSLog(@"Getting timeline for %@", isForSelf);
-    ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-    
-    if([TWTweetComposeViewController canSendTweet]){
-        [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
-            if(granted){
-                [request setAccount:[[accountStore accountsWithAccountType:accountType] lastObject]];
-                [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                    if(responseData){
-                        NSError *jsonError;
-                        NSArray *results = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&jsonError];
-                        if(results){
-//                            NSLog(@"Got results: %@", results);
-                            NSLog(@"Got Results");
-                            [document.managedObjectContext performBlock:^{
-                                [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                                    [Tweet createTweetWithInfo:obj isForSelf:isForSelf inManagedObjectContext:document.managedObjectContext];
-                                }];
-                            }];
-                        }
-                        else {
-                            NSLog(@"%@", error);
-                            UIAlertView *alert = [self getAlertViewWithMessage:@"Error retrieving tweet"];
-                            [alert show];
-                        }
-                    }
-                    else {
-                        NSLog(@"No response");
-                        UIAlertView *alert = [self getAlertViewWithMessage: @"No response for the search Query"];
-                        [alert show];
-                    }
+    TWRequest *request = [self getTwitterRequest];
+    [request setAccount:[[self.TapiObject.accountStore accountsWithAccountType:self.TapiObject.accountType] lastObject]];
+    [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+        if(responseData){
+            NSError *jsonError;
+            NSArray *results = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&jsonError];
+            if(results){
+//              NSLog(@"Got results: %@", results);
+                NSLog(@"Got Results");
+                [self.twitterDatabase.managedObjectContext performBlock:^{
+                    [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                        [Tweet createTweetWithInfo:obj isForSelf:[self isForSelf] inManagedObjectContext:self.twitterDatabase.managedObjectContext];
+                    }];
                 }];
             }
             else {
-                
-                UIAlertView *alert = [self getAlertViewWithMessage: @"Please give permission to access your twitter account in the Settings, then try again!"];
+                NSLog(@"%@", error);
+                UIAlertView *alert = [self getAlertViewWithMessage:@"Error retrieving tweet"];
                 [alert show];
             }
-        }];
-    }
-    else {
-        UIAlertView *alert = [self getAlertViewWithMessage:@"Please log into Twitter in the Settings, then try again!"];
-        [alert show];
-    }
+        }
+        else {
+            NSLog(@"No response");
+            UIAlertView *alert = [self getAlertViewWithMessage: @"No response for the search Query"];
+            [alert show];
+        }
+    }];
+    
 }
 
 @end

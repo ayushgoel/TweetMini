@@ -9,21 +9,36 @@
 #import "TwitterAccessAPI.h"
 
 @implementation TwitterAccessAPI
+@synthesize accountStore = _accountStore;
+@synthesize accountType = _accountType;
+
+- (ACAccountStore *)accountStore
+{
+    if (!_accountStore) {
+        _accountStore = [[ACAccountStore alloc] init];
+    }
+    return _accountStore;
+}
+
+- (ACAccountType *)accountType
+{
+    if (!_accountType) {
+        _accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    }
+    return _accountType;
+}
 
 -(UIAlertView *) getAlertViewWithMessage: (NSString *) msg{
     return [[UIAlertView alloc] initWithTitle:@"Twitter Authorisation" message:msg delegate:self cancelButtonTitle:@"Exit" otherButtonTitles: nil];
 }
 
 - (void)withTwitterCallSelector:(SEL)willCallSelector withObject:(id)obj
-{
-    ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-    
+{    
     if([TWTweetComposeViewController canSendTweet]){
-        [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
+        [self.accountStore requestAccessToAccountsWithType:self.accountType options:nil completion:^(BOOL granted, NSError *error) {
             if(granted){
                 
-                [self performSelector:willCallSelector withObject:obj];
+                [obj performSelector:willCallSelector];
                 
             }
             else {

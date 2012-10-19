@@ -11,5 +11,9 @@
 #import "Accounts/Accounts.h"
 
 @interface TwitterAccessAPI : NSObject
+
+@property (nonatomic, strong) ACAccountStore *accountStore;
+@property (nonatomic, strong) ACAccountType *accountType;
+
 - (void)withTwitterCallSelector:(SEL)willCallSelector withObject:(id)obj;
 @end
