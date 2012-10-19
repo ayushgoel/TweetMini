@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Twitter/Twitter.h"
 #import "CoreDataTableViewController.h"
+#import "TwitterAccessAPI.h"
 #import "Tweet+Create.h"
 #import "MiniUser+Create.h"
-#import "TwitterAccessAPI.h"
 
 
 @interface TParentViewController : CoreDataTableViewController

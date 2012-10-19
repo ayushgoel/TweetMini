@@ -15,48 +15,38 @@
 @synthesize twitterDatabase = _twitterDatabase;
 @synthesize TapiObject = _TapiObject;
 
-- (TwitterAccessAPI *)TapiObject
-{
+- (TwitterAccessAPI *)TapiObject {
     if (!_TapiObject) {
         _TapiObject = [[TwitterAccessAPI alloc] init];
     }
     return _TapiObject;
 }
 
--(UIAlertView *) getAlertViewWithMessage: (NSString *) msg{
-    return [[UIAlertView alloc] initWithTitle:@"Twitter Authorisation" message:msg delegate:self cancelButtonTitle:@"Exit" otherButtonTitles: nil];
-}
-
 #pragma Implemented by child classes
 
--(NSString *) getCellIdentifier
-{
+-(NSString *) getCellIdentifier {
     NSLog(@"Not implemented getCellIdentifier!");
     return [[NSString alloc] init];
 }
 
-- (NSFetchRequest *)getFetchRequest
-{
+- (NSFetchRequest *)getFetchRequest {
     NSLog(@"Not implemented getFetchRequest!");
     return [[NSFetchRequest alloc] init];
 }
 
-- (TWRequest *)getTwitterRequest
-{
+- (TWRequest *)getTwitterRequest {
     NSLog(@"Twitter request not implemented!");
     return [[TWRequest alloc] init];
 }
 
-- (NSNumber *)isForSelf
-{
+- (NSNumber *)isForSelf {
     NSLog(@"isForSelf not implemented");
     return [NSNumber numberWithBool:NO];
 }
 
 #pragma Document functions
 
-- (void)setupFetchedResultsController
-{
+- (void)setupFetchedResultsController {
     NSLog(@"Setting up fetch results controller");
     NSFetchRequest *request = [self getFetchRequest];
     
@@ -67,11 +57,12 @@
     NSLog(@"FRC set up");
 }
 
-- (void)useDocument
-{
+- (void)useDocument {
     NSLog(@"useDoc");
     if (![[NSFileManager defaultManager] fileExistsAtPath:[self.twitterDatabase.fileURL path]]) {
-        [self.twitterDatabase saveToURL:self.twitterDatabase.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+        [self.twitterDatabase saveToURL:self.twitterDatabase.fileURL
+                       forSaveOperation:UIDocumentSaveForCreating
+                      completionHandler:^(BOOL success) {
             NSLog(@"Document Created");
             [self setupFetchedResultsController];
             [self.TapiObject withTwitterCallSelector:@selector(getTimeline) withObject:self];
@@ -87,8 +78,7 @@
     }
 }
 
-- (void)setTwitterDatabase:(UIManagedDocument *)twitterDatabase
-{
+- (void)setTwitterDatabase:(UIManagedDocument *)twitterDatabase {
     NSLog(@"Setter called database");
     if (_twitterDatabase != twitterDatabase) {
         _twitterDatabase = twitterDatabase;
@@ -96,10 +86,10 @@
     }
 }
 
-- (void)setManagedDocument
-{
+- (void)setManagedDocument {
     if (!self.twitterDatabase) {
-        NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+        NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory
+                                                             inDomains:NSUserDomainMask] lastObject];
         url = [url URLByAppendingPathComponent:@"TwitterDatabase"];
         NSLog(@"Setting managed document");
         self.twitterDatabase = [[UIManagedDocument alloc] initWithFileURL:url];
@@ -108,15 +98,14 @@
 
 #pragma TVC methods
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString * cellIdentifier = [self getCellIdentifier];
     UITableViewCell * cell = nil;
     
     Tweet *resTweet = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    if(cell == nil){
+    if(cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
@@ -136,50 +125,52 @@
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 NSLog(@"Putting image data %@", resTweet.user.screenName);
                 cell.imageView.image = [UIImage imageWithData:data];
-                [resTweet.user addImageData:data forUserID:resTweet.user.userID inContext:resTweet.user.managedObjectContext];
+                [resTweet.user addImageData:data forUserID:resTweet.user.userID
+                                  inContext:resTweet.user.managedObjectContext];
             }];
         }];
     }
     return cell;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [[self.fetchedResultsController objectAtIndexPath:indexPath] getRowHeight];
 }
 
 #pragma Network Data Methods
 
-- (void)getTimeline
-{
+- (void)getTimeline {
     TWRequest *request = [self getTwitterRequest];
     [request setAccount:[[self.TapiObject.accountStore accountsWithAccountType:self.TapiObject.accountType] lastObject]];
     [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-        if(responseData){
+        if(responseData) {
             NSError *jsonError;
-            NSArray *results = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&jsonError];
-            if(results){
+            NSArray *results = [NSJSONSerialization JSONObjectWithData:responseData
+                                                               options:NSJSONReadingMutableLeaves
+                                                                 error:&jsonError];
+            if(results) {
 //              NSLog(@"Got results: %@", results);
                 NSLog(@"Got Results");
                 [self.twitterDatabase.managedObjectContext performBlock:^{
                     [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                        [Tweet createTweetWithInfo:obj isForSelf:[self isForSelf] inManagedObjectContext:self.twitterDatabase.managedObjectContext];
+                        [Tweet createTweetWithInfo:obj
+                                         isForSelf:[self isForSelf]
+                            inManagedObjectContext:self.twitterDatabase.managedObjectContext];
                     }];
                 }];
             }
             else {
                 NSLog(@"%@", error);
-                UIAlertView *alert = [self getAlertViewWithMessage:@"Error retrieving tweet"];
+                UIAlertView *alert = [self.TapiObject getAlertViewWithMessage:@"Error retrieving tweet"];
                 [alert show];
             }
         }
         else {
             NSLog(@"No response");
-            UIAlertView *alert = [self getAlertViewWithMessage: @"No response for the search Query"];
+            UIAlertView *alert = [self.TapiObject getAlertViewWithMessage: @"No response from Server!"];
             [alert show];
         }
     }];
-    
 }
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "HomeViewController.h"
-#import "Twitter/Twitter.h"
 
 @interface HomeViewController ()
 @end
