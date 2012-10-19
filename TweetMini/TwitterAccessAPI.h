@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "Twitter/Twitter.h"
+#import "Accounts/Accounts.h"
 
 @interface TwitterAccessAPI : NSObject
-- (void)withTwitterCallSelector:(SEL)willCallSelector;
+- (void)withTwitterCallSelector:(SEL)willCallSelector withObject:(id)obj;
 @end

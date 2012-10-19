@@ -263,6 +263,8 @@
 			children = (
 				2A06005916240C4300DBE085 /* CoreDataTableViewController.h */,
 				2A06005A16240C4300DBE085 /* CoreDataTableViewController.m */,
+				2A582B1B16311DDF002FED5A /* TwitterAccessAPI.h */,
+				2A582B1C16311DDF002FED5A /* TwitterAccessAPI.m */,
 				2A060034162405A600DBE085 /* profile.gif */,
 				2AB580C71622EFFB00D39F01 /* TweetMini-Info.plist */,
 				2AB580C81622EFFB00D39F01 /* InfoPlist.strings */,
@@ -271,8 +273,6 @@
 				2AB580D11622EFFB00D39F01 /* Default.png */,
 				2AB580D31622EFFB00D39F01 /* Default@2x.png */,
 				2AB580D51622EFFB00D39F01 /* Default-568h@2x.png */,
-				2A582B1B16311DDF002FED5A /* TwitterAccessAPI.h */,
-				2A582B1C16311DDF002FED5A /* TwitterAccessAPI.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
