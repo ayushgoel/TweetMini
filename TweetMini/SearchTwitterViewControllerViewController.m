@@ -15,7 +15,7 @@
 @synthesize cache = _cache;
 
 -(UIAlertView *) getAlertViewWithMessage: (NSString *) msg {
-    return [[UIAlertView alloc] initWithTitle:@"Twitter Authorisation" message:msg delegate:self cancelButtonTitle:@"Exit" otherButtonTitles: nil];
+    return [[UIAlertView alloc] initWithTitle:@"Twitter Response Error" message:msg delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
 }
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

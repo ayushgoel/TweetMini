@@ -15,6 +15,6 @@
 @property (nonatomic, strong) ACAccountStore *accountStore;
 @property (nonatomic, strong) ACAccountType *accountType;
 
--(UIAlertView *) getAlertViewWithMessage: (NSString *) msg;
+- (UIAlertView *)getAlertViewWithMessage:(NSString *)msg andDelegate:(id)obj;
 - (void)withTwitterCallSelector:(SEL)willCallSelector withObject:(id)obj;
 @end

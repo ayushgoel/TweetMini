@@ -114,13 +114,13 @@
                 [self performSelectorOnMainThread:@selector(completeUIDetails) withObject:self waitUntilDone:NO];
             }
             else {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Error retrieving User Data" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+                UIAlertView *alert = [self.TapiObject getAlertViewWithMessage:@"Error retrieving User Data" andDelegate:self];
                 [alert show];
             }
         }
         else {
             NSLog(@"No response");
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No response for the search Query" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+            UIAlertView *alert = [self.TapiObject getAlertViewWithMessage:@"No response for the search Query" andDelegate:self];
             [alert show];
         }
     }];

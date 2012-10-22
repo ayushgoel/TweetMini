@@ -8,9 +8,14 @@
 
 #import "TwitterAccessAPI.h"
 
+@interface TwitterAccessAPI ()
+@property (nonatomic, strong) id obj;
+@end
+
 @implementation TwitterAccessAPI
 @synthesize accountStore = _accountStore;
 @synthesize accountType = _accountType;
+@synthesize obj = _obj;
 
 - (ACAccountStore *)accountStore {
     if (!_accountStore) {
@@ -25,17 +30,23 @@
     }
     return _accountType;
 }
-
--(UIAlertView *) getAlertViewWithMessage: (NSString *) msg{
+- (UIAlertView *)getAlertViewWithMessage:(NSString *)msg andDelegate:(id)obj {
     return [[UIAlertView alloc] initWithTitle:@"Twitter Authorisation"
                                       message:msg
-                                     delegate:self
+                                     delegate:obj
                             cancelButtonTitle:@"Exit"
                             otherButtonTitles: nil];
 }
 
+- (void)showAlertWithMessage:(NSString *)msg {
+    UIAlertView *alert = [self getAlertViewWithMessage:msg andDelegate:self.obj];
+    [alert show];
+}
+
 - (void)withTwitterCallSelector:(SEL)willCallSelector withObject:(id)obj
-{    
+{
+    self.obj = obj;
+    
     if([TWTweetComposeViewController canSendTweet]){
         [self.accountStore requestAccessToAccountsWithType:self.accountType
                                                    options:nil
@@ -46,20 +57,22 @@
                 
             }
             else {
-                
-                UIAlertView *alert = [self getAlertViewWithMessage: @"Please \
-                                      give permission to access your twitter \
-                                      account in the Settings, then try again!"];
-                [alert show];
+                NSString *msg = @"Please give permission to access your twitter account in the Settings, then try again!";
+                [self performSelectorOnMainThread:@selector(showAlertWithMessage:) withObject:msg waitUntilDone:YES];
             }
         }];
     }
     else {
-        UIAlertView *alert = [self getAlertViewWithMessage:@"Please log into \
-                              Twitter in the Settings, then try again!"];
-        [alert show];
+        NSString *msg = @"Please log into Twitter in the Settings, then try again!";
+        [self performSelectorOnMainThread:@selector(showAlertWithMessage:) withObject:msg waitUntilDone:YES];
     }
-            
+}
+
+-(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    //Need something better to exit application
+    NSLog(@"wer");
+    exit(1);
 }
 
 @end

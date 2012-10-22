@@ -161,13 +161,13 @@
             }
             else {
                 NSLog(@"%@", error);
-                UIAlertView *alert = [self.TapiObject getAlertViewWithMessage:@"Error retrieving tweet"];
+                UIAlertView *alert = [self.TapiObject getAlertViewWithMessage:@"Error retrieving tweet" andDelegate:self];
                 [alert show];
             }
         }
         else {
             NSLog(@"No response");
-            UIAlertView *alert = [self.TapiObject getAlertViewWithMessage: @"No response from Server!"];
+            UIAlertView *alert = [self.TapiObject getAlertViewWithMessage: @"No response from Server!" andDelegate:self];
             [alert show];
         }
     }];
