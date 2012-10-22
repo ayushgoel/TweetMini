@@ -153,13 +153,16 @@
     NSLog(@"Setter called database");
     if (_twitterDatabase != twitterDatabase) {
         _twitterDatabase = twitterDatabase;
-        [self performSelectorOnMainThread:@selector(useDocument) withObject:self waitUntilDone:YES];
+        [self performSelectorOnMainThread:@selector(useDocument)
+                               withObject:self
+                            waitUntilDone:YES];
     }
 }
 
 - (void)setManagedDocument {
     if (!self.twitterDatabase) {
-        NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+        NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory
+                                                             inDomains:NSUserDomainMask] lastObject];
         url = [url URLByAppendingPathComponent:@"TwitterDatabase"];
         NSLog(@"Setting managed document");
         self.twitterDatabase = [[UIManagedDocument alloc] initWithFileURL:url];

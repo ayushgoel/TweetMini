@@ -68,11 +68,4 @@
     }
 }
 
--(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    //Need something better to exit application
-    NSLog(@"wer");
-    exit(1);
-}
-
 @end

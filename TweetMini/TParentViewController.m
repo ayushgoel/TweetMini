@@ -173,4 +173,10 @@
     }];
 }
 
+-(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    //Need something better to exit application
+    exit(1);
+}
+
 @end
