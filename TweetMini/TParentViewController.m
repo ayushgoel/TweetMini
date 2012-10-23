@@ -34,9 +34,9 @@
     return [[NSFetchRequest alloc] init];
 }
 
-- (TWRequest *)getTwitterRequest {
+- (SLRequest *)getTwitterRequest {
     NSLog(@"Twitter request not implemented!");
-    return [[TWRequest alloc] init];
+    return [[SLRequest alloc] init];
 }
 
 - (NSNumber *)isForSelf {
@@ -140,7 +140,7 @@
 #pragma Network Data Methods
 
 - (void)getTimeline {
-    TWRequest *request = [self getTwitterRequest];
+    SLRequest *request = [self getTwitterRequest];
     [request setAccount:[[self.TapiObject.accountStore accountsWithAccountType:self.TapiObject.accountType] lastObject]];
     [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
         if(responseData) {

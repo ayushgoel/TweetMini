@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Twitter/Twitter.h"
 #import "Accounts/Accounts.h"
+#import "Social/Social.h"
 
 @interface TwitterAccessAPI : NSObject
 

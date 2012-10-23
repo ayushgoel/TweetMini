@@ -29,9 +29,7 @@
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setObject:@"1" forKey:@"include_entities"];
     [param setObject:self.tweetText.text forKey:@"status"];
-    TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:TweetURL]
-                                             parameters:param
-                                          requestMethod:TWRequestMethodPOST];
+    SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:TWRequestMethodPOST URL:[NSURL URLWithString:TweetURL] parameters:param];
     [request setAccount:tAccount];
     
     [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {

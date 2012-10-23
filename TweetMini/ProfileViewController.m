@@ -98,8 +98,7 @@
 
 - (void)getUserDetails {
     NSDictionary *param = [[NSDictionary alloc] init];
-    
-    TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1/account/verify_credentials.json"] parameters:param requestMethod:TWRequestMethodGET];
+    SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:@"https://api.twitter.com/1/account/verify_credentials.json"] parameters:param];
     [request setAccount:[[self.TapiObject.accountStore accountsWithAccountType:self.TapiObject.accountType] lastObject]];
     [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
         if(responseData){

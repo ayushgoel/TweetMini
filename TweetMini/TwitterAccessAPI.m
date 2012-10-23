@@ -46,8 +46,7 @@
 - (void)withTwitterCallSelector:(SEL)willCallSelector withObject:(id)obj
 {
     self.obj = obj;
-    
-    if([TWTweetComposeViewController canSendTweet]){
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
         [self.accountStore requestAccessToAccountsWithType:self.accountType
                                                    options:nil
                                                 completion:^(BOOL granted, NSError *error) {

@@ -44,7 +44,6 @@
 		2AB580DC1622EFFB00D39F01 /* loggingInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB580DB1622EFFB00D39F01 /* loggingInViewController.m */; };
 		2AB580E71622FDA300D39F01 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB580E61622FDA300D39F01 /* Accounts.framework */; };
 		2AB580EA1622FDAD00D39F01 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB580E91622FDAD00D39F01 /* CoreData.framework */; };
-		2AB580EC1622FDEA00D39F01 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB580EB1622FDEA00D39F01 /* Twitter.framework */; };
 		2AB580EF1623015800D39F01 /* newTweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB580EE1623015800D39F01 /* newTweetViewController.m */; };
 		2AD6AC201625771500630089 /* ConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD6AC1F1625771500630089 /* ConnectViewController.m */; };
 		2AD6AC241625820F00630089 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD6AC231625820F00630089 /* ProfileViewController.m */; };
@@ -116,7 +115,6 @@
 		2AB580DB1622EFFB00D39F01 /* loggingInViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = loggingInViewController.m; sourceTree = "<group>"; };
 		2AB580E61622FDA300D39F01 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		2AB580E91622FDAD00D39F01 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		2AB580EB1622FDEA00D39F01 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		2AB580ED1623015800D39F01 /* newTweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newTweetViewController.h; sourceTree = "<group>"; };
 		2AB580EE1623015800D39F01 /* newTweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newTweetViewController.m; sourceTree = "<group>"; };
 		2AD6AC1E1625771500630089 /* ConnectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectViewController.h; sourceTree = "<group>"; };
@@ -133,7 +131,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A6F42DA16357C390041E48F /* Social.framework in Frameworks */,
-				2AB580EC1622FDEA00D39F01 /* Twitter.framework in Frameworks */,
 				2AB580EA1622FDAD00D39F01 /* CoreData.framework in Frameworks */,
 				2AB580E71622FDA300D39F01 /* Accounts.framework in Frameworks */,
 				2AB580C01622EFFB00D39F01 /* UIKit.framework in Frameworks */,
@@ -220,7 +217,6 @@
 		2AB580B01622EFFB00D39F01 = {
 			isa = PBXGroup;
 			children = (
-				2A6F42D916357C380041E48F /* Social.framework */,
 				2AB580C51622EFFB00D39F01 /* TweetMini */,
 				2AB580BE1622EFFB00D39F01 /* Frameworks */,
 				2AB580BC1622EFFB00D39F01 /* Products */,
@@ -238,13 +234,13 @@
 		2AB580BE1622EFFB00D39F01 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2A060039162407F300DBE085 /* AFNetworking */,
-				2AB580EB1622FDEA00D39F01 /* Twitter.framework */,
-				2AB580E91622FDAD00D39F01 /* CoreData.framework */,
 				2AB580E61622FDA300D39F01 /* Accounts.framework */,
-				2AB580BF1622EFFB00D39F01 /* UIKit.framework */,
-				2AB580C11622EFFB00D39F01 /* Foundation.framework */,
+				2A060039162407F300DBE085 /* AFNetworking */,
+				2AB580E91622FDAD00D39F01 /* CoreData.framework */,
 				2AB580C31622EFFB00D39F01 /* CoreGraphics.framework */,
+				2AB580C11622EFFB00D39F01 /* Foundation.framework */,
+				2A6F42D916357C380041E48F /* Social.framework */,
+				2AB580BF1622EFFB00D39F01 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

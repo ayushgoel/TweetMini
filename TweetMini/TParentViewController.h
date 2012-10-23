@@ -20,7 +20,7 @@
 
 - (NSString *)getCellIdentifier;
 - (NSFetchRequest *)getFetchRequest;
-- (TWRequest *)getTwitterRequest;
+- (SLRequest *)getTwitterRequest;
 - (NSNumber *)isForSelf;
 
 - (void)setManagedDocument;
