@@ -22,6 +22,12 @@
     return _TapiObject;
 }
 
+-(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    //Need something better to exit application
+    exit(1);
+}
+
 #pragma Implemented by child classes
 
 -(NSString *) getCellIdentifier {
@@ -46,6 +52,12 @@
 
 #pragma Document functions
 
+//- (void)documentSet:(UIRefreshControl *)control {
+- (void)documentSet{
+    [self.TapiObject withTwitterCallSelector:@selector(getTimeline) withObject:self];
+    [self.refreshControl endRefreshing];
+}
+
 - (void)setupFetchedResultsController {
     NSLog(@"Setting up fetch results controller");
     NSFetchRequest *request = [self getFetchRequest];
@@ -65,13 +77,13 @@
                       completionHandler:^(BOOL success) {
             NSLog(@"Document Created");
             [self setupFetchedResultsController];
-            [self.TapiObject withTwitterCallSelector:@selector(getTimeline) withObject:self];
+            [self documentSet];
         }];
     } else if (self.twitterDatabase.documentState == UIDocumentStateClosed) {
         [self.twitterDatabase openWithCompletionHandler:^(BOOL success) {
             NSLog(@"Open");
             [self setupFetchedResultsController];
-            [self.TapiObject withTwitterCallSelector:@selector(getTimeline) withObject:self];
+            [self documentSet];
         }];
     } else if (self.twitterDatabase.documentState == UIDocumentStateNormal) {
         [self setupFetchedResultsController];
@@ -94,6 +106,10 @@
         NSLog(@"Setting managed document");
         self.twitterDatabase = [[UIManagedDocument alloc] initWithFileURL:url];
     }
+    
+    UIRefreshControl *control = [[UIRefreshControl alloc] init];
+    [control addTarget:self action:@selector(documentSet) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = control;
 }
 
 #pragma TVC methods
@@ -171,12 +187,6 @@
             [alert show];
         }
     }];
-}
-
--(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    //Need something better to exit application
-    exit(1);
 }
 
 @end
