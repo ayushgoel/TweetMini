@@ -50,13 +50,24 @@
     return [NSNumber numberWithBool:NO];
 }
 
-#pragma Document functions
+#pragma Refresh Control
 
-//- (void)documentSet:(UIRefreshControl *)control {
 - (void)documentSet{
     [self.TapiObject withTwitterCallSelector:@selector(getTimeline) withObject:self];
     [self.refreshControl endRefreshing];
 }
+
+- (void)setRefreshProperty {
+    UIRefreshControl *control = [[UIRefreshControl alloc] init];
+    [control addTarget:self action:@selector(documentSet) forControlEvents:UIControlEventValueChanged];
+
+// Uncomment to add tint and title
+//    control.tintColor = [UIColor blueColor];
+//    control.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refresh"];
+    self.refreshControl = control;
+}
+
+#pragma Document functions
 
 - (void)setupFetchedResultsController {
     NSLog(@"Setting up fetch results controller");
@@ -106,10 +117,7 @@
         NSLog(@"Setting managed document");
         self.twitterDatabase = [[UIManagedDocument alloc] initWithFileURL:url];
     }
-    
-    UIRefreshControl *control = [[UIRefreshControl alloc] init];
-    [control addTarget:self action:@selector(documentSet) forControlEvents:UIControlEventValueChanged];
-    self.refreshControl = control;
+    [self setRefreshProperty];
 }
 
 #pragma TVC methods
